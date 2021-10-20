@@ -1,1 +1,4 @@
-com\example\eswtmvc\MainController.class
+com\example\controller\MainController.class
+com\example\entity\Employee.class
+com\example\dao\EmployeeMapper.class
+com\example\util\MyBatisUtil.class
