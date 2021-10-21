@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 2021-10-21
-  Time: 오후 6:27
-  To change this template use File | Settings | File Templates.
---%>
+
+
 <!DOCTYPE html>
 <html>
 <head>

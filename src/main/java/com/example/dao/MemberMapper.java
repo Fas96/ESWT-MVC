@@ -1,47 +1,47 @@
 package com.example.dao;
 
-import com.example.entity.Question;
+import com.example.entity.Member;
 import com.example.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-public class QuestionMapper {
-    public void saveQuestion(Question question){
+public class MemberMapper {
+    public void saveMember(Member member){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-        session.insert("insertQuestion", question);
+        session.insert("insertMember", member);
         session.commit();
         session.close();
     }
 
-    public void updateQuestion(Question question){
+    public void updateMember(Member member){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-        session.update("updateQuestion", question);
+        session.update("updateMember", member);
         session.commit();
         session.close();
     }
 
-    public void deleteQuestion(int questionId){
+    public void deleteMember(int memberId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-        session.delete("deleteQuestion", questionId);
+        session.delete("deleteMember", memberId);
         session.commit();
         session.close();
     }
 
-    public List<Question> getAllQuestions(){
+    public List<Member> getAllMembers(){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
         @SuppressWarnings("unchecked")
-        List<Question> questionList = session.selectList("getAllQuestions");
+        List<Member> memberList = session.selectList("getAllMembers");
         session.commit();
         session.close();
-        return questionList;
+        return memberList;
     }
 
-    public Question findById(int quesitonId){
+    public Member findById(int memberId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-        Question question = (Question) session.selectOne("findById", quesitonId);
+        Member member = (Member) session.selectOne("findById", memberId);
         session.commit();
         session.close();
-        return question;
+        return member;
     }
 }

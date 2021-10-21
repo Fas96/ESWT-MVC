@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-    EmployeeMapper employeeMapper=new EmployeeMapper();
+    @Autowired
+    EmployeeMapper employeeMapper;
 
-    QuestionMapper questionMapper=new QuestionMapper();
+    @Autowired
+    QuestionMapper questionMapper;
 
     @RequestMapping("/")
     public String home() {

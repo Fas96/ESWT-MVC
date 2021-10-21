@@ -6,6 +6,7 @@
     <typeAliases>
         <typeAlias type="com.example.entity.Employee" alias="employee"/>
         <typeAlias type="com.example.entity.Question" alias="question"/>
+        <typeAlias type="com.example.entity.Member" alias="member"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -21,5 +22,6 @@
     <mappers>
         <mapper resource="java/com/example/dao/EmployeeMapper.xml" />
         <mapper resource="java/com/example/dao/QuestionMapper.xml" />
+        <mapper resource="java/com/example/dao/MemberMapper.xml" />
     </mappers>
 </configuration>
