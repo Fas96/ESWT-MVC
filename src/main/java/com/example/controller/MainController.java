@@ -23,9 +23,11 @@ public class MainController {
         System.out.println("====================================");
         return "index";
     }
-    @GetMapping("/admin")
-    public String admin(){
-        return "admin/index";
-    }
+
+//    @GetMapping("/admin")
+//    public String admin(){
+//        return "/admin/index";
+//    }
+
 
 }
