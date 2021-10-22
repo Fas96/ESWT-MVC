@@ -320,6 +320,11 @@
     <script src="<c:url value="${base}/resources/js/lib/data-table/buttons.print.min.js"/> "></script>
     <script src="<c:url value="${base}/resources/js/lib/data-table/datatables-init.js"/> "></script>
 
+<script type="text/javascript">
+    fetch('http://localhost:8080/question/checkuser?questionId=3')
+        .then(response => response.text())
+        .then(commits => alert(commits));
+</script>
 
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
 
