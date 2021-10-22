@@ -67,7 +67,18 @@
         </dependency>
 
 
+<!--        for logging-->
 
+        <dependency>
+            <groupId>org.ow2.util.bundles</groupId>
+            <artifactId>slf4j-1.6.1</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.att.inno</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.13</version>
+        </dependency>
         <!-- For connection pool -->
         <dependency>
             <groupId>c3p0</groupId>

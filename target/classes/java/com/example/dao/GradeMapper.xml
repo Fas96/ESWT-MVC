@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.GradeMapper">
+
+    <resultMap type="grade" id="result">
+        <id property="id" column="id" />
+        <result property="question_id" column="question_id" />
+        <result property="member_id" column="member_id" />
+        <result property="question_type" column="question_type" />
+        <result property="session_id" column="session_id" />
+        <result property="answer_taskCompletion" column="answer_taskCompletion" />
+        <result property="answer_fluency" column="answer_fluency" />
+        <result property="answer_coherence" column="answer_coherence" />
+        <result property="answer_pronounciation" column="answer_pronounciation" />
+        <result property="answer_grammar" column="answer_grammar" />
+        <result property="score" column="score" />
+        <result property="isMarked" column="isMarked" />
+        <result property="answer_memo" column="answer_memo" />
+    </resultMap>
+
+
+    <select id="getAllGrades" resultType="grade" resultMap="result"  >
+        select * from grade
+    </select>
+
+    <insert id="insertGrade" parameterType="grade" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO grade(question_id,  member_id,question_type, session_id, answer_taskCompletion,
+                          answer_fluency,answer_coherence,answer_pronounciation,answer_grammar,
+                          score,isMarked, answer_memo)
+        VALUES(#{question_id}, #{member_id}, #{question_type}, #{session_id}, #{answer_taskCompletion},
+               #{answer_fluency},#{answer_coherence},#{answer_pronounciation},#{answer_grammar},
+               #{score},#{isMarked},#{answer_memo})
+    </insert>
+
+
+    <update id="updateGrade" parameterType="grade">
+        UPDATE grade SET question_id = #{question_id},  member_id = #{member_id},question_type = #{question_type},
+                         session_id = #{session_id}, answer_taskCompletion = #{answer_taskCompletion},
+                         answer_fluency=#{answer_fluency},answer_coherence=#{answer_coherence},answer_pronounciation=#{answer_pronounciation},
+                         answer_grammar=#{answer_grammar},score=#{score},isMarked=#{isMarked},
+                         answer_memo=#{answer_memo}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteGrade" parameterType="int">
+        DELETE FROM grade WHERE id = #{gradeId}
+    </delete>
+
+    <select id="findById" parameterType="int" resultType="grade" resultMap="result">
+        SELECT * FROM grade WHERE id = #{gradeId}
+    </select>
+
+
+</mapper>

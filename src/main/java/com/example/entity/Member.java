@@ -1,6 +1,7 @@
 package com.example.entity;
 
 public class Member {
+    private Integer id;
     private String member_id;
     private String  member_password  ;
     private String member_name  ;
