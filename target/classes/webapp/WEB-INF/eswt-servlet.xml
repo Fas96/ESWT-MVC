@@ -37,6 +37,9 @@
     <beans:bean class="com.example.dao.MemberMapper"/>
     <beans:bean class="com.example.dao.EmployeeMapper"/>
     <beans:bean class="com.example.dao.QuestionMapper"/>
+    <beans:bean class="com.example.dao.AnswerMapper"/>
+    <beans:bean class="com.example.dao.GradeMapper"/>
+    <beans:bean class="com.example.dao.SessionMapper"/>
 
 
 

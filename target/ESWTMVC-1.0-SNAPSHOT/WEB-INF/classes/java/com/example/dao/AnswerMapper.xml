@@ -29,7 +29,7 @@
         DELETE FROM answer WHERE id = #{id}
     </delete>
 
-    <select id="findById" parameterType="int" resultType="answer" resultMap="result">
+    <select id="findAnswerById" parameterType="int" resultType="answer" resultMap="result">
         SELECT * FROM answer WHERE id = #{id}
     </select>
 

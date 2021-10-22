@@ -37,9 +37,9 @@ public class QuestionMapper {
         return questionList;
     }
 
-    public Question findById(int quesitonId){
+    public Question findQuestionById(int quesitonId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-        Question question = (Question) session.selectOne("findById", quesitonId);
+        Question question = (Question) session.selectOne("findQuestionById", quesitonId);
         session.commit();
         session.close();
         return question;

@@ -40,9 +40,9 @@ public class EmployeeMapper {
         return employeesList;
     }
 
-    public Employee findById(int employeeId){
+    public Employee findEmployeedById(int employeeId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-        Employee employee = (Employee) session.selectOne("findById", employeeId);
+        Employee employee = (Employee) session.selectOne("findEmployeedById", employeeId);
         session.commit();
         session.close();
         return employee;

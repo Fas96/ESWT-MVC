@@ -47,7 +47,7 @@
         DELETE FROM grade WHERE id = #{gradeId}
     </delete>
 
-    <select id="findById" parameterType="int" resultType="grade" resultMap="result">
+    <select id="findGradeById" parameterType="int" resultType="grade" resultMap="result">
         SELECT * FROM grade WHERE id = #{gradeId}
     </select>
 

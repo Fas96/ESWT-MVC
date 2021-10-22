@@ -44,7 +44,7 @@ public class EmployeeController {
 
     @RequestMapping("/displayUpdateForm")
     public String showUpdateForm(@RequestParam("employeeId") int employeeId, Model model){
-        model.addAttribute("employee", employeeMapper.findById(employeeId));
+        model.addAttribute("employee", employeeMapper.findEmployeedById(employeeId));
         return EMPLOYEE;
     }
 

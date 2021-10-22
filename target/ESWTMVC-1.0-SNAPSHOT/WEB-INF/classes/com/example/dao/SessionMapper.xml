@@ -4,8 +4,7 @@
 <mapper namespace="com.example.dao.SessionMapper">
     
     <resultMap id="result" type="session">
-        <id property="id" column="id"/>
-        <result property="session_id" column="session_id"/>
+        <id property="id" column="session_id"/>
         <result property="session_year" column="session_year"/>
         <result property="session_title" column="session_title"/>
         <result property="session_startDate" column="session_startDate"/>
@@ -15,9 +14,29 @@
     <select id="getAllSessions" resultMap="result" resultType="session">
         select * from session
     </select>
+
+    <insert id="insertSession" parameterType="session" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO session(
+            session_id,
+            session_year,
+            session_title,
+            session_startDate,
+            session_endDate )
+        VALUES(#{session_id}, #{session_year}, #{session_title}, #{session_startDate}, #{session_endDate})
+    </insert>
+    <update id="updateSession" parameterType="session">
+        UPDATE session SET session_id = #{session_id}, session_year = #{session_year}, session_title = #{session_title},
+                            question_media = #{question_media}, question_second = #{question_second}, question_prepTime = #{question_prepTime},
+                           session_startDate = #{session_startDate},session_endDate = #{session_endDate}
+        WHERE id = #{sessionId}
+    </update>
+
     <delete id="deleteSession" parameterType="int">
-        DELETE FROM session where id=#{id}
+        DELETE FROM session WHERE id = #{sessionId}
     </delete>
 
+    <select id="findSessionById" parameterType="int" resultType="session" resultMap="result">
+        SELECT * FROM session WHERE id = #{sessionId}
+    </select>
 
 </mapper>

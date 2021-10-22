@@ -44,11 +44,11 @@
     </update>
 
     <delete id="deleteGrade" parameterType="int">
-        DELETE FROM grade WHERE id = #{gradeId}
+        DELETE FROM grade WHERE id = #{id}
     </delete>
 
-    <select id="findById" parameterType="int" resultType="grade" resultMap="result">
-        SELECT * FROM grade WHERE id = #{gradeId}
+    <select id="findGradeById" parameterType="int" resultType="grade" resultMap="result">
+        SELECT * FROM grade WHERE id = #{id}
     </select>
 
 

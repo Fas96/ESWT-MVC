@@ -35,7 +35,7 @@
         DELETE FROM member WHERE id = #{id}
     </delete>
 
-    <select id="findById" parameterType="int" resultType="member" resultMap="result">
+    <select id="findMemberById" parameterType="int" resultType="member" resultMap="result">
         SELECT * FROM member WHERE id = #{id}
     </select>
 </mapper>
