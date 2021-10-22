@@ -41,7 +41,7 @@ body>
             <li><a href="${base}/audio/list">Audio Files List</a></li>
             <li><a href="${base}/audio/export">Audio Files Export</a></li>
             <li><a href="${base}/audio/edit">Edit Students Audio </a></li>
-            <li><a href="${base}/audio/testExample">Audio test </a></li>
+            <li><a href="${base}/audio/test"> Audio test </a></li> 
           </ul>
         </li>
 

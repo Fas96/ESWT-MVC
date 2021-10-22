@@ -254,32 +254,33 @@
                                             <th>CONTENT</th>
                                             <th>PREP TIME</th>
                                             <th>RES TIME</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
+
+                                        <c:forEach items="${questionList}" var="e">
+                                        <c:url var="updateLink" value="/question/edit">
+                                            <c:param name="questionId" value="${e.id}" />
+                                        </c:url>
+
+                                        <c:url var="deleteLink" value="/question/delete">
+                                            <c:param name="questionId" value="${e.id}" />
+                                        </c:url>
                                         <tbody>
-
-                                        <?php
-                                        require('../../dbconnection/connectdb.php');
-
-                                        $query    = "SELECT question_type, question_title,question_content,question_prepTime,question_resTime FROM question";
-                                                  $result = mysqli_query($con, $query) or die(mysql_error($con));
-
-                                        $rows = mysqli_num_rows($result);
-                                        while($data = mysqli_fetch_array($result)) {
-                                        ?>
                                         <tr>
-                                            <td><?=$data['question_type']?></td>
-                                            <td><?=$data['question_title']?></td>
-                                            <td><?=$data['question_content']?></td>
-                                            <td><?=$data['question_prepTime']?></td>
-                                            <td><?=$data['question_resTime']?></td>
+                                            <td>${e.question_type}</td>
+                                            <td>${e.question_title}</td>
+                                            <td>${e.question_content}</td>
+                                            <td>${e.question_prepTime}</td>
+                                            <td>${e.question_resTime}</td>
+                                            <td><a href="${updateLink}">Update</a> | <a
+                                                    href="${deleteLink}"
+                                                    onclick="if(!(confirm('Are you sure want to delete this Question permanently?'))) return false">Delete</a>
+                                            </td>
                                         </tr>
-                                            <?php
-
-                                        }
-
-                                        ?>
                                         </tbody>
+                                        </c:forEach>
+
                                     </table>
                                 </div>
                             </div>
