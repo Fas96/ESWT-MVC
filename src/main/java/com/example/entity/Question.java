@@ -13,7 +13,8 @@ public class Question {
     private Integer question_sessionId  ;
     private Integer quetion_orderNo ;
 
-
+    public Question() {
+    }
 
     @Override
     public String toString() {

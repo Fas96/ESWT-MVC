@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dao.QuestionMapper;
+import com.example.entity.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class QuestionController {
 
     @GetMapping("/create")
     public ModelAndView createQuestion(){
-        return new ModelAndView( "/admin/question/question-create","user","user");
+        return new ModelAndView( "/admin/question/question-create","question",new Question());
     }
     @RequestMapping("/delete")
     public String deleteQuestion(@RequestParam("questionId") int questionId){

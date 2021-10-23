@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 
 
 
-
+    <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin/sidebar.jsp" %>
@@ -240,96 +241,93 @@
             <!-- row -->
 
 <%--            question form--%>
+            <div class="col-md-8 ">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="compose-content ">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="compose-content align-items-center p-2">
-                        <form action="#" class="text-center">
+                <div class="col-lg-12">
+                    <div class="container">
+                        <s:form action="create" modelAttribute="question" dataType="multipart">
+                            <s:hidden path="id" />
                             <div class="form-group">
-                                <div >
-                                    <div class="card inline">
-                                        <div class="card-body inline">
-                                            <div class="inline " style="text-align: start">
-                                                <h4 class="card-title" style="display:inline;">QUESTION-TYPE: </h4>
-                                                <select class="single-select-placeholder js-states">
-                                                    <option value="WRITING">WRITING</option>
-                                                    <option value="SPEAKING">SPEAKING</option>
-                                                    <option value="LISTENING">LISTENING</option>
-                                                    <option value="READING">READING</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <s:radiobutton path="question_type" value="WRITING" class="form-check-input"/>WRITING
+                                    </label>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control bg-transparent" placeholder=" QUESTION-TITLE:">
-                            </div>
-                            <div class="form-group">
-                                <textarea id="email-compose-editor" path="question_content" class="textarea_editor form-control bg-transparent" rows="15" placeholder="QUESTION-CONTENT.."></textarea>
-                            </div>
 
-
-
-                            <div class="form-group">
-                                <div >
-                                    <div class="card inline">
-                                        <div class="card-body inline">
-                                            <div class="inline " style="text-align: start">
-                                                <h4 class="card-title" style="display:inline;">QUESTION-MEDIA: </h4>
-                                                <input type="file" class="dropify" data-default-file="" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <s:radiobutton path="question_type" value="READING" class="form-check-input"/>READING
+                                    </label>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div >
-                                    <div class="card inline">
-                                        <div class="card-body inline">
-                                            <div class="inline " style="text-align: start">
-                                                <h4 class="card-title" style="display:inline;">MEDIA-SECOND: </h4>
-                                                <input type="file" class="dropify" data-default-file="" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <s:radiobutton path="question_type" value="SPEAKING" class="form-check-input"/>SPEAKING
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <s:radiobutton path="question_type" value="LISTENING" class="form-check-input"/>LISTENING
+                                    </label>
                                 </div>
                             </div>
 
-
-
                             <div class="form-group">
-                                <input type="number" class="form-control bg-transparent" placeholder="PREP-TIME:" />
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="form-control bg-transparent" placeholder="RES-TIME:" />
+                                <s:input path="question_title" class="form-control"
+                                         placeholder="Question Title  " />
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control bg-transparent" placeholder=" MEMO..">
+                                <s:textarea rows="5" cols="6" path="question_content" placeholder="Enter Question Content" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <input type="number" class="form-control bg-transparent" placeholder=" SESSION-ID:" />
+                                <s:input path="question_media" type="file" class="form-control"
+                                         placeholder="Question Media  " />
                             </div>
-
                             <div class="form-group">
-                                <input type="number" class="form-control bg-transparent" placeholder=" ORDER-NO:" />
+                                <s:input path="question_second" type="file" class="form-control"
+                                         placeholder="Question Media  Second" />
+                            </div>
+                            <div class="form-group">
+                                <s:input path="question_prepTime" type="number" class="form-control"
+                                         placeholder="Question Preparation Time  " />
+                            </div>
+                            <div class="form-group">
+                                <s:input path="question_resTime" type="number" class="form-control"
+                                         placeholder="Enter Question Response Time  " />
+                            </div>
+                            <div class="form-group">
+                                <s:textarea rows="3" cols="6" path="question_memo" placeholder="Question Memo" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <s:input path="question_sessionId" type="number" class="form-control"
+                                         placeholder="Question Session Id    " />
+                            </div>
+                            <div class="form-group">
+                                <s:input path="quetion_orderNo" type="number" class="form-control"
+                                         placeholder="Question Session Id    " />
+                            </div>
+                            <div class="text-center">
+
+                                <input type="submit" value="Save" class="btn btn-outline-info" />&nbsp;
+                                <input type="reset" value="Reset" class="btn btn-outline-danger" />
                             </div>
 
-                        </form>
-
+                        </s:form>
+                        <hr />
+                        <a href="list">Back to List</a>
                     </div>
-                    <div class="text-center mt-4 mb-5 ">
-                        <button class="btn btn-primary btn-sl-sm mr-3" type="button"><span
-                                class="mr-2"><i class="fa fa-paper-plane"></i></span> Save</button>
-                        <button class="btn btn-dark btn-sl-sm" type="button"><span class="mr-2"><i
-                                class="fa fa-times" aria-hidden="true"></i></span> Cancel</button>
-                    </div>
+
 
                 </div>
 
             </div>
-
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         <%--            end of question form--%>
