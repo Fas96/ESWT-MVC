@@ -242,6 +242,14 @@
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
+
+                    <div class="col-lg-12 ">
+                        <button type="button"
+                                onclick="window.location.href = 'create'; return false;"
+                                class="btn btn-outline-info float-right">Add Question</button>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="bootstrap-data-table-panel">
