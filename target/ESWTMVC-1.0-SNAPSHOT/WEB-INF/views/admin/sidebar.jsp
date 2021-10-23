@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 2021-10-21
-  Time: 오후 6:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 body>
 <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
@@ -22,7 +15,6 @@ body>
                 class="sidebar-collapse-icon ti-angle-down"></span></a>
           <ul>
             <li><a href="${base}/question/create">create</a></li>
-            <li><a href="${base}/question/edit">Edit</a></li>
             <li><a href="${base}/question/list">list</a></li>
           </ul>
         </li>

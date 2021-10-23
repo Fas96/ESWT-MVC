@@ -1,14 +1,19 @@
 package com.example.controller;
 
 import com.example.dao.QuestionMapper;
+import com.example.entity.Employee;
 import com.example.entity.Question;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Objects;
+
+@Slf4j
 @Controller
 @RequestMapping("/question")
 public class QuestionController {
@@ -17,6 +22,32 @@ public class QuestionController {
     QuestionMapper questionMapper;
 
 
+    @PostMapping("/save")
+    public String saveEmployee(Question question  ){
+        System.out.println(question);
+//        if(!multipartFile.isEmpty()){
+//            System.out.println("=====================================================");
+//
+//            System.out.println(StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename())));
+//            System.out.println("=====================================================");
+//
+//        }
+//        if(!multipartFile.isEmpty()){
+//            String fileName= StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+//            question.setQuestion_media(fileName);
+//        }else{
+//            question.setQuestion_media("FAILED");
+//        }
+
+        if(question.getId() == null){
+            questionMapper.saveQuestion(question);
+        }else{
+            questionMapper.updateQuestion(question);
+        }
+
+        return "redirect:/question/list";
+    }
+
     @GetMapping("/list")
     public ModelAndView listQuestion(){
 
@@ -24,8 +55,8 @@ public class QuestionController {
     }
 
     @GetMapping("/edit")
-    public ModelAndView EditQuestion(){
-        return new ModelAndView( "/admin/question/question-edit","user","user");
+    public ModelAndView EditQuestion(@RequestParam("questionId") int questionId){
+        return new ModelAndView( "/admin/question/question-edit","question",questionMapper.findQuestionById(questionId));
     }
 
     @GetMapping("/create")

@@ -1,5 +1,3 @@
-<?php session_start(); header("Content-type:text/html;charset=utf-8"); ?>
-<?php if(empty($_SESSION)) { header("Location:/ESWT/login.php");die;} ?>
 <!DOCTYPE html>
 <html>
 <head>

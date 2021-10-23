@@ -250,7 +250,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="container">
-                        <s:form action="create" method="post" modelAttribute="question" encType="multipart/form-data" onsubmit="return checkTitleUnique(this);">
+                        <s:form action="save" method="post"  modelAttribute="question"  onsubmit="return checkTitleUnique(this);"   >
                             <s:hidden path="id" />
                             <div class="form-group">
                                 <div class="form-check-inline">
@@ -411,7 +411,7 @@
             if(res === "NOT EXIST"){
                 form.submit();
             }else if(res==="EXIST"){
-                showModalDialog("Warning","user "+questionTitle+" exist")
+                showModalDialog("Warning","Question::[ "+questionTitle+" ]exist")
                 // alert("Response from server: "+res);
             }else {
                 showModalDialog("Error","Unknown response from server");

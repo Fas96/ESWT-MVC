@@ -1,17 +1,9 @@
-<?php session_start(); header("Content-type:text/html;charset=utf-8"); ?>
-<?php if(empty($_SESSION)) { header("Location:/ESWT/login.php");die;} ?>
 <!DOCTYPE html>
 <html>
 <head>
-
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
     <title>Admin Page</title>
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
-
-
-
-
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin/sidebar.jsp" %>
@@ -331,7 +323,7 @@
 <script type="text/javascript">
     fetch('http://localhost:8080/question/checkuser?questionId=3')
         .then(response => response.text())
-        .then(commits => alert(commits));
+        .then(commits => console.log(commits));
 </script>
 
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
