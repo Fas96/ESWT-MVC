@@ -12,6 +12,8 @@
 
 
     <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="  crossorigin="anonymous"></script>
+
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin/sidebar.jsp" %>
@@ -38,7 +40,7 @@
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
@@ -48,7 +50,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mariam</div>
@@ -58,7 +60,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Tasnim</div>
@@ -68,7 +70,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
@@ -98,7 +100,7 @@
                                     <ul>
                                         <li class="notification-unread">
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/1.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/1.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Michael Qin</div>
@@ -108,7 +110,7 @@
                                         </li>
                                         <li class="notification-unread">
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/2.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/2.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
@@ -118,7 +120,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Michael Qin</div>
@@ -128,7 +130,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/2.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/2.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
@@ -248,7 +250,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="container">
-                        <s:form action="create" modelAttribute="question" dataType="multipart">
+                        <s:form action="create" method="post" modelAttribute="question" encType="multipart/form-data" onsubmit="return checkTitleUnique(this);">
                             <s:hidden path="id" />
                             <div class="form-group">
                                 <div class="form-check-inline">
@@ -275,7 +277,7 @@
                             </div>
 
                             <div class="form-group">
-                                <s:input path="question_title" class="form-control"
+                                <s:input path="question_title" id="question_title" class="form-control"
                                          placeholder="Question Title  " />
                             </div>
 
@@ -283,7 +285,7 @@
                                 <s:textarea rows="5" cols="6" path="question_content" placeholder="Enter Question Content" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <s:input path="question_media" type="file" class="form-control"
+                                <s:input path="question_media" id="question_media" type="file" class="form-control"
                                          placeholder="Question Media  " />
                             </div>
                             <div class="form-group">
@@ -330,7 +332,28 @@
             </div>
 
 
+<%--            modal for Question title uniqueness--%>
+            <div class="modal fade text-center" id="modalDialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modalTitle">Warning</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                        </div>
+                        <div class="modal-body">
+                            <span id="modalBody"></span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+<%--end of question title uniquness modal--%>
         <%--            end of question form--%>
+
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
@@ -350,7 +373,61 @@
 </div>
 
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
+<script type="text/javascript">
+    $(document).ready(function () {
 
+        // $("#btnCancel").on("click",function () {
+        //     window.location.href="list";
+        // })
+
+        $("#question_media").change(function () {
+            const fileSize = this.files[0].size;
+
+            if(fileSize>1048576){
+                this.setCustomValidity("You must choose an image less than 1MB")
+                //browser prevent the image submited to the server
+                this.reportValidity();
+            }else{
+                this.setCustomValidity("")
+                // showShowImageThumpnail(this);
+            }
+
+        })
+    })
+    function showShowImageThumpnail(fileInput){
+        var file=fileInput.files[0];
+        var reader=new FileReader();
+        reader.onload=function (ev) {
+            $("#thumbnail").attr("src",ev.target.result);
+        }
+        reader.readAsDataURL(file);
+    }
+    function checkTitleUnique(form){
+        var url="/question/checktitle";
+        var questionTitle=$("#question_title").val();
+        params={question_title:questionTitle };
+
+        $.get(url,params,function (res){
+            if(res === "NOT EXIST"){
+                form.submit();
+            }else if(res==="EXIST"){
+                showModalDialog("Warning","user "+questionTitle+" exist")
+                // alert("Response from server: "+res);
+            }else {
+                showModalDialog("Error","Unknown response from server");
+            }
+        }).fail(function (){
+
+            showModalDialog("Error","Could not connect to server");
+        });
+        return false;
+        function showModalDialog(title,message){
+            $("#modalTitle").text(title);
+            $("#modalBody").text(message);
+            $("#modalDialog").modal('show');
+        }
+    }
+</script>
 
 </body>
 </html>

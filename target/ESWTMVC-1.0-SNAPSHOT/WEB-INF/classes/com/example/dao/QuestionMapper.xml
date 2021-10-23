@@ -43,14 +43,18 @@
                             question_media = #{question_media}, question_second = #{question_second}, question_prepTime = #{question_prepTime},
                             question_resTime = #{question_resTime},question_memo = #{question_memo},question_sessionId = #{question_sessionId},
                             quetion_orderNo = #{quetion_orderNo}
-        WHERE id = #{questionId}
+        WHERE question_id = #{id}
     </update>
 
     <delete id="deleteQuestion" parameterType="int">
-        DELETE FROM question WHERE id = #{questionId}
+        DELETE FROM question WHERE question_id = #{id}
     </delete>
 
     <select id="findQuestionById" parameterType="int" resultType="question" resultMap="result">
-        SELECT * FROM question WHERE id = #{questionId}
+        SELECT * FROM question WHERE question_id = #{id}
+    </select>
+
+    <select id="findQuestionByTitle" parameterType="String" resultType="question" resultMap="result">
+        SELECT * FROM question WHERE question_title = #{question_title}
     </select>
 </mapper>

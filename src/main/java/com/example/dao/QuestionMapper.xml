@@ -53,4 +53,8 @@
     <select id="findQuestionById" parameterType="int" resultType="question" resultMap="result">
         SELECT * FROM question WHERE question_id = #{id}
     </select>
+
+    <select id="findQuestionByTitle" parameterType="String" resultType="question" resultMap="result">
+        SELECT * FROM question WHERE question_title = #{question_title}
+    </select>
 </mapper>

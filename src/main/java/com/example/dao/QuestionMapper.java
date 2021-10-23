@@ -44,4 +44,12 @@ public class QuestionMapper {
         session.close();
         return question;
     }
+
+    public Question findQuestionByTitle(String questionTitle){
+        SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+        Question question = (Question) session.selectOne("findQuestionByTitle", questionTitle);
+        session.commit();
+        session.close();
+        return question;
+    }
 }

@@ -12,8 +12,15 @@ public class ControllersRest {
     @Autowired
     QuestionMapper questionMapper;
 
+    @GetMapping("/question/checktitle")
+    public String checkQuestionExist(@RequestParam("question_title") String question_title){
+        System.out.println(question_title);
+        System.out.println("=============================");
+        return (questionMapper.findQuestionByTitle(question_title)!=null)?"EXIST":"NOT EXIST";
+    }
+
     @GetMapping("/question/checkuser")
-    public String checkQuestionExist(@RequestParam("questionId") int questionId){
+    public String checkQuestionIDExist(@RequestParam("questionId") int questionId){
         return (questionMapper.findQuestionById(questionId)!=null)?"EXIST":"NOT EXIST";
     }
 }
