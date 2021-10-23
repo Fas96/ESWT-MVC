@@ -285,11 +285,11 @@
                                 <s:textarea rows="5" cols="6" path="question_content" placeholder="Enter Question Content" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <s:input path="question_media" id="question_media" type="file" class="form-control"
+                                <s:input path="question_media" name="image" accept="image/png, image/jpeg" id="question_media" type="file" class="form-control"
                                          placeholder="Question Media  " />
                             </div>
                             <div class="form-group">
-                                <s:input path="question_second" type="file" class="form-control"
+                                <s:input path="question_second" name="image" accept="image/png, image/jpeg"  type="file" class="form-control"
                                          placeholder="Question Media  Second" />
                             </div>
                             <div class="form-group">

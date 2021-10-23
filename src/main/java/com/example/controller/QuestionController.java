@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Objects;
+import java.util.logging.Logger;
 
 @Slf4j
 @Controller
@@ -20,24 +21,24 @@ public class QuestionController {
 
     @Autowired
     QuestionMapper questionMapper;
+    Logger logger;
 
 
     @PostMapping("/save")
-    public String saveEmployee(Question question  ){
+    public String saveEmployee(Question question ){
         System.out.println(question);
 //        if(!multipartFile.isEmpty()){
-//            System.out.println("=====================================================");
-//
+//            System.out.println("======================MultipartFile===============================");
 //            System.out.println(StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename())));
-//            System.out.println("=====================================================");
+//             System.out.println("=====================================================");
+//        }
 //
-//        }
-//        if(!multipartFile.isEmpty()){
-//            String fileName= StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-//            question.setQuestion_media(fileName);
-//        }else{
-//            question.setQuestion_media("FAILED");
-//        }
+//         if(!multipartFile.isEmpty()){
+//             String fileName= StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+//             question.setQuestion_media(fileName);
+//         }else{
+//             question.setQuestion_media("FAILED");
+//         }
 
         if(question.getId() == null){
             questionMapper.saveQuestion(question);
