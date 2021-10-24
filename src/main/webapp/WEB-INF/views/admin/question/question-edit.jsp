@@ -252,7 +252,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="container">
-                                            <s:form method="POST" enctype="multipart/form-data" id="questionForm"  modelAttribute="question"  onsubmit="return checkFormDataUnique(this);"   >
+                                            <s:form  action="save" method="post"    id="questionForm"  modelAttribute="question"    enctype="multipart/form-data"  >
                                                 <s:hidden path="id" />
                                                 <div class="form-group">
                                                     <div class="form-check-inline">
@@ -287,11 +287,11 @@
                                                     <s:textarea rows="5" cols="6" path="question_content" placeholder="Enter Question Content" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <s:input path="question_media" id="question_media" type="file" class="form-control"
+                                                    <input disabled value="${question.question_second}"  name="image1" accept="image/png, image/jpeg" id="question_media" type="file" class="form-control"
                                                              placeholder="Question Media  " />
                                                 </div>
                                                 <div class="form-group">
-                                                    <s:input path="question_second" type="file" class="form-control"
+                                                    <input disabled value="${question.question_media}" name="image2" accept="image/png, image/jpeg" id="question_second" type="file" class="form-control"
                                                              placeholder="Question Media  Second" />
                                                 </div>
                                                 <div class="form-group">
@@ -351,24 +351,18 @@
             </div>
         </div>
     </div>
+
 <script type="text/javascript">
 
+    const colorArr=["blue","tomato"]
+    var J=0;
+    $('input[type="file"]').each(function(){  $(this).css("background-color",colorArr[J++])});
 
-        async function checkFormDataUnique(){
 
-            const formData = new FormData();
-            alert(formData)
-            let response = await fetch('/question/save', {
-                method: 'GET',
-                body: new FormData( )
-            });
 
-            let result = await response.json();
-
-            alert(result.message);
-        }
 
 </script>
+
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
 
 

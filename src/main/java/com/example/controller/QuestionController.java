@@ -24,21 +24,19 @@ public class QuestionController {
     Logger logger;
 
 
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public String saveEmployee(Question question,@RequestParam("question_media") MultipartFile multipartFile){
-        System.out.println(question);
-//        if(!multipartFile.isEmpty()){
-//            System.out.println("======================MultipartFile===============================");
-//            System.out.println(StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename())));
-//             System.out.println("=====================================================");
-//        }
-//
-//         if(!multipartFile.isEmpty()){
-//             String fileName= StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-//             question.setQuestion_media(fileName);
-//         }else{
-//             question.setQuestion_media("FAILED");
-//         }
+    @PostMapping(value = "/save" )
+    public String saveEmployee(Question question , @RequestParam("image1") MultipartFile question_media,@RequestParam("image2") MultipartFile question_second){
+
+
+         if(!question_media.isEmpty() || !question_second.isEmpty() ){
+
+              String question_media_name= StringUtils.cleanPath(Objects.requireNonNull(question_media.getOriginalFilename()));
+              String question_second_name= StringUtils.cleanPath(Objects.requireNonNull(question_second.getOriginalFilename()));
+              question.setQuestion_media(question_media_name);
+              question.setQuestion_second(question_second_name);
+          }
+
+
 
         if(question.getId() == null){
             questionMapper.saveQuestion(question);

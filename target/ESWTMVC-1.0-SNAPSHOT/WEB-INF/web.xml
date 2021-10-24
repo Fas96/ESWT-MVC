@@ -24,6 +24,10 @@
     </servlet-mapping>
 
     <!-- MultipartFilter 적용 -->
+    <listener>
+        <listener-class>org.springframework.web.multipart.commons.CommonsMultipartResolver</listener-class>
+    </listener>
+
     <filter>
         <filter-name>MultipartFilter</filter-name>
         <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>

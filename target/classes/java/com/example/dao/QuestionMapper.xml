@@ -40,7 +40,7 @@
 
     <update id="updateQuestion" parameterType="question">
         UPDATE question SET question_type = #{question_type}, question_title = #{question_title}, question_content = #{question_content},
-                            question_media = #{question_media}, question_second = #{question_second}, question_prepTime = #{question_prepTime},
+                            question_prepTime = #{question_prepTime},
                             question_resTime = #{question_resTime},question_memo = #{question_memo},question_sessionId = #{question_sessionId},
                             quetion_orderNo = #{quetion_orderNo}
         WHERE question_id = #{id}
