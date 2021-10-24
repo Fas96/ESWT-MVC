@@ -24,8 +24,8 @@ public class QuestionController {
     Logger logger;
 
 
-    @PostMapping("/save")
-    public String saveEmployee(Question question ){
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public String saveEmployee(Question question,@RequestParam("question_media") MultipartFile multipartFile){
         System.out.println(question);
 //        if(!multipartFile.isEmpty()){
 //            System.out.println("======================MultipartFile===============================");
@@ -57,7 +57,12 @@ public class QuestionController {
 
     @GetMapping("/edit")
     public ModelAndView EditQuestion(@RequestParam("questionId") int questionId){
-        return new ModelAndView( "/admin/question/question-edit","question",questionMapper.findQuestionById(questionId));
+        Question question = questionMapper.findQuestionById(questionId);
+        System.out.println("debug the edit object");
+        System.out.println(question);
+        System.out.println("=======================================================");
+
+        return new ModelAndView( "/admin/question/question-edit","question",question);
     }
 
     @GetMapping("/create")

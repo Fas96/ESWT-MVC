@@ -252,7 +252,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="container">
-                                            <s:form action="save" method="post"  modelAttribute="question"  onsubmit="return checkTitleUnique(this);"   >
+                                            <s:form method="POST" enctype="multipart/form-data" id="questionForm"  modelAttribute="question"  onsubmit="return checkFormDataUnique(this);"   >
                                                 <s:hidden path="id" />
                                                 <div class="form-group">
                                                     <div class="form-check-inline">
@@ -352,18 +352,22 @@
         </div>
     </div>
 <script type="text/javascript">
-    $(document).ready(function() {
-        var question_media = $("#question_media").val();
-        var question_mediaVal = $("input[type=file]");
-        question_mediaVal.each(function(idx, element) {
-            if (question_media.indexOf(element.value) != null) {
-                element.val=question_media;
 
-            } else {
-                element.val="FAILED";
-            }
-        });
-    });
+
+        async function checkFormDataUnique(){
+
+            const formData = new FormData();
+            alert(formData)
+            let response = await fetch('/question/save', {
+                method: 'GET',
+                body: new FormData( )
+            });
+
+            let result = await response.json();
+
+            alert(result.message);
+        }
+
 </script>
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
 
