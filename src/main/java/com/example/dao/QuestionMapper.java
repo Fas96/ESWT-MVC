@@ -14,6 +14,9 @@ public class QuestionMapper {
         session.close();
     }
 
+
+
+
     public void updateQuestion(Question question){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
         session.update("updateQuestion", question);
@@ -21,7 +24,7 @@ public class QuestionMapper {
         session.close();
     }
 
-    public void deleteQuestion(int questionId){
+    public void deleteQuestion(Integer questionId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
         session.delete("deleteQuestion", questionId);
         session.commit();
@@ -37,13 +40,15 @@ public class QuestionMapper {
         return questionList;
     }
 
-    public Question findQuestionById(int quesitonId){
+    public Question findQuestionById(Integer quesitonId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
         Question question = (Question) session.selectOne("findQuestionById", quesitonId);
         session.commit();
         session.close();
         return question;
     }
+
+
 
     public Question findQuestionByTitle(String questionTitle){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();

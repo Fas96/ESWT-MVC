@@ -39,37 +39,8 @@ public class AdminController {
     @GetMapping("")
     public ModelAndView admin(){
 
-        logger.debug("User list {}",employeeMapper.getAllEmployees());
-
-        System.out.println("=================test employees================");
-        System.out.println(employeeMapper.getAllEmployees());
-        System.out.println(employeeMapper.findEmployeedById(1));
-        System.out.println("=================test getAllEmployees================");
 
 
-
-        System.out.println("=================test grade================");
-        System.out.println(gradeMapper.getAllGrades());
-        System.out.println(gradeMapper.findGradeById(1));
-        System.out.println("=================test getAllGrades================");
-
-
-        System.out.println("=================test member================");
-        System.out.println(memberMapper.getAllMembers());
-        System.out.println(memberMapper.findMemberById(1));
-        System.out.println("=================test getAllMembers================");
-
-
-        System.out.println("=================test getAllQuestions================");
-        System.out.println(questionMapper.getAllQuestions());
-        System.out.println(questionMapper.findQuestionById(1));
-        System.out.println("=================test getAllQuestions================");
-
-
-        System.out.println("=================test getAllSessions================");
-        System.out.println(sessionMapper.getAllSessions());
-        System.out.println(sessionMapper.findSessionById(1));
-        System.out.println("=================test getAllSessions================");
 
         return new ModelAndView( "/admin/index","user","user");
     }

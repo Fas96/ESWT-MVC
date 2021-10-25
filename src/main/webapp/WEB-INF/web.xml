@@ -33,7 +33,7 @@
         <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
     </filter>
     <filter-mapping> <filter-name>MultipartFilter</filter-name>
-    <url-pattern>/question-images/*</url-pattern>
+    <url-pattern>/**</url-pattern>
      </filter-mapping>
 
 

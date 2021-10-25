@@ -29,29 +29,39 @@ public class QuestionController {
     @PostMapping(value = "/save" )
     public String saveEmployee(Question question , @RequestParam("image1") MultipartFile question_media,@RequestParam("image2") MultipartFile question_second) throws IOException {
 
+        if(!question_media.isEmpty() || !question_second.isEmpty() ){
 
-         if(!question_media.isEmpty() || !question_second.isEmpty() ){
+            String question_media_name= StringUtils.cleanPath(Objects.requireNonNull(question_media.getOriginalFilename()));
+            String question_second_name= StringUtils.cleanPath(Objects.requireNonNull(question_second.getOriginalFilename()));
+            question.setQuestion_media(question_media_name);
+            question.setQuestion_second(question_second_name);
+        }
 
-              String question_media_name= StringUtils.cleanPath(Objects.requireNonNull(question_media.getOriginalFilename()));
-              String question_second_name= StringUtils.cleanPath(Objects.requireNonNull(question_second.getOriginalFilename()));
-              question.setQuestion_media(question_media_name);
-              question.setQuestion_second(question_second_name);
-             String uploadDir="question-images/"+question.getQuestion_title();
-             //clean-> delete old files in directory before saving file to directory
-             //FileUploadUtil.clearDir(uploadDir);
-//             String uploadDir, String fileName, MultipartFile multipartFile
-             if(!question_second.isEmpty()){
 
-                 System.out.println("===============question_media================");
-                 FileUploadUtil.saveFile(uploadDir,question_media_name,question_media);
-             } if(!question_media.isEmpty()){
-                 System.out.println("===============question_second================");
-             FileUploadUtil.saveFile(uploadDir,question_second_name,question_second);}
-          }
         if(question.getId() == null){
             questionMapper.saveQuestion(question);
         }else{
             questionMapper.updateQuestion(question);
+        }
+
+        if(!question_media.isEmpty() || !question_second.isEmpty() ){
+
+            String question_media_name= StringUtils.cleanPath(Objects.requireNonNull(question_media.getOriginalFilename()));
+            String question_second_name= StringUtils.cleanPath(Objects.requireNonNull(question_second.getOriginalFilename()));
+            question.setQuestion_media(question_media_name);
+            question.setQuestion_second(question_second_name);
+            Question savedQuestion = questionMapper.findQuestionByTitle(question.getQuestion_title());
+            String uploadDir="question-images/"+savedQuestion.getId();
+            //clean-> delete old files in directory before saving file to directory
+            //FileUploadUtil.clearDir(uploadDir);
+//             String uploadDir, String fileName, MultipartFile multipartFile
+            if(!question_second.isEmpty()){
+
+                System.out.println("===============question_media================");
+                FileUploadUtil.saveFile(uploadDir,question_media_name,question_media);
+            } if(!question_media.isEmpty()){
+                System.out.println("===============question_second================");
+                FileUploadUtil.saveFile(uploadDir,question_second_name,question_second);}
         }
 
         return "redirect:/question/list";
@@ -65,6 +75,10 @@ public class QuestionController {
 
     @GetMapping("/edit")
     public ModelAndView EditQuestion(@RequestParam("questionId") int questionId){
+        //clear directory on question deleted
+        String uploadDir="question-images/"+questionId;
+        FileUploadUtil.clearDir(uploadDir);
+
         Question question = questionMapper.findQuestionById(questionId);
         System.out.println("debug the edit object");
         System.out.println(question);

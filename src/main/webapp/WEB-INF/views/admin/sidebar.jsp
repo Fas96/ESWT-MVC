@@ -47,7 +47,7 @@ body>
 
         <li class="label">Extra</li>
 
-        <li><a  href="${base}/audio/testExample"><i class="ti-target"></i> Test <span
+        <li><a  href="${base}/mock/testExample"><i class="ti-target"></i> Test <span
         ></span></a>
 
         </li>

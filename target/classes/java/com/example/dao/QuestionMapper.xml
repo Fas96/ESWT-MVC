@@ -46,11 +46,14 @@
         WHERE question_id = #{id}
     </update>
 
-    <delete id="deleteQuestion" parameterType="int">
+    <delete id="deleteQuestion" parameterType="Integer">
         DELETE FROM question WHERE question_id = #{id}
     </delete>
 
-    <select id="findQuestionById" parameterType="int" resultType="question" resultMap="result">
+
+
+
+        <select id="findQuestionById" parameterType="Integer" resultType="question" resultMap="result">
         SELECT * FROM question WHERE question_id = #{id}
     </select>
 

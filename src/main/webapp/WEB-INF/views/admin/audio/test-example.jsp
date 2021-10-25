@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
     <title>Admin Page</title>
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="  crossorigin="anonymous"></script>
 
 
 
@@ -239,6 +241,63 @@
                 </div>
             </div>
             <!-- row -->
+            <%--            question form--%>
+            <div class="col-md-12 ">
+
+
+                        <c:set value="${displayQuestion}" var="d"/>
+
+                <div class="card">
+                    <a class="card-title text-center">${d.question_title}</a>
+                    <div class="card-body">
+                        <div class="compose-content ">
+                            <div class="container">
+                            <div class="row" style="height: 80%" >
+                            <div class="col-lg-6 text-center">
+
+                                    <c:choose>
+                                        <c:when test="${d.question_type=='WRITING' or d.question_type=='LISTENING'}">
+
+                                            <textarea style="height: 100%"   placeholder="answer field "  class="form-control"></textarea>
+
+                                        </c:when>
+                                        <c:when test="${(d.question_type=='SPEAKING' or d.question_type=='READING') and d.question_media!=null}">
+
+                                            <img  height="400px" width="100%"  src="<c:url value='${baseDir}\\question-images\\${d.question_title}\\${d.question_second}'/>"/>
+                                            <img  height="400px" width="100%"  src="<c:url value='${baseDir}\\question-images\\${d.question_title}\\${d.question_media}'/>"/>
+                                        </c:when>
+                                        <c:otherwise>others</c:otherwise>
+                                    </c:choose>
+
+                            </div>
+                                <div class="col-lg-6 text-center">
+                                    <button type="button" id="question_resTime" class="btn-rounded m-2 p-3 btn-outline-info">${d.question_resTime}</button>
+                                </div>
+
+                            </div>
+                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+
+
+                                <tbody>
+                                <tr>
+                                    <c:forEach items="${questions}" var="e">
+                                        <c:url var="questionLink" value="/mock/testExample">
+                                            <c:param name="questionId" value="${e.id}" />
+                                        </c:url>
+                                    <td> <button type="button" onclick="window.location.href = '${questionLink}'; return false;"
+                                                 class="btn-rounded btn-outline-info text-center">${e.id}</button>
+                                            </td>
+                                    </c:forEach>
+                                </tr>
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
@@ -256,6 +315,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //alert($("#question_resTime").text())
+    })
+
+</script>
 
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.example.entity.Employee" alias="employee"/>
+        <typeAlias type="com.example.entity.Question" alias="question"/>
+        <typeAlias type="com.example.entity.Member" alias="member"/>
+        <typeAlias type="com.example.entity.Answer" alias="answer"/>
+        <typeAlias type="com.example.entity.Grade" alias="grade"/>
+        <typeAlias type="com.example.entity.Session" alias="session"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/eswtmvc?characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="fas96"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="java/com/example/dao/EmployeeMapper.xml" />
+        <mapper resource="java/com/example/dao/QuestionMapper.xml" />
+        <mapper resource="java/com/example/dao/MemberMapper.xml" />
+        <mapper resource="java/com/example/dao/AnswerMapper.xml" />
+        <mapper resource="java/com/example/dao/GradeMapper.xml" />
+        <mapper resource="java/com/example/dao/SessionMapper.xml" />
+    </mappers>
+</configuration>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.SessionMapper">
+    
+    <resultMap id="result" type="session">
+        <id property="id" column="session_id"/>
+        <result property="session_year" column="session_year"/>
+        <result property="session_title" column="session_title"/>
+        <result property="session_startDate" column="session_startDate"/>
+        <result property="session_endDate" column="session_endDate"/>
+    </resultMap>
+    
+    <select id="getAllSessions" resultMap="result" resultType="session">
+        select * from session
+    </select>
+
+    <insert id="insertSession" parameterType="session" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO session(
+
+            session_year,
+            session_title,
+            session_startDate,
+            session_endDate )
+        VALUES(  #{session_year}, #{session_title}, #{session_startDate}, #{session_endDate})
+    </insert>
+    <update id="updateSession" parameterType="session">
+        UPDATE session SET   session_year = #{session_year}, session_title = #{session_title},
+                            question_media = #{question_media}, question_second = #{question_second}, question_prepTime = #{question_prepTime},
+                           session_startDate = #{session_startDate},session_endDate = #{session_endDate}
+        WHERE session_id = #{id}
+    </update>
+
+    <delete id="deleteSession" parameterType="int">
+        DELETE FROM session WHERE session_id = #{id}
+    </delete>
+
+    <select id="findSessionById" parameterType="int" resultType="session" resultMap="result">
+        SELECT * FROM session WHERE session_id = #{id}
+    </select>
+
+</mapper>
