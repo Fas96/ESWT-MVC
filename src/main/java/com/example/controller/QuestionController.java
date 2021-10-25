@@ -51,7 +51,7 @@ public class QuestionController {
             question.setQuestion_media(question_media_name);
             question.setQuestion_second(question_second_name);
             Question savedQuestion = questionMapper.findQuestionByTitle(question.getQuestion_title());
-            String uploadDir="question-images/"+savedQuestion.getId();
+            String uploadDir="C:\\Users\\User\\Desktop\\ESWTMVC\\src\\main\\webapp\\WEB-INF\\resources\\question-images\\"+savedQuestion.getId();
             //clean-> delete old files in directory before saving file to directory
             //FileUploadUtil.clearDir(uploadDir);
 //             String uploadDir, String fileName, MultipartFile multipartFile
@@ -76,7 +76,7 @@ public class QuestionController {
     @GetMapping("/edit")
     public ModelAndView EditQuestion(@RequestParam("questionId") int questionId){
         //clear directory on question deleted
-        String uploadDir="question-images/"+questionId;
+        String uploadDir="C:\\Users\\User\\Desktop\\ESWTMVC\\src\\main\\webapp\\WEB-INF\\resources\\question-images\\"+questionId;
         FileUploadUtil.clearDir(uploadDir);
 
         Question question = questionMapper.findQuestionById(questionId);

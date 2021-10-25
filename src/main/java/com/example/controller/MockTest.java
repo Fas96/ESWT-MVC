@@ -21,20 +21,20 @@ public class MockTest {
 
     @GetMapping("/testExample")
     public ModelAndView testExample(@RequestParam( value = "questionId", required=false) Integer questionId, ModelAndView model){
-        String base = System.getProperty("catalina.home") + File.separator + "bin";
-        System.out.println(base);
 
-        System.out.println("=====================base====================");
-        model.addObject("baseDir",base);
-        System.out.println(questionId);
         if(questionId==null){
             System.out.println("===========id is not provided===========");
-            model.addObject("displayQuestion", questionMapper.findQuestionById((Integer)1));
+            Question question = questionMapper.getAllQuestions().get(0);
+
+            model.addObject("displayQuestion",question);
         }else {
             model.addObject("displayQuestion", questionMapper.findQuestionById(questionId));
         }
 
-        model.addObject("questions",questionMapper.getAllQuestions());
+
+
+
+
 
 
 //        model.addObject("questions",questionMapper.getAllQuestions());
@@ -43,6 +43,10 @@ public class MockTest {
         return model;
     }
 
+    @ModelAttribute("questions")
+    public List<Question> shareQuestions(){
+        return questionMapper.getAllQuestions();
+    }
 
 
 

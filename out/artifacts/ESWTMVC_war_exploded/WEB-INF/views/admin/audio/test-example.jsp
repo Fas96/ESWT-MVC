@@ -39,7 +39,7 @@
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
@@ -49,7 +49,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mariam</div>
@@ -59,7 +59,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Tasnim</div>
@@ -69,7 +69,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
@@ -99,7 +99,7 @@
                                     <ul>
                                         <li class="notification-unread">
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/1.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/1.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Michael Qin</div>
@@ -109,7 +109,7 @@
                                         </li>
                                         <li class="notification-unread">
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/2.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/2.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
@@ -119,7 +119,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Michael Qin</div>
@@ -129,7 +129,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="/ESWT/assets/images/avatar/2.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/2.jpg" alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
@@ -252,7 +252,7 @@
                     <div class="card-body">
                         <div class="compose-content ">
                             <div class="container">
-                            <div class="row" style="height: 80%" >
+                            <div class="row"  >
                             <div class="col-lg-6 text-center">
 
                                     <c:choose>
@@ -262,17 +262,24 @@
 
                                         </c:when>
                                         <c:when test="${(d.question_type=='SPEAKING' or d.question_type=='READING') and d.question_media!=null}">
-
-                                            <img  height="400px" width="100%"  src="<c:url value='${baseDir}\\question-images\\${d.question_title}\\${d.question_second}'/>"/>
-                                            <img  height="400px" width="100%"  src="<c:url value='${baseDir}\\question-images\\${d.question_title}\\${d.question_media}'/>"/>
-                                        </c:when>
+                                            <img  height="400px" width="100%"  src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/>
+                                             </c:when>
                                         <c:otherwise>others</c:otherwise>
                                     </c:choose>
 
                             </div>
                                 <div class="col-lg-6 text-center">
+                                    <canvas  ></canvas>
+
+
+
+
                                     <button type="button" id="question_resTime" class="btn-rounded m-2 p-3 btn-outline-info">${d.question_resTime}</button>
                                 </div>
+
+                            </div>
+                            <div class="row">
+                                <br/><textarea style="height: 100%"   placeholder="answer field "  class="form-control"></textarea>
 
                             </div>
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -298,6 +305,7 @@
                     </div>
                 </div>
             </div>
+            <audio id=recordedAudio></audio>
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
@@ -320,6 +328,67 @@
     $(document).ready(function () {
         //alert($("#question_resTime").text())
     })
+
+    $('canvas').css({"background": "#282831","width": "100%","height": "85%"});
+
+
+
+
+
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    const context = new AudioContext();
+    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+                handlerStreamFunction(stream)
+    });
+
+    function stopRecord(stream) {
+        stream.getTracks().forEach(function (track) {
+            track.stop();
+        });
+
+    }
+    function startRecord(stream) {
+        stream.getTracks().forEach(function (track) {
+            track.start();
+        });
+
+    }
+    var audioChunks=new Array()
+    function handlerStreamFunction(stream) {
+        rec = new MediaRecorder(stream);
+        rec.ondataavailable = e => {
+            audioChunks.push(e.data);
+
+            if (rec.state == "inactive"){
+                let blob = new Blob(audioChunks,{type:'audio/mpeg-3'});
+                console.log(blob)
+                recordedAudio.src = URL.createObjectURL(blob);
+                recordedAudio.controls=true;
+                recordedAudio.autoplay=true;
+                stopRecord(stream);
+                //sendData(blob)
+            }
+        }
+
+        rec.start()
+    }
+
+
+
+    setInterval(function() {
+        $('#question_resTime ').html($('#question_resTime').html()-1);
+
+        if($('#question_resTime').html() == '-1') {
+            console.log("------------------");
+            console.log(audioChunks)
+            rec.stop()
+
+        }
+    },1000);
+
+
+
+
 
 </script>
 
