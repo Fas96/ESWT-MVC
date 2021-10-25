@@ -22,15 +22,24 @@
 
     <update id="updateAnswer" parameterType="answer">
         UPDATE answer SET question_id = #{question_id}, question_type = #{question_type}, member_id = #{member_id}, text_res = #{text_res}, media_res = #{media_res}
-        WHERE id = #{answerId}
+        WHERE id = #{id}
     </update>
 
     <delete id="deleteAnswer" parameterType="int">
-        DELETE FROM answer WHERE id = #{answerId}
+        DELETE FROM answer WHERE id = #{id}
     </delete>
 
     <select id="findAnswerById" parameterType="int" resultType="answer" resultMap="result">
-        SELECT * FROM answer WHERE id = #{answerId}
+        SELECT * FROM answer WHERE id = #{id}
+    </select>
+
+    <select id="getAllAnswerAudioFiles" resultMap="result" parameterType="java.util.ArrayList"   resultType="answer">
+        select * from answer where question_type
+        in(
+        <foreach collection="array" item="item" index="index" separator=",">
+            ${item}
+        </foreach>)
+
     </select>
 
 </mapper>

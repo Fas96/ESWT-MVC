@@ -38,6 +38,16 @@ public class AnswerMapper {
         return answersList;
     }
 
+    public List<Answer> getAllAnswerAudioFiles(String [] typeArr){
+        SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+        @SuppressWarnings("unchecked")
+        List<Answer> answersList = session.selectList("getAllAnswerAudioFiles",typeArr);
+        session.commit();
+        session.close();
+        return answersList;
+    }
+
+
     public Answer findAnswerById(int answerId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
         Answer answer = (Answer) session.selectOne("findAnswerById", answerId);

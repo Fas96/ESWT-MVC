@@ -33,4 +33,13 @@
         SELECT * FROM answer WHERE id = #{id}
     </select>
 
+    <select id="getAllAnswerAudioFiles" resultMap="result" parameterType="java.util.ArrayList"   resultType="answer">
+        select * from answer where question_type
+        in(
+        <foreach collection="array" item="item" index="index" separator=",">
+            ${item}
+        </foreach>)
+
+    </select>
+
 </mapper>

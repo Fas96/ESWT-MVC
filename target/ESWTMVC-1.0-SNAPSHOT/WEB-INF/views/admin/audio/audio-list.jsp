@@ -241,6 +241,61 @@
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
+
+                    <div class="col-lg-12 ">
+                        <button type="button"
+                                onclick="window.location.href = 'create'; return false;"
+                                class="btn btn-outline-info float-right">Add Question</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="bootstrap-data-table-panel">
+                                <div class="table-responsive">
+                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>QUESTION-ID</th>
+                                            <th>QUESTION-TYPE</th>
+                                            <th>MEDIA-RES</th>
+                                            <th>ACTION</th>
+                                        </tr>
+                                        </thead>
+
+                                        <c:forEach items="${answersWithAudio}" var="a">
+                                            <c:url var="updateLink" value="/audio/edit">
+                                                <c:param name="answerId" value="${a.id}" />
+                                            </c:url>
+
+                                            <c:url var="deleteLink" value="/audio/delete">
+                                                <c:param name="answerId" value="${a.id}" />
+                                            </c:url>
+                                            <tbody>
+                                            <tr>
+                                                <td>${a.question_id}</td>
+                                                <td>${a.question_type}</td>
+                                                <td>${a.media_res}</td>
+                                                <td><a href="${updateLink}">Update</a> | <a
+                                                        href="${deleteLink}"
+                                                        onclick="if(!(confirm('Are you sure want to delete this Question permanently?'))) return false">Delete</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </c:forEach>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+            <!-- /# row -->
+
+                <div class="row">
                     <div class="col-lg-12">
                         <div id="extra-area-chart"></div>
                         <div id="morris-line-chart"></div>

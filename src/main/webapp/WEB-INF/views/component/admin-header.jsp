@@ -42,7 +42,7 @@
     <link rel="stylesheet" href=  "<c:url value="${base}/resources/css/lib/jsgrid/jsgrid-theme.min.css"/> ">
     <link rel="stylesheet" href=  "<c:url value="${base}/resources/css/lib/jsgrid/jsgrid.min.css"/> ">
     <!-- Datatable -->
-    <link rel="stylesheet" href=  "<c:url value="${base}/resources/css/lib/datatable/dataTables.bootstrap.min.css"/> ">
+    <link rel="stylesheet" href=  "<c:url value="${base}/resources/css/lib/data-table/dataTables.bootstrap.min.css"/> ">
     <link rel="stylesheet" href=  "<c:url value="${base}/resources/css/lib/data-table/buttons.bootstrap.min.css"/> ">
     <!-- Calender 2 -->
     <link rel="stylesheet" href=  "<c:url value="${base}/resources/css/lib/calendar2/pignose.calendar.min.css"/> ">

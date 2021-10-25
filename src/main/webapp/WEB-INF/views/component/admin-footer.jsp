@@ -30,13 +30,11 @@
 <!-- Select2 -->
 <script src="<c:url value="${base}/resources/js/lib/select2/select2.full.min.js"/> "></script>
 
-<!--  Validation -->
-<script src="<c:url value="${base}/resources/js/lib/form-validation/jquery.validate.min.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/form-validation/jquery.validate-init.js"/> "></script>
 
 <!--  Circle Progress -->
 <script src="<c:url value="${base}/resources/js/lib/circle-progress/circle-progress.min.js"/> "></script>
 <script src="<c:url value="${base}/resources/js/lib/circle-progress/circle-progress-init.js"/> "></script>
+
 
 <!--  Vector Map -->
 <script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.js"/> "></script>
@@ -85,6 +83,9 @@
 <script src="<c:url value="${base}/resources/js/lib/jsgrid/fields/jsgrid.field.control.js"/> "></script>
 <script src="<c:url value="${base}/resources/js/lib/jsgrid/jsgrid-init.js"/> "></script>
 
+<!--  Validation -->
+<script src="<c:url value="${base}/resources/js/lib/form-validation/jquery.validate.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/lib/form-validation/jquery.validate-init.js"/> "></script>
 
 <!--  Nestable -->
 <script src="<c:url value="${base}/resources/js/lib/nestable/jquery.nestable.js"/> "></script>
@@ -107,3 +108,5 @@
 <!-- Toastr -->
 <script src="<c:url value="${base}/resources/js/lib/toastr/toastr.min.js"/> "></script>
 <script src="<c:url value="${base}/resources/js/lib/toastr/toastr.init.js"/> "></script>
+
+
