@@ -359,12 +359,12 @@
         rec.ondataavailable = e => {
             audioChunks.push(e.data);
 
-            if (rec.state == "inactive"){
-                let blob = new Blob(audioChunks,{type:'audio/mpeg-3'});
+            if (rec.state == "inactive") {
+                let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
                 console.log(blob)
                 recordedAudio.src = URL.createObjectURL(blob);
-                recordedAudio.controls=true;
-                recordedAudio.autoplay=true;
+                recordedAudio.controls = true;
+                recordedAudio.autoplay = true;
                 stopRecord(stream);
                 //sendData(blob)
             }
@@ -373,18 +373,17 @@
         rec.start()
 
 
+        setInterval(function () {
+            $('#question_resTime ').html($('#question_resTime').html() - 1);
 
+            if ($('#question_resTime').html() == '-1') {
+                console.log("------------------");
+                console.log(audioChunks)
+                rec.stop()
 
-    setInterval(function() {
-        $('#question_resTime ').html($('#question_resTime').html()-1);
-
-        if($('#question_resTime').html() == '-1') {
-            console.log("------------------");
-            console.log(audioChunks)
-            rec.stop()
-
-        }
-    },1000);
+            }
+        }, 1000);
+    }
 
 
 

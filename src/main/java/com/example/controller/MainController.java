@@ -20,9 +20,6 @@ public class MainController {
 
     @RequestMapping("/")
     public String home() {
-        System.out.println("====================================");
-        System.out.println(questionMapper.getAllQuestions());
-        System.out.println("====================================");
         return "index";
     }
 
