@@ -30,4 +30,5 @@
         <mapper resource="java/com/example/dao/GradeMapper.xml" />
         <mapper resource="java/com/example/dao/SessionMapper.xml" />
     </mappers>
+
 </configuration>

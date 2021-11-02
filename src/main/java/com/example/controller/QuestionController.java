@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.dao.QuestionMapper;
 import com.example.entity.Question;
 import com.example.util.FileUploadUtil;
+import com.example.util.PropertiesLoad;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class QuestionController {
     // TODO: 2021-10-25 SET AS ENV PROPERTY
     @Autowired
     QuestionMapper questionMapper;
+//    PropertiesLoad propertiesLoad=new PropertiesLoad();
 
     Logger logger=Logger.getLogger(String.valueOf(QuestionMapper.class));
 
@@ -53,8 +55,12 @@ public class QuestionController {
 
             Question savedQuestion = questionMapper.findQuestionByTitle(question.getQuestion_title());
 
-            Properties myProps = new Properties();
-            String uploadDir= imageUploadDir +savedQuestion.getId();
+
+            System.out.println("=======================");
+            System.out.println( Objects.requireNonNull(PropertiesLoad.loadLocalStrings()).getProperty("imageUploadDir"));
+            System.out.println("=============checking the property created==========");
+
+            String uploadDir= Objects.requireNonNull(PropertiesLoad.loadLocalStrings()).getProperty("imageUploadDir") +savedQuestion.getId();
             //clean-> delete old files in directory before saving file to directory
             //FileUploadUtil.clearDir(uploadDir);
 //             String uploadDir, String fileName, MultipartFile multipartFile

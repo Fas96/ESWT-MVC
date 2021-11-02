@@ -11,16 +11,6 @@
     </properties>
     <root id="archive" name="ESWTMVC-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="ESWTMVC:war exploded" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-devtools:2.5.5" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.5.5" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.5.5" />
-        </element>
-        <element id="directory" name="classes">
-          <element id="library" level="application" name="jquery-3.6.0" />
-        </element>
-      </element>
     </root>
   </artifact>
 </component>
