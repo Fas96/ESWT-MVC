@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<jsp:include page="header.jsp"/>
 <div class="unix-login">
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -8,14 +9,14 @@
 
                     <div class="login-form">
                         <h4>Member Login</h4>
-                        <form class="login-form" method="post" name="login">
+                        <form class="login-form" action="/processLogin" method="post" name="login" commandName="member">
                             <div class="form-group">
                                 <label>Member N&#8711;</label>
-                                <input type="text" class="form-control" name="member_id" placeholder="member_id" required >
+                                <input type="text" path="member_id" class="form-control" name="member_id" placeholder="member_id" required >
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="password" placeholder="Password"  required>
+                                <input type="password" path="member.member_password" class="form-control" name="member_password" placeholder="Password"  required>
                             </div>
                             <div class="checkbox">
                                 <label>
@@ -29,7 +30,7 @@
                             <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
 
                             <div class="register-link m-t-15 text-center">
-                                <p>Don't have account ? <a href="registration.php"> Sign Up Here</a></p>
+                                <p>Don't have account ? <a href="/registration"> Sign Up Here</a></p>
                             </div>
                         </form>
                     </div>

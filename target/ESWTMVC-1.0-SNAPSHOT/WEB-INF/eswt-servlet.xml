@@ -50,16 +50,6 @@
     </beans:bean>
 
 
-    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" destroy-method="close">
-        <beans:property name="driverClassName" value="${jdbc.driverClassName}" />
-        <beans:property name="url" value="${jdbc.url}" />
-        <beans:property name="username" value="${jdbc.username}"/>
-        <beans:property name="password" value="${jdbc.password}"/>
-        <beans:property name="connectionCachingEnabled" value="true"/>
-    </beans:bean>
-
-    <context:property-placeholder location="classpath:jdbc.properties"/>
-
 
 
 

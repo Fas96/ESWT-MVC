@@ -19,19 +19,10 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Bean(name = "mySqlDataSource")
-    @Primary
-    public DataSource mySqlDataSource()
-    {
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.url("jdbc:mysql://localhost/eswtmvc");
-        dataSourceBuilder.username("root");
-        dataSourceBuilder.password("fas96");
-        return dataSourceBuilder.build();
-    }
-    @Qualifier("mySqlDataSource")
+
+    @Qualifier("mysqlDatasource")
     @Autowired
-    private DataSource dataSource;
+    DataSource dataSource;
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -40,7 +31,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        ,"**/ShopmeAdmin/**/**", "/home"
         http
                 .csrf().disable()
                 .authorizeRequests()
