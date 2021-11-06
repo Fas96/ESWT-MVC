@@ -57,4 +57,12 @@ public class QuestionMapper {
         session.close();
         return question;
     }
+
+    public Question findQuestionNonAnsweredQuestion(Integer memberId) {
+        SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+        Question question = (Question) session.selectOne("findQuestionNonAnsweredQuestion", memberId);
+        session.commit();
+        session.close();
+        return question;
+    }
 }

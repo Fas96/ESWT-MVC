@@ -254,9 +254,13 @@
                             <div class="container">
                             <div class="row"  >
                             <div class="col-lg-6 text-center">
+                                <input type="hidden" name="QUESTIONTYPE" value="${d.question_type}">
+                                <input type="hidden" name="questionId" value="${d.id}">
+
 
                                     <c:choose>
                                         <c:when test="${d.question_type=='WRITING' or d.question_type=='LISTENING'}">
+
 
                                             <textarea style="height: 100%"   placeholder="answer field "  class="form-control"></textarea>
 
@@ -270,10 +274,6 @@
                             </div>
                                 <div class="col-lg-6 text-center">
                                     <canvas  ></canvas>
-
-
-
-
                                     <button type="button" id="question_resTime" class="btn-rounded m-2 p-3 btn-outline-info">${d.question_resTime}</button>
                                 </div>
 
@@ -286,19 +286,17 @@
 
 
                                 <tbody>
-                                <tr>
-                                    <c:forEach items="${questions}" var="e">
-                                        <c:url var="questionLink" value="/mock/testExample">
-                                            <c:param name="questionId" value="${e.id}" />
-                                        </c:url>
-                                    <td> <button type="button" onclick="window.location.href = '${questionLink}'; return false;"
-                                                 class="btn-rounded btn-outline-info text-center">${e.id}</button>
-                                            </td>
-                                    </c:forEach>
-                                </tr>
+<%--                                <tr>--%>
+<%--                                    <c:forEach items="${questions}" var="e">--%>
+<%--                                        <c:url var="questionLink" value="/mock/testExample">--%>
+<%--                                            <c:param name="questionId" value="${e.id}" />--%>
+<%--                                        </c:url>--%>
+<%--                                    <td> <button type="button" onclick="window.location.href = '${questionLink}'; return false;"--%>
+<%--                                                 class="btn-rounded btn-outline-info text-center questionNum" id="questionId=${e.id}">${e.id}</button>--%>
+<%--                                            </td>--%>
+<%--                                    </c:forEach>--%>
+<%--                                </tr>--%>
                                 </tbody>
-
-
                             </table>
                         </div>
                         </div>
@@ -329,63 +327,84 @@
         //alert($("#question_resTime").text())
     })
 
-    $('canvas').css({"background": "#282831","width": "100%","height": "85%"});
+    $('canvas').css({"background": "#282831", "width": "100%", "height": "85%"});
 
+    var speakType=$('input[name=QUESTIONTYPE]').val();
+    if(speakType=="READING"||speakType=="SPEAKING") {
 
+        console.log(speakType)
 
-
-
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    const context = new AudioContext();
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-                handlerStreamFunction(stream)
-    });
-
-    function stopRecord(stream) {
-        stream.getTracks().forEach(function (track) {
-            track.stop();
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        const context = new AudioContext();
+        navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
+            handlerStreamFunction(stream)
         });
 
-    }
-    function startRecord(stream) {
-        stream.getTracks().forEach(function (track) {
-            track.start();
-        });
+        function stopRecord(stream) {
+            stream.getTracks().forEach(function (track) {
+                track.stop();
+            });
 
-    }
-    var audioChunks=new Array()
-    function handlerStreamFunction(stream) {
-        rec = new MediaRecorder(stream);
-        rec.ondataavailable = e => {
-            audioChunks.push(e.data);
-
-            if (rec.state == "inactive") {
-                let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
-                console.log(blob)
-                recordedAudio.src = URL.createObjectURL(blob);
-                recordedAudio.controls = true;
-                recordedAudio.autoplay = true;
-                stopRecord(stream);
-                //sendData(blob)
-            }
         }
 
-        rec.start()
+        function startRecord(stream) {
+            stream.getTracks().forEach(function (track) {
+                track.start();
+            });
 
+        }
 
-        setInterval(function () {
-            $('#question_resTime ').html($('#question_resTime').html() - 1);
+        var audioChunks = new Array()
 
-            if ($('#question_resTime').html() == '-1') {
-                console.log("------------------");
-                console.log(audioChunks)
-                rec.stop()
+        function handlerStreamFunction(stream) {
+            rec = new MediaRecorder(stream);
+            rec.ondataavailable = e => {
+                audioChunks.push(e.data);
 
+                if (rec.state == "inactive") {
+                    let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
+                    console.log(blob)
+                    recordedAudio.src = URL.createObjectURL(blob);
+                    recordedAudio.controls = true;
+                    recordedAudio.autoplay = true;
+                    stopRecord(stream);
+                    //sendData(blob)
+                }
             }
-        }, 1000);
+            rec.start()
+            setInterval(function () {
+                $('#question_resTime ').html($('#question_resTime').html() - 1);
+                if ($('#question_resTime').html() == '-1') {
+                    rec.stop()
+
+                    var questionId=$('input[name=questionId]').val();
+                    // alert(questionId);
+
+
+                    //TODO SEND REQUEST FOR NEXT QUESTION
+                    $.get( "/mock/testExample?questionId="+questionId, function( data ) {
+                         $( "body" ).html( data );
+                        // alert( data );
+                    });
+
+                    // console.log($('.questionNum').length)
+                    //
+                    // $('.questionNum').each(function (){
+                    //     var currenPAGE=window.location.href;
+                    //     var arraySplit=currenPAGE.split('?')
+                    //     var lastIndex=arraySplit[arraySplit.length-1];
+                    //     console.log(lastIndex)
+                    //     console.log($(this).attr('id'))
+                    //     if(lastIndex===$(this).attr('id')){
+                    //         $(this).hide();
+                    //     }
+                    // });
+
+                }
+            }, 1000);
+        }
+
     }
-
-
 
 
 

@@ -51,11 +51,17 @@
     </delete>
 
 
-
-
-        <select id="findQuestionById" parameterType="Integer" resultType="question" resultMap="result">
+    <select id="findQuestionById" parameterType="Integer" resultType="question" resultMap="result">
         SELECT * FROM question WHERE question_id = #{id}
     </select>
+
+
+    <select id="findQuestionNonAnsweredQuestion" parameterType="Integer" resultType="question" resultMap="result">
+        SELECT q.* FROM  eswtmvc.question q left outer join
+            (select * from eswtmvc.answer where member_id = #{member_id})
+            a  on  q.question_id=a.question_id  where  a.id is null   limit 1;
+    </select>
+
 
     <select id="findQuestionByTitle" parameterType="String" resultType="question" resultMap="result">
         SELECT * FROM question WHERE question_title = #{question_title}
