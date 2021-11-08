@@ -16,8 +16,22 @@
     </select>
 
     <insert id="insertAnswer" parameterType="answer" keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO answer(question_id, question_type, member_id, text_res, media_res )
-        VALUES(#{question_id}, #{question_type}, #{member_id}, #{text_res}, #{media_res})
+
+        INSERT INTO answer(question_id, question_type, member_id
+        <if test="text_res != null">
+          ,text_res
+        </if>
+         <if test="media_res != null">
+          ,media_res
+         </if> )
+        VALUES(#{question_id}, #{question_type}, #{member_id}
+        <if test="text_res != null">
+            ,#{text_res}
+        </if>
+        <if test="media_res != null">
+            , #{media_res}
+        </if>
+               )
     </insert>
 
     <update id="updateAnswer" parameterType="answer">

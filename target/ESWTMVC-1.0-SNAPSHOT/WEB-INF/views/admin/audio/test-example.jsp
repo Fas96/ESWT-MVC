@@ -4,11 +4,11 @@
 <head>
 
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Admin Page</title>
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="  crossorigin="anonymous"></script>
 
 
 
@@ -39,17 +39,19 @@
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img"
+                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
-                                                    <div class="notification-text">5 members joined today </div>
+                                                    <div class="notification-text">5 members joined today</div>
                                                 </div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img"
+                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mariam</div>
@@ -59,21 +61,27 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img"
+                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Tasnim</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                        ...
+                                                    </div>
                                                 </div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img"
+                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                        ...
+                                                    </div>
                                                 </div>
                                             </a>
                                         </li>
@@ -99,41 +107,53 @@
                                     <ul>
                                         <li class="notification-unread">
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/1.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img"
+                                                     src="${base}/resources/images/avatar/1.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Michael Qin</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                        ...
+                                                    </div>
                                                 </div>
                                             </a>
                                         </li>
                                         <li class="notification-unread">
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/2.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img"
+                                                     src="${base}/resources/images/avatar/2.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                        ...
+                                                    </div>
                                                 </div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/3.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img"
+                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Michael Qin</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                        ...
+                                                    </div>
                                                 </div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img" src="${base}/resources/images/avatar/2.jpg" alt="" />
+                                                <img class="pull-left m-r-10 avatar-img"
+                                                     src="${base}/resources/images/avatar/2.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
                                                     <div class="notification-heading">Mr. John</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                        ...
+                                                    </div>
                                                 </div>
                                             </a>
                                         </li>
@@ -201,7 +221,6 @@
 </div>
 
 
-
 <div class="content-wrap">
     <div class="main">
         <div class="container-fluid">
@@ -245,172 +264,278 @@
             <div class="col-md-12 ">
 
 
-                        <c:set value="${displayQuestion}" var="d"/>
-
+                <c:set value="${displayQuestion}" var="d"/>
+                <c:if test="${d!=null}">
                 <div class="card">
+
                     <a class="card-title text-center">${d.question_title}</a>
                     <div class="card-body">
                         <div class="compose-content ">
-                            <div class="container">
-                            <div class="row"  >
-                            <div class="col-lg-6 text-center">
-                                <input type="hidden" name="QUESTIONTYPE" value="${d.question_type}">
-                                <input type="hidden" name="questionId" value="${d.id}">
+                            <form action="/mock/save" method="POST" id="save_form" modelAttribute="answer">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6 text-center">
+                                            <input type="hidden" name="question_type" value="${d.question_type}" path="question_type">
+                                            <input type="hidden" name="question_id" value="${d.id}" path="question_id">
+                                            <input type="hidden" name="member_id" value="${member_id}" path="member_id">
+                                            <c:choose>
+                                                <c:when test="${d.question_type=='WRITING' or d.question_type=='LISTENING'}">
+                                                    <br/><textarea path="text_res" style="height: 100%" placeholder="answer field " class="form-control member_id" name="text_res"></textarea>
 
 
-                                    <c:choose>
-                                        <c:when test="${d.question_type=='WRITING' or d.question_type=='LISTENING'}">
+                                                </c:when>
+                                                <c:when test="${(d.question_type=='SPEAKING' or d.question_type=='READING') and d.question_media!=null}">
+                                                    <img height="400px" width="100%"
+                                                         src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/>
+                                                    <br/>
+                                                    <div class="audio" id="audio">
+                                                        <div class="waves record">
+                                                            <canvas id="visualizer" ></canvas>
+                                                        </div>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>others</c:otherwise>
+                                            </c:choose>
 
+                                        </div>
+                                        <div class="col-lg-6 text-center">
+                                            <button type="button" id="question_resTime"   class="btn-rounded m-2 p-3 btn-outline-info">${d.question_resTime}</button>
+                                        </div>
 
-                                            <textarea style="height: 100%"   placeholder="answer field "  class="form-control"></textarea>
-
-                                        </c:when>
-                                        <c:when test="${(d.question_type=='SPEAKING' or d.question_type=='READING') and d.question_media!=null}">
-                                            <img  height="400px" width="100%"  src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/>
-                                             </c:when>
-                                        <c:otherwise>others</c:otherwise>
-                                    </c:choose>
-
-                            </div>
-                                <div class="col-lg-6 text-center">
-                                    <canvas  ></canvas>
-                                    <button type="button" id="question_resTime" class="btn-rounded m-2 p-3 btn-outline-info">${d.question_resTime}</button>
+                                    </div>
                                 </div>
-
-                            </div>
-                            <div class="row">
-                                <br/><textarea style="height: 100%"   placeholder="answer field "  class="form-control"></textarea>
-
-                            </div>
-                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-
-
-                                <tbody>
-<%--                                <tr>--%>
-<%--                                    <c:forEach items="${questions}" var="e">--%>
-<%--                                        <c:url var="questionLink" value="/mock/testExample">--%>
-<%--                                            <c:param name="questionId" value="${e.id}" />--%>
-<%--                                        </c:url>--%>
-<%--                                    <td> <button type="button" onclick="window.location.href = '${questionLink}'; return false;"--%>
-<%--                                                 class="btn-rounded btn-outline-info text-center questionNum" id="questionId=${e.id}">${e.id}</button>--%>
-<%--                                            </td>--%>
-<%--                                    </c:forEach>--%>
-<%--                                </tr>--%>
-                                </tbody>
-                            </table>
-                        </div>
+                            </form>
                         </div>
                     </div>
+
                 </div>
+                </c:if>
+                <c:if test="${d==null}">
+                    <p>Thank you for taking the test</p>
+                </c:if>
+                <audio id=recordedAudio></audio>
+                <!-- /# row -->
+                <section id="main-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="extra-area-chart"></div>
+                            <div id="morris-line-chart"></div>
+                            <div class="footer">
+                                <p>2021 © Admin Board. -
+                                    <a href="http://fasgh.govt.kr/" target="_blank">fasgh.govt.kr</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <audio id=recordedAudio></audio>
-            <!-- /# row -->
-            <section id="main-content">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div id="extra-area-chart"></div>
-                        <div id="morris-line-chart"></div>
-                        <div class="footer">
-                            <p>2021 © Admin Board. -
-                                <a href="http://fasgh.govt.kr/" target="_blank">fasgh.govt.kr</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     </div>
-</div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        //alert($("#question_resTime").text())
-    })
+    <script type="text/javascript">
 
-    $('canvas').css({"background": "#282831", "width": "100%", "height": "85%"});
+        $(window).on('load',function() {
 
-    var speakType=$('input[name=QUESTIONTYPE]').val();
-    if(speakType=="READING"||speakType=="SPEAKING") {
+            var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-        console.log(speakType)
+            var isRecording = 0;
+            $('.waves').show();
+            if (navigator.mediaDevices === undefined) {
+                navigator.mediaDevices = {};
+            }
 
-        window.AudioContext = window.AudioContext || window.webkitAudioContext;
-        const context = new AudioContext();
-        navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
-            handlerStreamFunction(stream)
-        });
+            if (navigator.mediaDevices.getUserMedia === undefined) {
+                console.log("=======meda=====")
+                navigator.mediaDevices.getUserMedia = function(constraints) {
 
-        function stopRecord(stream) {
-            stream.getTracks().forEach(function (track) {
-                track.stop();
-            });
 
-        }
+                    var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                    console.log("=========h")
+                    if (!getUserMedia) {
+                        return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                    }
 
-        function startRecord(stream) {
-            stream.getTracks().forEach(function (track) {
-                track.start();
-            });
-
-        }
-
-        var audioChunks = new Array()
-
-        function handlerStreamFunction(stream) {
-            rec = new MediaRecorder(stream);
-            rec.ondataavailable = e => {
-                audioChunks.push(e.data);
-
-                if (rec.state == "inactive") {
-                    let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
-                    console.log(blob)
-                    recordedAudio.src = URL.createObjectURL(blob);
-                    recordedAudio.controls = true;
-                    recordedAudio.autoplay = true;
-                    stopRecord(stream);
-                    //sendData(blob)
+                    console.log("=========hasha")
+                    // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+                    return new Promise(function(resolve, reject) {
+                        getUserMedia.call(navigator, constraints, resolve, reject);
+                    });
                 }
             }
-            rec.start()
-            setInterval(function () {
+
+
+
+            function getAudio(){return navigator.mediaDevices.getUserMedia({audio: true})}
+
+            var device = getAudio()
+            var items =[];
+            device.then(stream=>{
+                recorder = new MediaRecorder(stream);
+
+                recorder.ondataavailable= (e)=>{
+                    items.push(e.data);
+                    if(recorder.state=='inactive'){
+
+                        var blob= new Blob(items,{type:'audio/webm'});
+                        var audio = $('#audio');
+                        var mainaudio=document.createElement('audio');
+                        mainaudio.setAttribute('controls','controls');
+                        audio.appendChild(mainaudio);
+                        console.log(URL.createObjectURL(blob));
+
+                        //redo
+                        var reader = new FileReader();
+                        reader.readAsDataURL(blob);
+                        reader.onloadend = function() {
+                            var base64data = reader.result;
+                            var urls= base64data;
+                            //var urls=URL.createObjectURL(blob);
+                            var formData = new FormData( );
+                            formData.append("urls", urls);
+                            //console.log(formData.get('urls'));
+                            var request = new XMLHttpRequest();
+                            request.open("POST",  "/mock/save");
+                            request.send(formData);
+
+
+                        }
+
+                        mainaudio.innerHTML='<source src="'+URL.createObjectURL(blob)+'"type="video/webm"/>';
+
+                    }
+                }
+                recorder.start(100);
+                isRecording = 1;
+                setTimeout(() => {
+                    isRecording = 0;
+                    recorder.stop();
+                }, 1000 * $('#question_resTime').html());
+            });
+
+
+            setInterval(function() {
                 $('#question_resTime ').html($('#question_resTime').html() - 1);
                 if ($('#question_resTime').html() == '-1') {
-                    rec.stop()
-
-                    var questionId=$('input[name=questionId]').val();
-                    // alert(questionId);
-
-
-                    //TODO SEND REQUEST FOR NEXT QUESTION
-                    $.get( "/mock/testExample?questionId="+questionId, function( data ) {
-                         $( "body" ).html( data );
-                        // alert( data );
-                    });
-
-                    // console.log($('.questionNum').length)
-                    //
-                    // $('.questionNum').each(function (){
-                    //     var currenPAGE=window.location.href;
-                    //     var arraySplit=currenPAGE.split('?')
-                    //     var lastIndex=arraySplit[arraySplit.length-1];
-                    //     console.log(lastIndex)
-                    //     console.log($(this).attr('id'))
-                    //     if(lastIndex===$(this).attr('id')){
-                    //         $(this).hide();
-                    //     }
-                    // });
+                    $('#question_resTime').hide();
+                    $('.waves').hide();
 
                 }
-            }, 1000);
-        }
+                setInterval(function() {
+                    if ($('#question_resTime').html() == '-1') {
+                        $('#save_form').submit();
+                        if(isRecording) {
+                            isRecording = 0;
+                            recorder.stop();
+                        }
+                    }
+                },1000);
 
-    }
+
+            },1000);
 
 
 
-</script>
+        });
 
-<%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
+
+        // var speakType = $('input[name=question_type]').val();
+        //
+        // var constraints={audio:true}
+        //
+        // async function  handleSuccess(stream){
+        //     setInterval(()=>{
+        //         $('audio').srcObject=stream;
+        //     },5000)
+        //
+        // }
+        // async function  handlesError(error) {
+        //     console.log("getUserMedia error:",error)
+        // }
+        // console.log("=============+++++++++++++++++++++++++++++++")
+        // navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handlesError)
+        // console.log("=========================================================fas")
+        //
+        // if (speakType == "READING" || speakType == "SPEAKING") {
+        //     console.log(speakType)
+        //
+        //     var audioContext = window.AudioContext;
+        //
+        //     navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
+        //         console.log("==========started to stream====")
+        //         handlerStreamFunction(stream)
+        //     }).catch(handlesError);
+        //
+        //     function stopRecord(stream) {
+        //         stream.getTracks().forEach(function (track) {
+        //             track.stop();
+        //         });
+        //
+        //     }
+        //
+        //     function startRecord(stream) {
+        //         stream.getTracks().forEach(function (track) {
+        //             track.start();
+        //         });
+        //
+        //     }
+        //
+        //     var audioChunks = new Array()
+        //
+        //     function handlerStreamFunction(stream) {
+        //         console.log("handling stream")
+        //         rec = new MediaRecorder(stream);
+        //         rec.ondataavailable = e => {
+        //             audioChunks.push(e.data);
+        //
+        //             if (rec.state == "inactive") {
+        //                 let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
+        //                 console.log(blob)
+        //                 recordedAudio.src = URL.createObjectURL(blob);
+        //                 recordedAudio.controls = true;
+        //                 recordedAudio.autoplay = true;
+        //                 stopRecord(stream);
+        //                 //sendData(blob)
+        //             }
+        //         }
+        //         rec.start()
+                // setInterval(function () {
+                //     $('#question_resTime ').html($('#question_resTime').html() - 1);
+                //     if ($('#question_resTime').html() == '-1') {
+                //         rec.stop()
+                //
+                //         var questionId = $('input[name=questionId]').val();
+                //         // alert(questionId);
+                //
+                //
+                //         //TODO SEND REQUEST FOR NEXT QUESTION
+                //         $.get("/mock/testExample?questionId=" + questionId, function (data) {
+                //             $("body").html(data);
+                //             // alert( data );
+                //         });
+                //
+                //         // console.log($('.questionNum').length)
+                //         //
+                //         // $('.questionNum').each(function (){
+                //         //     var currenPAGE=window.location.href;
+                //         //     var arraySplit=currenPAGE.split('?')
+                //         //     var lastIndex=arraySplit[arraySplit.length-1];
+                //         //     console.log(lastIndex)
+                //         //     console.log($(this).attr('id'))
+                //         //     if(lastIndex===$(this).attr('id')){
+                //         //         $(this).hide();
+                //         //     }
+                //         // });
+                //
+                //     }
+                // }, 1000);
+        //     }
+        //
+        // }
+
+
+    </script>
+
+    <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
 
 
 </body>

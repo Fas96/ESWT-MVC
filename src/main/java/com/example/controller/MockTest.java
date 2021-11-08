@@ -6,10 +6,7 @@ import com.example.entity.Answer;
 import com.example.entity.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
@@ -27,18 +24,27 @@ public class MockTest {
     @GetMapping("/testExample")
     public ModelAndView testExample(@RequestParam( value = "questionId", required=false) Integer questionId, ModelAndView model){
 
-            Question question = questionMapper.findQuestionNonAnsweredQuestion(20);
+            Question question = questionMapper.findQuestionNonAnsweredQuestion(22);
+            System.out.println("=======================================fas=============================");
+            System.out.println(question);
+            System.out.println("=======================================fas=============================");
             model.addObject("displayQuestion",question);
+            model.addObject("answer",new Answer());
+            model.addObject("member_id",22);
 //          model.addObject("questions",questionMapper.getAllQuestions());
             model.setViewName("/admin/audio/test-example");
 
             return model;
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public String saveAnswer(Answer save){
+        System.out.println("=======================================fas=============================");
+        System.out.println(save);
+        System.out.println("=======================================fas=============================");
+
         answerMapper.saveAnswer(save);
-        return "redirect:/testExample";
+        return "redirect:/mock/testExample";
     }
 
 
