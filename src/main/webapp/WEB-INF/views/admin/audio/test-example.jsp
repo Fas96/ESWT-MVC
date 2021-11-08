@@ -262,8 +262,6 @@
             <!-- row -->
             <%--            question form--%>
             <div class="col-md-12 ">
-
-
                 <c:set value="${displayQuestion}" var="d"/>
                 <c:if test="${d!=null}">
                 <div class="card">
@@ -275,9 +273,9 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-6 text-center">
-                                            <input type="hidden" name="question_type" value="${d.question_type}" path="question_type">
-                                            <input type="hidden" name="question_id" value="${d.id}" path="question_id">
-                                            <input type="hidden" name="member_id" value="${member_id}" path="member_id">
+                                            <input type="hidden"  class="question_type" name="question_type" value="${d.question_type}" path="question_type">
+                                            <input type="hidden" name="question_id" class="question_id" value="${d.id}" path="question_id">
+                                            <input type="hidden" name="member_id" class="member_id" value="${member_id}" path="member_id">
                                             <c:choose>
                                                 <c:when test="${d.question_type=='WRITING' or d.question_type=='LISTENING'}">
                                                     <br/><textarea path="text_res" style="height: 100%" placeholder="answer field " class="form-control member_id" name="text_res"></textarea>
@@ -313,7 +311,7 @@
                 <c:if test="${d==null}">
                     <p>Thank you for taking the test</p>
                 </c:if>
-                <audio id=recordedAudio></audio>
+
                 <!-- /# row -->
                 <section id="main-content">
                     <div class="row">
@@ -334,36 +332,14 @@
 
     <script type="text/javascript">
 
+
+
+
         $(window).on('load',function() {
 
             var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
             var isRecording = 0;
-            $('.waves').show();
-            if (navigator.mediaDevices === undefined) {
-                navigator.mediaDevices = {};
-            }
-
-            if (navigator.mediaDevices.getUserMedia === undefined) {
-                console.log("=======meda=====")
-                navigator.mediaDevices.getUserMedia = function(constraints) {
-
-
-                    var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-                    console.log("=========h")
-                    if (!getUserMedia) {
-                        return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-                    }
-
-                    console.log("=========hasha")
-                    // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-                    return new Promise(function(resolve, reject) {
-                        getUserMedia.call(navigator, constraints, resolve, reject);
-                    });
-                }
-            }
-
-
 
             function getAudio(){return navigator.mediaDevices.getUserMedia({audio: true})}
 
@@ -380,8 +356,10 @@
                         var audio = $('#audio');
                         var mainaudio=document.createElement('audio');
                         mainaudio.setAttribute('controls','controls');
-                        audio.appendChild(mainaudio);
+                        // audio.appendChild(mainaudio);
                         console.log(URL.createObjectURL(blob));
+                        console.log(blob)
+                        // debugger;
 
                         //redo
                         var reader = new FileReader();
@@ -393,9 +371,15 @@
                             var formData = new FormData( );
                             formData.append("urls", urls);
                             //console.log(formData.get('urls'));
-                            var request = new XMLHttpRequest();
-                            request.open("POST",  "/mock/save");
-                            request.send(formData);
+                            // var request = new XMLHttpRequest();
+                            dataToSend={question_id:$('.question_id').val(),question_type:$('.question_type').val(),member_id:$('.member_id').val(),media_Res:URL.createObjectURL(blob)}
+                            console.log(dataToSend)
+                            debugger;
+                            $.post("/mock/save",dataToSend,(res,status)=>{
+                                console.log(res)
+                                console.log(status)
+                            });
+                            // request.send(formData);
 
 
                         }
@@ -438,99 +422,6 @@
         });
 
 
-        // var speakType = $('input[name=question_type]').val();
-        //
-        // var constraints={audio:true}
-        //
-        // async function  handleSuccess(stream){
-        //     setInterval(()=>{
-        //         $('audio').srcObject=stream;
-        //     },5000)
-        //
-        // }
-        // async function  handlesError(error) {
-        //     console.log("getUserMedia error:",error)
-        // }
-        // console.log("=============+++++++++++++++++++++++++++++++")
-        // navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handlesError)
-        // console.log("=========================================================fas")
-        //
-        // if (speakType == "READING" || speakType == "SPEAKING") {
-        //     console.log(speakType)
-        //
-        //     var audioContext = window.AudioContext;
-        //
-        //     navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
-        //         console.log("==========started to stream====")
-        //         handlerStreamFunction(stream)
-        //     }).catch(handlesError);
-        //
-        //     function stopRecord(stream) {
-        //         stream.getTracks().forEach(function (track) {
-        //             track.stop();
-        //         });
-        //
-        //     }
-        //
-        //     function startRecord(stream) {
-        //         stream.getTracks().forEach(function (track) {
-        //             track.start();
-        //         });
-        //
-        //     }
-        //
-        //     var audioChunks = new Array()
-        //
-        //     function handlerStreamFunction(stream) {
-        //         console.log("handling stream")
-        //         rec = new MediaRecorder(stream);
-        //         rec.ondataavailable = e => {
-        //             audioChunks.push(e.data);
-        //
-        //             if (rec.state == "inactive") {
-        //                 let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
-        //                 console.log(blob)
-        //                 recordedAudio.src = URL.createObjectURL(blob);
-        //                 recordedAudio.controls = true;
-        //                 recordedAudio.autoplay = true;
-        //                 stopRecord(stream);
-        //                 //sendData(blob)
-        //             }
-        //         }
-        //         rec.start()
-                // setInterval(function () {
-                //     $('#question_resTime ').html($('#question_resTime').html() - 1);
-                //     if ($('#question_resTime').html() == '-1') {
-                //         rec.stop()
-                //
-                //         var questionId = $('input[name=questionId]').val();
-                //         // alert(questionId);
-                //
-                //
-                //         //TODO SEND REQUEST FOR NEXT QUESTION
-                //         $.get("/mock/testExample?questionId=" + questionId, function (data) {
-                //             $("body").html(data);
-                //             // alert( data );
-                //         });
-                //
-                //         // console.log($('.questionNum').length)
-                //         //
-                //         // $('.questionNum').each(function (){
-                //         //     var currenPAGE=window.location.href;
-                //         //     var arraySplit=currenPAGE.split('?')
-                //         //     var lastIndex=arraySplit[arraySplit.length-1];
-                //         //     console.log(lastIndex)
-                //         //     console.log($(this).attr('id'))
-                //         //     if(lastIndex===$(this).attr('id')){
-                //         //         $(this).hide();
-                //         //     }
-                //         // });
-                //
-                //     }
-                // }, 1000);
-        //     }
-        //
-        // }
 
 
     </script>
