@@ -1,11 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" session="true" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
 <html lang="en">
-<%--<c:if test="${pageContext.request.getSession(false) != null}">--%>
-<%--    <c:redirect url="/employee/listOfEmployee"/>--%>
-<%--</c:if>--%>
+<c:if test="${pageContext.request.getSession(true) == null}">
+    <c:redirect url="/"/>
+</c:if>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

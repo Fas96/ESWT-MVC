@@ -6,9 +6,6 @@
     <title>Admin Page</title>
 <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
  <c:set var="base" value="${pageContext.request.contextPath}"/>
-
-
-
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin/sidebar.jsp" %>

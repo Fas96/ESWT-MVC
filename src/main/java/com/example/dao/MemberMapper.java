@@ -37,7 +37,7 @@ public class MemberMapper {
         return memberList;
     }
 
-    public Member findMemberById(int memberId){
+    public Member findMemberById(String memberId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
         Member member = (Member) session.selectOne("findMemberById", memberId);
         session.commit();

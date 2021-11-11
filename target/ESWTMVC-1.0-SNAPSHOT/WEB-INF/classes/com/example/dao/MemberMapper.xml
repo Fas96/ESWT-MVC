@@ -28,14 +28,14 @@
         UPDATE member SET   member_password = #{member_password}, member_name = #{member_name},
                             question_media = #{question_media}, question_second = #{question_second}, question_prepTime = #{question_prepTime},
                           member_isRestricted = #{member_isRestricted},member_isAdmin = #{member_isAdmin}
-        WHERE id = #{memberId}
+        WHERE id = #{id}
     </update>
 
     <delete id="deleteMember" parameterType="int">
-        DELETE FROM member WHERE id = #{memberId}
+        DELETE FROM member WHERE id = #{id}
     </delete>
 
-    <select id="findMemberById" parameterType="int" resultType="member" resultMap="result">
-        SELECT * FROM member WHERE id = #{memberId}
+    <select id="findMemberById" parameterType="String" resultType="member" resultMap="result">
+        SELECT * FROM member WHERE id = #{id}
     </select>
 </mapper>

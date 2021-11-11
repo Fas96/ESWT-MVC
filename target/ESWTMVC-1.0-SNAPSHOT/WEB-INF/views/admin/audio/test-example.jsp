@@ -43,7 +43,7 @@
                                                      src="${base}/resources/images/avatar/3.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mr. John</div>
+                                                    <div class="notification-heading"><%= session.getAttribute("fname") %></div>
                                                     <div class="notification-text">5 members joined today</div>
                                                 </div>
                                             </a>
@@ -54,7 +54,7 @@
                                                      src="${base}/resources/images/avatar/3.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mariam</div>
+                                                    <div class="notification-heading"><%= session.getAttribute("fname") %></div>
                                                     <div class="notification-text">likes a photo of you</div>
                                                 </div>
                                             </a>
@@ -78,7 +78,7 @@
                                                      src="${base}/resources/images/avatar/3.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mr. John</div>
+                                                    <div class="notification-heading"><%= session.getAttribute("fname") %></div>
                                                     <div class="notification-text">Hi Teddy, Just wanted to let you
                                                         ...
                                                     </div>
@@ -124,7 +124,7 @@
                                                      src="${base}/resources/images/avatar/2.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mr. John</div>
+                                                    <div class="notification-heading">Mr. <%= session.getAttribute("fname") %></div>
                                                     <div class="notification-text">Hi Teddy, Just wanted to let you
                                                         ...
                                                     </div>
@@ -150,7 +150,7 @@
                                                      src="${base}/resources/images/avatar/2.jpg" alt=""/>
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mr. John</div>
+                                                    <div class="notification-heading">Mr. <%= session.getAttribute("fname") %></div>
                                                     <div class="notification-text">Hi Teddy, Just wanted to let you
                                                         ...
                                                     </div>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="dropdown dib">
                         <div class="header-icon" data-toggle="dropdown">
-                                <span class="user-avatar">John
+                                <span class="user-avatar"><%= session.getAttribute("fname") %>
                                     <i class="ti-angle-down f-s-10"></i>
                                 </span>
                             <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">

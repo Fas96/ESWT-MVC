@@ -54,9 +54,7 @@
 <script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.europe.js"/> "></script>
 <script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.usa.js"/> "></script>
 
-<!--  Simple Weather -->
-<script src="<c:url value="${base}/resources/js/lib/weather/jquery.simpleWeather.min.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/weather/weather-init.js"/> "></script>
+
 
 <!--  Owl Carousel -->
 <script src="<c:url value="${base}/resources/js/lib/owl-carousel/owl.carousel.min.js"/> "></script>

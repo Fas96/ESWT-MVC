@@ -25,9 +25,7 @@ public class MockTest {
     public ModelAndView testExample(@RequestParam( value = "questionId", required=false) Integer questionId, ModelAndView model){
 
             Question question = questionMapper.findQuestionNonAnsweredQuestion(22);
-            System.out.println("=======================================fas=============================");
-            System.out.println(question);
-            System.out.println("=======================================fas=============================");
+
             model.addObject("displayQuestion",question);
             model.addObject("answer",new Answer());
             model.addObject("member_id",22);
@@ -39,10 +37,6 @@ public class MockTest {
 
     @PostMapping("/save")
     public String saveAnswer(Answer save){
-        System.out.println("=======================================fas=============================");
-        System.out.println(save);
-        System.out.println("=======================================fas=============================");
-
         answerMapper.saveAnswer(save);
         return "redirect:/mock/testExample";
     }

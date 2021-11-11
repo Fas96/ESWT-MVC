@@ -8,7 +8,7 @@
                 <div class="login-content">
 
                     <div class="login-form">
-                        <h4>Member Login</h4>
+                        <h4>Member Login </h4>
                         <form class="login-form" action="/processLogin" method="post" name="login" commandName="member">
                             <div class="form-group">
                                 <label>Member N&#8711;</label>
