@@ -375,10 +375,10 @@
                             dataToSend={question_id:$('.question_id').val(),question_type:$('.question_type').val(),member_id:$('.member_id').val(),media_Res:URL.createObjectURL(blob)}
                             console.log(dataToSend)
                             debugger;
-                            $.post("/mock/save",dataToSend,(res,status)=>{
-                                console.log(res)
-                                console.log(status)
-                            });
+                            // $.post("/mock/save",dataToSend,(res,status)=>{
+                            //     console.log(res)
+                            //     console.log(status)
+                            // });
                             // request.send(formData);
 
 

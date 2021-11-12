@@ -1,6 +1,7 @@
 <c:set var="base" value="${pageContext.request.contextPath}"/>
 
 <script src="<c:url value="${base}/resources/js/script.js"/> "></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <!-- Common -->
 <script src="<c:url value="${base}/resources/js/lib/jquery.min.js"/> "></script>
 <script src="<c:url value="${base}/resources/js/lib/jquery.nanoscroller.min.js"/> "></script>

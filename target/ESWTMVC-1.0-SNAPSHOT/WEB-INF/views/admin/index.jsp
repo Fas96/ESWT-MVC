@@ -6,6 +6,7 @@
     <title>Admin Page</title>
 <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
  <c:set var="base" value="${pageContext.request.contextPath}"/>
+
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin/sidebar.jsp" %>
@@ -177,10 +178,10 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="${base}/logout">
-                                                <i class="ti-power-off"></i>
-                                                <span>Logout</span>
-                                            </a>
+                                                <form action="/logout" class="logoutform" method="post">
+                                                    <input type="button" class="logoutBtn" value="Logout">
+                                                </form>
+
                                         </li>
                                     </ul>
                                 </div>
@@ -251,7 +252,12 @@
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+    $(".logoutBtn").on('click',()=>{
+        $('.logoutform').submit();
+    });
+</script>
 
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
 

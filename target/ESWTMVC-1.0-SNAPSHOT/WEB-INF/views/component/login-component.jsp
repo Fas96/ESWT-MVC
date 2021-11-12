@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="header.jsp"/>
 <div class="unix-login">
@@ -9,7 +10,12 @@
 
                     <div class="login-form">
                         <h4>Member Login </h4>
-                        <form class="login-form" action="/processLogin" method="post" name="login" commandName="member">
+                        <c:if test="${param.error}" >
+                            <div class="alert alert-danger" role="alert">
+                                The login ID/PW is wrong
+                            </div>
+                        </c:if>
+                        <form action="/processLogin" class="login-form"  method="post"   commandName="member">
                             <div class="form-group">
                                 <label>Member N&#8711;</label>
                                 <input type="text" path="member_id" class="form-control" name="member_id" placeholder="member_id" required >
