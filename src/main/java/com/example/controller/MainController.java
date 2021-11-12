@@ -63,25 +63,21 @@ public class    MainController {
     }
 
     @PostMapping("/processLogin")
-    String processLogin(Member member,HttpServletResponse res,HttpServletRequest req) throws IOException {
-        System.out.println("=========coming herereer");
-        //TODO set cookie here for the login user
-        // check if user can be found in db else redirect them to failed page
+    String processLogin(Member member, HttpServletRequest req) throws IOException {
+
         HttpSession session = req.getSession();
         Member byId = memberMapper.findMemberById(member.getMember_id());
 
-        //set Application Context when login in success
-        System.out.println(member);
-        System.out.println(byId);
-        System.out.println("::::::::::::::::::::::::::::::::::");
 
         if(byId==null){
            return "redirect: /login?error=true";
         }else{
-            //TODO add this question id and member id to application context when logged in
+
             Question question = questionMapper.findQuestionNonAnsweredQuestion(Integer.parseInt(byId.getMember_id()));
+            session.setAttribute("displayQuestion",question);
             session.setAttribute("isLoggedIn",true);
             session.setAttribute("fname",byId.getMember_name());
+            session.setAttribute("member_id",Integer.parseInt(byId.getMember_id()));
           return "redirect: /home";
         }
 

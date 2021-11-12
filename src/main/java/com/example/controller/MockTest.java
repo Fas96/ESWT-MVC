@@ -24,11 +24,8 @@ public class MockTest {
     @GetMapping("/testExample")
     public ModelAndView testExample(@RequestParam( value = "questionId", required=false) Integer questionId, ModelAndView model){
 
-            Question question = questionMapper.findQuestionNonAnsweredQuestion(22);
-
-            model.addObject("displayQuestion",question);
             model.addObject("answer",new Answer());
-            model.addObject("member_id",22);
+
 //          model.addObject("questions",questionMapper.getAllQuestions());
             model.setViewName("/admin/audio/test-example");
 
@@ -41,12 +38,6 @@ public class MockTest {
         return "redirect:/mock/testExample";
     }
 
-
-
-//    @ModelAttribute("questions")
-//    public List<Question> shareQuestions(){
-//        return questionMapper.getAllQuestions();
-//    }
 
 
 

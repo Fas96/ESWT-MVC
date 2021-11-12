@@ -55,15 +55,8 @@ public class QuestionController {
 
             Question savedQuestion = questionMapper.findQuestionByTitle(question.getQuestion_title());
 
-
-            System.out.println("=======================");
-            System.out.println( Objects.requireNonNull(PropertiesLoad.loadLocalStrings()).getProperty("imageUploadDir"));
-            System.out.println("=============checking the property created==========");
-
             String uploadDir= Objects.requireNonNull(PropertiesLoad.loadLocalStrings()).getProperty("imageUploadDir") +savedQuestion.getId();
-            //clean-> delete old files in directory before saving file to directory
-            //FileUploadUtil.clearDir(uploadDir);
-//             String uploadDir, String fileName, MultipartFile multipartFile
+
             if(savedQuestion.getQuestion_media().length()>1){
                 FileUploadUtil.saveFile(uploadDir,question_media_name,question_media);}
             if(savedQuestion.getQuestion_second().length()>1){

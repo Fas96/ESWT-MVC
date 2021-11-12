@@ -20,35 +20,21 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
     final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-
     @Autowired
     AnswerMapper answerMapper;
-
     @Autowired
     EmployeeMapper employeeMapper;
-
     @Autowired
     GradeMapper gradeMapper;
-
     @Autowired
     MemberMapper  memberMapper;
     @Autowired
     QuestionMapper questionMapper;
-
     @Autowired
     SessionMapper sessionMapper;
 
-
-
     @GetMapping("")
-    public String admin(Model model, HttpServletRequest req){
-        HttpSession httpSession = req.getSession();
-        if (httpSession.getAttribute("fname")!=null){
+    public String admin(Model model ){
             model.addAttribute("user","user");
-            return "/admin/index";
-        }else{
-            return "redirect: /";
-        }
-
-    }
+            return "/admin/index";  }
 }
