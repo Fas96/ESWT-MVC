@@ -10,216 +10,18 @@
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
 
 
+    <style>
+        .audio audio{
+            outline: none;
+            background: #0D47A1;
+        }
+    </style>
 
 
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin/sidebar.jsp" %>
-
-<div class="header">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="float-left">
-                    <div class="hamburger sidebar-toggle">
-                        <span class="line"></span>
-                        <span class="line"></span>
-                        <span class="line"></span>
-                    </div>
-                </div>
-                <div class="float-right">
-                    <div class="dropdown dib">
-                        <div class="header-icon" data-toggle="dropdown">
-                            <i class="ti-bell"></i>
-                            <div class="drop-down dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-content-heading">
-                                    <span class="text-left">Recent Notifications</span>
-                                </div>
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img"
-                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
-                                                <div class="notification-content">
-                                                    <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading"><%= session.getAttribute("fname") %></div>
-                                                    <div class="notification-text">5 members joined today</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img"
-                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
-                                                <div class="notification-content">
-                                                    <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading"><%= session.getAttribute("fname") %></div>
-                                                    <div class="notification-text">likes a photo of you</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img"
-                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
-                                                <div class="notification-content">
-                                                    <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Tasnim</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
-                                                        ...
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img"
-                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
-                                                <div class="notification-content">
-                                                    <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading"><%= session.getAttribute("fname") %></div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
-                                                        ...
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="text-center">
-                                            <a href="#" class="more-link">See All</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dropdown dib">
-                        <div class="header-icon" data-toggle="dropdown">
-                            <i class="ti-email"></i>
-                            <div class="drop-down dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-content-heading">
-                                    <span class="text-left">2 New Messages</span>
-                                    <a href="email.html">
-                                        <i class="ti-pencil-alt pull-right"></i>
-                                    </a>
-                                </div>
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li class="notification-unread">
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img"
-                                                     src="${base}/resources/images/avatar/1.jpg" alt=""/>
-                                                <div class="notification-content">
-                                                    <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Michael Qin</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
-                                                        ...
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="notification-unread">
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img"
-                                                     src="${base}/resources/images/avatar/2.jpg" alt=""/>
-                                                <div class="notification-content">
-                                                    <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mr. <%= session.getAttribute("fname") %></div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
-                                                        ...
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img"
-                                                     src="${base}/resources/images/avatar/3.jpg" alt=""/>
-                                                <div class="notification-content">
-                                                    <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Michael Qin</div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
-                                                        ...
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img class="pull-left m-r-10 avatar-img"
-                                                     src="${base}/resources/images/avatar/2.jpg" alt=""/>
-                                                <div class="notification-content">
-                                                    <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                    <div class="notification-heading">Mr. <%= session.getAttribute("fname") %></div>
-                                                    <div class="notification-text">Hi Teddy, Just wanted to let you
-                                                        ...
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="text-center">
-                                            <a href="#" class="more-link">See All</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dropdown dib">
-                        <div class="header-icon" data-toggle="dropdown">
-                                <span class="user-avatar"><%= session.getAttribute("fname") %>
-                                    <i class="ti-angle-down f-s-10"></i>
-                                </span>
-                            <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-content-heading">
-                                    <span class="text-left">Upgrade Now</span>
-                                    <p class="trial-day">30 Days Trail</p>
-                                </div>
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-user"></i>
-                                                <span>Profile</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-email"></i>
-                                                <span>Inbox</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-settings"></i>
-                                                <span>Setting</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-lock"></i>
-                                                <span>Lock Screen</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/ESWT/components/logout.php">
-                                                <i class="ti-power-off"></i>
-                                                <span>Logout</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+<%@ include file="/WEB-INF/views/admin/admin-header.jsp" %>
 
 <div class="content-wrap">
     <div class="main">
@@ -262,40 +64,57 @@
             <!-- row -->
             <%--            question form--%>
             <div class="col-md-12 ">
+
                 <c:set value="${displayQuestion}" var="d"/>
+
                 <c:if test="${d!=null}">
                 <div class="card">
 
-                    <a class="card-title text-center">${d.question_title}</a>
+
                     <div class="card-body">
                         <div class="compose-content ">
+                            <div class="container question_prepclass"><div class="row">
+                                <h1 class="col-lg-6 text-center">Preparation Time: <button type="button" id="question_prepTime"   class="btn-rounded m-2 p-3 btn-outline-info">${d.question_prepTime}</button></div>
+                                </h1>
+                            </div>
                             <form action="/mock/save" method="POST" id="save_form" modelAttribute="answer">
+
                                 <div class="container">
+                                    <div class="row"> <h5 class="col-lg-10 text-center">${d.question_title}</h5></div>
                                     <div class="row">
-                                        <div class="col-lg-6 text-center">
-                                            <input type="hidden"  class="question_type" name="question_type" value="${d.question_type}" path="question_type">
-                                            <input type="hidden" name="question_id" class="question_id" value="${d.id}" path="question_id">
-                                            <input type="hidden" name="member_id" class="member_id" value="${member_id}" path="member_id">
+                                        <input type="hidden"  class="question_type" name="question_type" value="${d.question_type}" path="question_type">
+                                        <input type="hidden" name="question_id" class="question_id" value="${d.id}" path="question_id">
+                                        <input type="hidden" name="member_id" class="member_id" value="${member_id}" path="member_id">
+
                                             <c:choose>
+
                                                 <c:when test="${d.question_type=='WRITING' or d.question_type=='LISTENING'}">
-                                                    <br/><textarea path="text_res" style="height: 100%" placeholder="answer field " class="form-control member_id" name="text_res"></textarea>
-
-
-                                                </c:when>
-                                                <c:when test="${(d.question_type=='SPEAKING' or d.question_type=='READING') and d.question_media!=null}">
-                                                    <img height="400px" width="100%"
-                                                         src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/>
-                                                    <br/>
-                                                    <div class="audio" id="audio">
-                                                        <div class="waves record">
-                                                            <canvas id="visualizer" ></canvas>
-                                                        </div>
+                                                    <div class="col-lg-6 text-center">
+                                                    <br/><textarea path="text_res" style="height: 100%" placeholder="answer field " class="form-control text_res" name="text_res"></textarea>
                                                     </div>
                                                 </c:when>
+
+                                                <c:when test="${(d.question_type=='SPEAKING' or d.question_type=='READING') and d.question_media!=null}">
+                                        <div class="col-lg-6 text-center">
+                                                    <img height="400px" width="100%" src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/><br/>
+                                          </div>
+                                            <div class="col-lg-6 text-center">
+                                                <div class="audio" id="audio_div">
+<%--                                                    put audio content here --%>
+                                                </div>
+<%--                                                    <div class="audio">--%>
+<%--                                                        <div class="waves record">--%>
+<%--                                                            <canvas id="visualizer" ></canvas>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
+                                            </div>
+                                                </c:when>
+
                                                 <c:otherwise>others</c:otherwise>
+
+
                                             </c:choose>
 
-                                        </div>
                                         <div class="col-lg-6 text-center">
                                             <button type="button" id="question_resTime"   class="btn-rounded m-2 p-3 btn-outline-info">${d.question_resTime}</button>
                                         </div>
@@ -329,97 +148,147 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript">
 
 
+        function readBlobAndSendToServer(blob) {
+            //redo
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend =     function () {
+                var base64data = reader.result;
+                var urls = base64data;
+                //var urls=URL.createObjectURL(blob);
+                const file = "data:audio/webm;base64," + base64data;
 
+
+                // var jqxhr = $.post( "/mock/save", {question_id:$(".question_id").serialize() ,question_type: $(".question_type").serialize(),member_id:$(".member_id").serialize(), text_res:"",media_res: file }).done(function() {
+                //         console.log( "second success" );}).fail(function() {
+                //         alert( "error" );});
+
+                var jqxhr = $.post( "/mock/save", {question_id:$(".question_id").val() ,question_type: $(".question_type").val(),member_id:$(".member_id").val(), text_res:"",media_res: file }).done(function() {
+                    console.log( "second success" );}).fail(function() {alert( "error" );});
+
+            }
+
+
+
+        }
 
         $(window).on('load',function() {
-
-            var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-            var isRecording = 0;
-
-            function getAudio(){return navigator.mediaDevices.getUserMedia({audio: true})}
-
-            var device = getAudio()
-            var items =[];
-            device.then(stream=>{
-                recorder = new MediaRecorder(stream);
-
-                recorder.ondataavailable= (e)=>{
-                    items.push(e.data);
-                    if(recorder.state=='inactive'){
-
-                        var blob= new Blob(items,{type:'audio/webm'});
-                        var audio = $('#audio');
-                        var mainaudio=document.createElement('audio');
-                        mainaudio.setAttribute('controls','controls');
-                        // audio.appendChild(mainaudio);
-                        console.log(URL.createObjectURL(blob));
-                        console.log(blob)
-                        // debugger;
-
-                        //redo
-                        var reader = new FileReader();
-                        reader.readAsDataURL(blob);
-                        reader.onloadend = function() {
-                            var base64data = reader.result;
-                            var urls= base64data;
-                            //var urls=URL.createObjectURL(blob);
-                            var formData = new FormData( );
-                            formData.append("urls", urls);
-                            //console.log(formData.get('urls'));
-                            // var request = new XMLHttpRequest();
-                            dataToSend={question_id:$('.question_id').val(),question_type:$('.question_type').val(),member_id:$('.member_id').val(),media_Res:URL.createObjectURL(blob)}
-                            console.log(dataToSend)
-                            debugger;
-                            // $.post("/mock/save",dataToSend,(res,status)=>{
-                            //     console.log(res)
-                            //     console.log(status)
-                            // });
-                            // request.send(formData);
-
-
-                        }
-
-                        mainaudio.innerHTML='<source src="'+URL.createObjectURL(blob)+'"type="video/webm"/>';
-
-                    }
-                }
-                recorder.start(100);
-                isRecording = 1;
-                setTimeout(() => {
-                    isRecording = 0;
-                    recorder.stop();
-                }, 1000 * $('#question_resTime').html());
-            });
-
-
+            $("#question_prepTime").show();
+            $("#save_form").hide();
             setInterval(function() {
-                $('#question_resTime ').html($('#question_resTime').html() - 1);
-                if ($('#question_resTime').html() == '-1') {
-                    $('#question_resTime').hide();
-                    $('.waves').hide();
+                $('#question_prepTime ').html($('#question_prepTime').html() - 1);
+                if ($('#question_prepTime').html() == '-1') {
+                    $("#save_form").show();
+                    $("#question_prepTime").hide();
+                    $(".question_prepclass").hide();
+                    //run the function
+                    runFormQuestionDisplay();
 
                 }
+            },1000);
+            //get user audio
+            const getAudio= function (){return navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, autoGainControl:true, noiseSuppression:true, latency: 0}})}
+            const runResponseTimerAndSubmit=function () {
                 setInterval(function() {
+                    $('#question_resTime ').html($('#question_resTime').html() - 1);
+
                     if ($('#question_resTime').html() == '-1') {
                         $('#save_form').submit();
-                        if(isRecording) {
-                            isRecording = 0;
-                            recorder.stop();
+                    }},1000);
+            }
+            const runWaveDisplayForReadAndSpeak=function() {
+
+                    $('.waves').show();
+                    $(".text_res").hide()
+
+                var device=getAudio()
+                var audioArray=[]
+                device.then(stream=>{
+                    var recorder= new MediaRecorder(stream);
+                    recorder.ondataavailable=e=>{
+                        //adding the blob to array
+                        audioArray.push(e.data);
+
+                        if(recorder.state=='inactive'){
+                            var blob=new Blob(audioArray,{type:'audio/mp3'});
+                            console.log(blob)
+                            // var audioDiv=$('#audio_div')
+                            var mainAudio=document.createElement('audio')
+                            mainAudio.setAttribute('controls',true);
+                            mainAudio.setAttribute('preload', true);
+                            mainAudio.setAttribute('type', 'audio/mp3');
+
+                            mainAudio.innerHTML='<source src="'+URL.createObjectURL(blob)+'" type="audio/mp3"/>';
+                            // alert(blob.size+"|"+blob.text())
+                            $('#audio_div').append(mainAudio);
+                            console.log(URL.createObjectURL(blob));
+
+                            //read Blob and send to server
+                            readBlobAndSendToServer(blob);
+
                         }
                     }
-                },1000);
+                    recorder.start(100);
+                    //sets how long the audio is gonna record
+                    setTimeout(()=>{recorder.stop()},1000 * $('#question_resTime').html())
+                })
 
 
-            },1000);
+
+                runResponseTimerAndSubmit();
+
+            }
+
+            const resize=function(){
+                visualizer.width = visualizer.clientWidth*window.devicePixelRatio
+                visualizer.height = visualizer.clientHeight*window.devicePixelRatio
+            }
+
+            const drawVisualizer= function(){
+                requestAnimationFrame(drawVisualizer)
+                const bufferlength= analizernode.frequencyBinCount
+                const dataArray = new Uint8Array(bufferlength)
+                analizernode.getByteFrequencyData(dataArray)
+                const width = visualizer.width
+                const height = visualizer.height
+                const barwidth = width/bufferlength
+                const canvasContext= visualizer.getContext('2d')
+                canvasContext.clearRect(0,0,width,height)
+
+                dataArray.forEach((item,index)=>{
+                    const y  = item/255 * height
+                    const x = barwidth*index
+                    canvasContext.fillStyle =`hsl( ${ y / height * 400},100%,50%)`
+                    canvasContext.fillRect(x,height-y,barwidth/2,y)
+                })
+
+            }
+            //Displays the form questions
+            const runFormQuestionDisplay=function () {
 
 
+                // if not writing
+                if($('.question_type').val()!='WRITING' ){
+                    $('.waves').hide();
+                    //display waves for only speaking questions
+                    if($('.question_type').val()=='SPEAKING' || $('.question_type').val()=='READING'){
+                        runWaveDisplayForReadAndSpeak()
+                    }else{
+                        //listening
+                        runResponseTimerAndSubmit();
+                    }
 
+                   }else {
+                    //writing
+                    runResponseTimerAndSubmit();
+                }
+            }
         });
+
 
 
 

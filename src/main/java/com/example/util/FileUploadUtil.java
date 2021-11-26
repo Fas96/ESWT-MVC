@@ -38,7 +38,7 @@ public class FileUploadUtil {
             });
         } catch (IOException exception) {
 //            exception.printStackTrace();
-            System.out.println("Could not list the directoriies!!"+ dirPath);
+//            System.out.println("Could not list the directoriies!!"+ dirPath);
         }
     }
 }

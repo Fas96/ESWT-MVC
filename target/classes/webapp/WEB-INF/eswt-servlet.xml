@@ -29,17 +29,16 @@
         <beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <beans:property name="prefix" value="/WEB-INF/views/" />
         <beans:property name="suffix" value=".jsp" />
-
     </beans:bean>
 
 
 <!--    setting beans for all the mapper objects-->
-    <beans:bean class="com.example.dao.MemberMapper"/>
-    <beans:bean class="com.example.dao.EmployeeMapper"/>
-    <beans:bean class="com.example.dao.QuestionMapper"/>
-    <beans:bean class="com.example.dao.AnswerMapper"/>
-    <beans:bean class="com.example.dao.GradeMapper"/>
-    <beans:bean class="com.example.dao.SessionMapper"/>
+    <beans:bean id="memberMapper" class="com.example.dao.MemberMapper"/>
+    <beans:bean id="employeeMapper" class="com.example.dao.EmployeeMapper"/>
+    <beans:bean id="questionMapper" class="com.example.dao.QuestionMapper"/>
+    <beans:bean id="answerMapper" class="com.example.dao.AnswerMapper"/>
+    <beans:bean id="gradeMapper" class="com.example.dao.GradeMapper"/>
+    <beans:bean id="sessionMapper"  class="com.example.dao.SessionMapper"/>
 
     <!-- 파일업로드 관련 Mulitipart 설정 -->
     <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

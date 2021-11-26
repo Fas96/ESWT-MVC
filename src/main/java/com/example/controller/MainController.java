@@ -20,9 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 
 @Controller
+@SessionAttributes({"fname","member_id"})
 public class    MainController {
     //TODO
     //Use application context to set user id in question page
@@ -63,18 +65,18 @@ public class    MainController {
     }
 
     @PostMapping("/processLogin")
+
     String processLogin(Member member, HttpServletRequest req) throws IOException {
 
         HttpSession session = req.getSession();
         Member byId = memberMapper.findMemberById(member.getMember_id());
 
 
+
         if(byId==null){
            return "redirect: /login?error=true";
         }else{
 
-            Question question = questionMapper.findQuestionNonAnsweredQuestion(Integer.parseInt(byId.getMember_id()));
-            session.setAttribute("displayQuestion",question);
             session.setAttribute("isLoggedIn",true);
             session.setAttribute("fname",byId.getMember_name());
             session.setAttribute("member_id",Integer.parseInt(byId.getMember_id()));

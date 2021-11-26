@@ -13,23 +13,23 @@
 <!-- Calender -->
 <script src="<c:url value="${base}/resources/js/lib/jquery-ui/jquery-ui.min.js"/> "></script>
 <script src="<c:url value="${base}/resources/js/lib/moment/moment.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/calendar/fullcalendar.min.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/calendar/fullcalendar-init.js"/> "></script>
+<%--<script src="<c:url value="${base}/resources/js/lib/calendar/fullcalendar.min.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/calendar/fullcalendar-init.js"/> "></script>--%>
 
 <script src="<c:url value="${base}/resources/js/lib/knob/jquery.knob.min.js"/>"></script>
 <script src="<c:url value="${base}/resources/js/lib/knob/knob.init.js"/> "></script>
 
 
-<!--  Peity -->
-<script src="<c:url value="${base}/resources/js/lib/peitychart/jquery.peity.min.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/peitychart/peitychart.init.js"/> "></script>
+<%--<!--  Peity -->--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/peitychart/jquery.peity.min.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/peitychart/peitychart.init.js"/> "></script>--%>
 
-<!--  Sparkline -->
-<script src="<c:url value="${base}/resources/js/lib/sparklinechart/jquery.sparkline.min.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/sparklinechart/sparkline.init.js"/> "></script>
+<%--<!--  Sparkline -->--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/sparklinechart/jquery.sparkline.min.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/sparklinechart/sparkline.init.js"/> "></script>--%>
 
 <!-- Select2 -->
-<script src="<c:url value="${base}/resources/js/lib/select2/select2.full.min.js"/> "></script>
+<%--<script src="<c:url value="${base}/resources/js/lib/select2/select2.full.min.js"/> "></script>--%>
 
 
 <!--  Circle Progress -->
@@ -37,23 +37,23 @@
 <script src="<c:url value="${base}/resources/js/lib/circle-progress/circle-progress-init.js"/> "></script>
 
 
-<!--  Vector Map -->
-<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.min.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.sampledata.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.world.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.algeria.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.argentina.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.brazil.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.france.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.germany.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.greece.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.iran.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.iraq.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.russia.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.tunisia.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.europe.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.usa.js"/> "></script>
+<%--<!--  Vector Map -->--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.min.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.sampledata.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.world.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.algeria.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.argentina.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.brazil.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.france.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.germany.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.greece.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.iran.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.iraq.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.russia.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.tunisia.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.europe.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.usa.js"/> "></script>--%>
 
 
 
@@ -82,13 +82,13 @@
 <script src="<c:url value="${base}/resources/js/lib/jsgrid/fields/jsgrid.field.control.js"/> "></script>
 <script src="<c:url value="${base}/resources/js/lib/jsgrid/jsgrid-init.js"/> "></script>
 
-<!--  Validation -->
-<script src="<c:url value="${base}/resources/js/lib/form-validation/jquery.validate.min.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/form-validation/jquery.validate-init.js"/> "></script>
+<%--<!--  Validation -->--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/form-validation/jquery.validate.min.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/form-validation/jquery.validate-init.js"/> "></script>--%>
 
-<!--  Nestable -->
-<script src="<c:url value="${base}/resources/js/lib/nestable/jquery.nestable.js"/> "></script>
-<script src="<c:url value="${base}/resources/js/lib/nestable/nestable.init.js"/> "></script>
+<%--<!--  Nestable -->--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/nestable/jquery.nestable.js"/> "></script>--%>
+<%--<script src="<c:url value="${base}/resources/js/lib/nestable/nestable.init.js"/> "></script>--%>
 
 <!--ION Range Slider JS-->
 <script src="<c:url value="${base}/resources/js/lib/rangeSlider/ion.rangeSlider.min.js"/> "></script>

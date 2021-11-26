@@ -14,8 +14,7 @@ public class ControllersRest {
 
     @GetMapping("/question/checktitle")
     public String checkQuestionExist(@RequestParam("question_title") String question_title){
-        System.out.println(question_title);
-        System.out.println("=============================");
+
         return (questionMapper.findQuestionByTitle(question_title)!=null)?"EXIST":"NOT EXIST";
     }
 

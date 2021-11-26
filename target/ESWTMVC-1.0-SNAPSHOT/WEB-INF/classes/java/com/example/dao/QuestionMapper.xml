@@ -57,9 +57,9 @@
 
 
     <select id="findQuestionNonAnsweredQuestion" parameterType="Integer" resultType="question" resultMap="result">
-        SELECT q.* FROM  eswtmvc.question q left outer join
-            (select * from eswtmvc.answer where member_id = #{member_id})
-            a  on  q.question_id=a.question_id  where  a.id is null   limit 1;
+        SELECT q.* FROM   question q left outer join
+        (select * from  answer where member_id = #{member_id})
+        a  on  q.question_id=a.question_id  where  a.id is null  AND  (select COUNT(*) from  answer WHERE member_id = #{member_id})<![CDATA[ <= ]]> (select COUNT(*) from  question )
     </select>
 
 
