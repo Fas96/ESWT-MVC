@@ -238,8 +238,13 @@
                 })
 
 
+                setInterval(function() {
+                    $('#question_resTime ').html($('#question_resTime').html() - 1);
 
-                runResponseTimerAndSubmit();
+                    if ($('#question_resTime').html() == '-1') {
+                        window.location.reload();
+                    }},1000);
+                // runResponseTimerAndSubmit();
 
             }
 

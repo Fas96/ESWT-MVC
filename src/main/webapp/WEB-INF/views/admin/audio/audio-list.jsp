@@ -1,3 +1,5 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="java.util.Base64" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +93,10 @@
                                             <tr>
                                                 <td>${a.question_id}</td>
                                                 <td>${a.question_type}</td>
-                                                <td>${a.media_res}</td>
+
+                                                <td><audio autoplay controls src="${a.media_res.substring(23)}"></audio>
+                                                   </td>
+
                                                 <td><a href="${updateLink}">Update</a> | <a
                                                         href="${deleteLink}"
                                                         onclick="if(!(confirm('Are you sure want to delete this Question permanently?'))) return false">Delete</a>

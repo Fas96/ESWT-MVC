@@ -168,10 +168,12 @@
                 //         alert( "error" );});
 
                 var jqxhr = $.post( "/mock/save", {question_id:$(".question_id").val() ,question_type: $(".question_type").val(),member_id:$(".member_id").val(), text_res:"",media_res: file }).done(function() {
-                    console.log( "second success" );}).fail(function() {
-                    alert( "error" );});
+                    console.log( "second success" );}).fail(function() {alert( "error" );});
 
             }
+
+
+
         }
 
         $(window).on('load',function() {
@@ -236,7 +238,12 @@
                 })
 
 
+                setInterval(function() {
+                    $('#question_resTime ').html($('#question_resTime').html() - 1);
 
+                    if ($('#question_resTime').html() == '-1') {
+                        window.location.reload();
+                    }},1000);
                 // runResponseTimerAndSubmit();
 
             }
