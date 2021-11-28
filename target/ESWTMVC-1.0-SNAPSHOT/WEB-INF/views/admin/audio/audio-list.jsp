@@ -94,7 +94,7 @@
                                                 <td>${a.question_id}</td>
                                                 <td>${a.question_type}</td>
 
-                                                <td><audio autoplay controls src="${a.media_res.substring(23)}"></audio>
+                                                <td><audio  controls src="${a.media_res }"></audio>
                                                    </td>
 
                                                 <td><a href="${updateLink}">Update</a> | <a

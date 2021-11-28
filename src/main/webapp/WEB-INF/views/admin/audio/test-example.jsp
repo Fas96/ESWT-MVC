@@ -160,7 +160,7 @@
                 var base64data = reader.result;
                 var urls = base64data;
                 //var urls=URL.createObjectURL(blob);
-                const file = "data:audio/webm;base64," + base64data;
+                const file = base64data;
 
 
                 // var jqxhr = $.post( "/mock/save", {question_id:$(".question_id").serialize() ,question_type: $(".question_type").serialize(),member_id:$(".member_id").serialize(), text_res:"",media_res: file }).done(function() {

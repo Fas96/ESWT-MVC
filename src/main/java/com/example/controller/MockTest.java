@@ -42,23 +42,8 @@ public class MockTest {
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String saveAnswer(Answer save,@RequestBody(required = false) MultiValueMap<String, String> formData ){
 
-        if(formData!=null){
-            System.out.println("-:::::::::::::::::::::::::::::::::::::------------------------");
-            for (Map.Entry<String, List<String>> entry : formData.entrySet()) {
-                System.out.println(entry.getKey()+"::::::::::::::"+entry.getValue());
-            }
-
-            System.out.println("-------:::::::::::::::::::::-----");
-        }
         answerMapper.saveAnswer(save);
         return "redirect:/mock/testExample";
     }
 
-//    @RequestMapping(value="/create", method=RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    public String createRole(@RequestBody MultiValueMap<String, String> formData){
-//        // your code goes here
-//
-//
-//        return "redirect:/mock/testExample";
-//    }
 }
