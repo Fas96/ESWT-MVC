@@ -11,6 +11,8 @@
         <result property="media_res" column="media_res" />
     </resultMap>
 
+
+
     <select id="getAllAnswers" resultType="answer" resultMap="result">
         SELECT * FROM answer
     </select>
@@ -48,8 +50,7 @@
     </select>
 
     <select id="getAllAnswerAudioFiles" resultMap="result" parameterType="java.util.ArrayList"   resultType="answer">
-        select * from answer where question_type
-        in(
+        select * from answer  where question_type in(
         <foreach collection="array" item="item" index="index" separator=",">
             ${item}
         </foreach>)

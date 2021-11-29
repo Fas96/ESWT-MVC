@@ -24,10 +24,16 @@ public class AudioController {
     QuestionMapper questionMapper;
 
     @GetMapping("/list")
-    public ModelAndView listAudios(){
+    public ModelAndView listAudios(ModelAndView mv){
         String[] fileTypeArr={"'SPEAKING'","'READING'"};
-         return new ModelAndView( "/admin/audio/audio-list","answersWithAudio",answerMapper
-                 .getAllAnswerAudioFiles(fileTypeArr));
+        mv.setViewName("/admin/audio/audio-list");
+        System.out.println("--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+        System.out.println(answerMapper.getAllAnswerAudioFiles(fileTypeArr).get(0));
+        System.out.println("--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+
+        mv.addObject("answersWithAudio",answerMapper.getAllAnswerAudioFiles(fileTypeArr));
+//        mv.addObject("", )
+         return mv;
     }
 
     @GetMapping("/edit")

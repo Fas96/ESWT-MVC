@@ -74,6 +74,8 @@
                                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                         <thead>
                                         <tr>
+                                            <th>USERID</th>
+                                            <th>DOWNLOAD</th>
                                             <th>QUESTION-ID</th>
                                             <th>QUESTION-TYPE</th>
                                             <th>MEDIA-RES</th>
@@ -91,11 +93,16 @@
                                             </c:url>
                                             <tbody>
                                             <tr>
+                                                <td>${a.member_id}</td>
+                                                <td><a href ="${a.media_res }" download="member_${a.member_id}_question_${a.question_id}.mp3" >Download</a>
+                                                    |<input type="checkbox" name="member_${a.member_id}_question_${a.question_id}.mp3" value="${a.media_res }">
+                                                </td>
                                                 <td>${a.question_id}</td>
                                                 <td>${a.question_type}</td>
-
-                                                <td><audio  controls src="${a.media_res }"></audio>
-                                                   </td>
+                                                <td><audio width="400" height="38" controls>
+                                                    <source src="${a.media_res }" type="audio/mpeg">
+                                                </audio>
+                                                </td>
 
                                                 <td><a href="${updateLink}">Update</a> | <a
                                                         href="${deleteLink}"
@@ -106,6 +113,9 @@
                                         </c:forEach>
 
                                     </table>
+                                    <div class="col-lg-12 ">
+                                        <button type="button" onclick="downloadAllChecked()" class="btn btn-outline-info float-right">Download Audio&#9745;</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,6 +143,57 @@
 </div>
 
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
+ <script type="text/javascript">
+
+
+     const downloadAllChecked=function () {
+         let checkbox = document.querySelectorAll('input[type=checkbox]')
+         let downloadUrl=[]
+         let downloadNames=[]
+
+
+         for (var i = 0; i < checkbox.length; i++) {
+                 if (checkbox[i].checked) {
+                     // console.log(checkbox[i].value)
+                     downloadUrl.push(checkbox[i].value)
+                     downloadNames.push(checkbox[i].name)
+                 }
+         }
+
+
+         if(downloadUrl.length>0){
+         //download all the checked
+         downloadAll(downloadUrl,downloadNames)
+         }else{
+             alert("Audio Checkbox need to be checked for download!!")
+             return false;
+         }
+
+     }
+
+     function downloadAll(urls,names) {
+         var link = document.createElement('a');
+
+         link.style.display = 'none';
+
+         document.body.appendChild(link);
+
+         for (var i = 0; i < urls.length; i++) {
+             link.setAttribute('download', names[i]);
+             link.setAttribute('href', urls[i]);
+             link.click();
+         }
+
+         document.body.removeChild(link);
+     }
+
+
+
+
+
+
+
+ </script>
 
 
 </body>
