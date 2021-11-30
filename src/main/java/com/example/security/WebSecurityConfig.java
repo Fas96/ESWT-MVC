@@ -7,6 +7,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -39,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/doLogin")
+                .loginProcessingUrl("/processLogin")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .permitAll()
@@ -53,10 +54,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
-                .usersByUsernameQuery("select email ,password,enabled "
-                        + "from  users "
-                        + "where email = ?")
-                .authoritiesByUsernameQuery("select u.email,r.name  from users_roles ur inner join  users u on ur.user_id=u.id  inner join roles r on ur.role_id=r.id  where u.email =?");
+                .usersByUsernameQuery("select member_id ,member_password,enabled "
+                        + "from  member "
+                        + "where member_id = ?")
+                .authoritiesByUsernameQuery("select u.member_id,r.authority  from member_roles ur inner join  member u on ur.member_id=u.member_id  inner join member_roles r on ur.member_id=r.member_id  where u.member_password =?");
     }
 
 }

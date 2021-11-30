@@ -3,6 +3,8 @@ package com.example.controller;
 import com.example.dao.EmployeeMapper;
 import com.example.dao.MemberMapper;
 import com.example.dao.QuestionMapper;
+import com.example.dao.daoInterfaceTest.ArticleMapper;
+import com.example.entity.Employee;
 import com.example.entity.Member;
 import com.example.entity.Question;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +43,7 @@ public class    MainController {
     @Autowired
     MemberMapper memberMapper;
 
+
     @RequestMapping("/home")
     public String home(HttpServletRequest req) {
             return "index";
@@ -47,7 +51,10 @@ public class    MainController {
 
 
     @GetMapping({"/login","/"})
-    public String login(@ModelAttribute("member")Member member   ){return "component/login-component";}
+    public String login(@ModelAttribute("member")Member member   ){
+        System.out.println("::::::::::::::::::::::::::::::::::;");
+        System.out.println("::::::::::::::::::::::::::::::::::;");
+        return "component/login-component";}
 
     private String getCookieValue(HttpServletRequest req, String cookieName) {
         if(req.getCookies()!=null){

@@ -13,6 +13,7 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- Add support for conversion, formatting and validation support -->
@@ -20,6 +21,7 @@
     <context:component-scan base-package="com.example" />
     <mvc:resources location="/WEB-INF/resources/" mapping="/resources/**" />
     <mvc:annotation-driven />
+
 
 
 
@@ -47,6 +49,24 @@
         <!-- 20MB --> <!-- max size of file in memory (in bytes) -->
         <beans:property name="maxInMemorySize" value="1048576"/> <!-- 1MB -->
     </beans:bean>
+
+<!--    mybatis session factory-->
+
+<!--    this configurations is to set session for mybatis database connection-->
+
+    <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <beans:property name="dataSource" ref="mysqlDatasource"/>
+        <beans:property name="configLocation" value="classpath:/mybatis-config.xml"/>
+    </beans:bean>
+
+<!--    //sql running object but to be executed the sqlSessionFactory is needed-->
+<!--    NOTE THE REFERENCE TO THE sqlSessionFactory ABOVE-->
+
+    <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+        <beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </beans:bean>
+
+<!--    scans the directory to the mapper created -->
 
 
 
