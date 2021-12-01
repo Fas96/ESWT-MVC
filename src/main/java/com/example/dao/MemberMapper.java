@@ -13,6 +13,20 @@ public class MemberMapper {
         session.commit();
         session.close();
     }
+    public List<Member> getMembersWhoAnswered(){
+        SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+        @SuppressWarnings("unchecked")
+        List<Member> memberList = session.selectList("getMembersWhoAnswered");
+        session.commit();
+        session.close();
+        return memberList;
+    }
+    public void saveRole(Member member){
+        SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+        session.insert("insertRole", member);
+        session.commit();
+        session.close();
+    }
 
     public void updateMember(Member member){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();

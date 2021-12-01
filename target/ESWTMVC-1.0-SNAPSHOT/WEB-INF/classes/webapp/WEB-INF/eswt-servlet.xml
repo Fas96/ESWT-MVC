@@ -55,14 +55,14 @@
 <!--    this configurations is to set session for mybatis database connection-->
 
     <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <beans:property name="dataSource" ref="mysqlDatasource"/>
+        <beans:property name="dataSource" ref="securitytest"/>
         <beans:property name="configLocation" value="classpath:/mybatis-config.xml"/>
     </beans:bean>
 
 <!--    //sql running object but to be executed the sqlSessionFactory is needed-->
 <!--    NOTE THE REFERENCE TO THE sqlSessionFactory ABOVE-->
 
-    <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+    <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"  >
         <beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </beans:bean>
 

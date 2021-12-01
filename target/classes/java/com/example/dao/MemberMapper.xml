@@ -17,11 +17,22 @@
         SELECT * FROM member
     </select>
 
+
+    <select id="getMembersWhoAnswered" resultType="member" resultMap="result">
+        SELECT DISTINCT m.* FROM  member m inner join  answer a on m.member_id=a.member_id
+    </select>
     <insert id="insertMember" parameterType="member" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO member(
                            member_id,member_password,member_name,member_isRestricted,member_isAdmin
         )
         VALUES(#{member_id}, #{member_password}, #{member_name}, #{member_isRestricted}, #{member_isAdmin})
+    </insert>
+
+<!--    Inserts default roles as STUDENT-->
+
+    <insert id="insertRole" parameterType="member" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO member_roles(username,authority)
+        VALUES(#{member_id}, "ROLE_STUDENT")
     </insert>
 
     <update id="updateMember" parameterType="member">

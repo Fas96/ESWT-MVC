@@ -21,7 +21,7 @@
                         <form commandName="member" action="/processRegister" method="post" name="login" >
                             <div class="form-group">
                                 <label>User Name</label>
-                                <input type="email" name="member_name" class="form-control" placeholder="User Name" path="member.member_name">
+                                <input type="text" name="member_name" class="form-control" pla  ceholder="User Name" path="member.member_name">
                             </div>
                             <div class="form-group">
                                 <label>Member N&#8711;</label>

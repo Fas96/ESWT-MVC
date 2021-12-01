@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dao.*;
 import com.example.entity.Answer;
+import com.example.entity.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,10 @@ public class AdminController {
     SessionMapper sessionMapper;
 
     @GetMapping("")
-    public String admin(Model model ){
+    public String admin(Model model,HttpServletRequest req ){
             model.addAttribute("user","user");
+            HttpSession session = req.getSession();
+            session.setAttribute("isLoggedIn",true);
+
             return "/admin/index";  }
 }

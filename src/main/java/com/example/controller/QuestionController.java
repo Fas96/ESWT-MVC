@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 @Slf4j
 @Controller
-@RequestMapping("/question")
+@RequestMapping("/admin/question")
 public class QuestionController {
     public final String imageUploadDir="C:\\Users\\User\\Desktop\\ESWTMVC\\src\\main\\webapp\\WEB-INF\\resources\\question-images\\";
     // TODO: 2021-10-25 SET AS ENV PROPERTY

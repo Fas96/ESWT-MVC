@@ -7,5 +7,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface ArticleMapper {
     @Select("SELECT * FROM Employee WHERE id = #{id}")
-     Employee getTestEmployee(@Param("id") Long id) ;
+    default Employee getTestEmployee(@Param("id") Long id) {
+        return null;
+    }
 }

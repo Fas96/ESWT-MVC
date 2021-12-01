@@ -21,7 +21,7 @@ public class LogoutController {
 
 
     @GetMapping("/registration")
-    public String registration(@ModelAttribute("member")Member member){
+    public String showRegistration(@ModelAttribute("member")Member member){
         return "component/register";
     }
 }

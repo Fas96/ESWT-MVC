@@ -16,7 +16,7 @@ import java.io.File;
 import java.util.List;
 
 @Controller
-@RequestMapping("/audio")
+@RequestMapping("/admin/audio")
 public class AudioController {
     @Autowired
     AnswerMapper answerMapper;

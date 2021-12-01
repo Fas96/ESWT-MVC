@@ -4,15 +4,18 @@ import com.example.dao.EmployeeMapper;
 import com.example.dao.MemberMapper;
 import com.example.dao.QuestionMapper;
 import com.example.dao.daoInterfaceTest.ArticleMapper;
+import com.example.dao.daoInterfaceTest.ArticleMapperImpl;
 import com.example.entity.Employee;
 import com.example.entity.Member;
 import com.example.entity.Question;
 
+import com.example.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.reactive.WebFluxProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import javax.inject.Inject;
@@ -50,11 +53,17 @@ public class    MainController {
     }
 
 
+
     @GetMapping({"/login","/"})
     public String login(@ModelAttribute("member")Member member   ){
-        System.out.println("::::::::::::::::::::::::::::::::::;");
-        System.out.println("::::::::::::::::::::::::::::::::::;");
-        return "component/login-component";}
+        return "component/login-component";
+    }
+
+    @GetMapping("/access-denied")
+    public String showAccessDenied( ){
+        return "component/access-denied";
+    }
+
 
     private String getCookieValue(HttpServletRequest req, String cookieName) {
         if(req.getCookies()!=null){
@@ -67,23 +76,24 @@ public class    MainController {
     }
 
     @PostMapping("/processRegister")
-    String processRegister(Member member){
-        return "redirect: /home";
+    String processRegister(Member member, RedirectAttributes redirectAttributes){
+
+        memberMapper.saveMember(member);
+        //defualt registered user is Student
+        Role r = new Role(member.getMember_id(), "ROLE_STUDENT");
+        memberMapper.saveRole(member);
+        redirectAttributes.addFlashAttribute("regUser",member.getMember_name());
+
+        return "redirect: /login?registered=true";
     }
 
     @PostMapping("/processLogin")
-
     String processLogin(Member member, HttpServletRequest req) throws IOException {
-
         HttpSession session = req.getSession();
         Member byId = memberMapper.findMemberById(member.getMember_id());
-
-
-
         if(byId==null){
            return "redirect: /login?error=true";
         }else{
-
             session.setAttribute("isLoggedIn",true);
             session.setAttribute("fname",byId.getMember_name());
             session.setAttribute("member_id",Integer.parseInt(byId.getMember_id()));

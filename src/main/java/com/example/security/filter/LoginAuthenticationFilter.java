@@ -14,25 +14,26 @@ public class LoginAuthenticationFilter implements Filter {
     }
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest req= (HttpServletRequest) servletRequest;
-        HttpServletResponse resp= (HttpServletResponse) servletResponse;
-        String servletPath = req.getServletPath();
-        if("/".equals(servletPath)||"/login".equals(servletPath)||"/processLogin".equals(servletPath)||"login-component.jsp".equals(servletPath)){
-            filterChain.doFilter(servletRequest,servletResponse);
-            return;
-        }else {
-            Object isLoginIn = req.getSession().getAttribute("isLoggedIn");
-            if (isLoginIn != null) {
-                Boolean loginIn = (Boolean) isLoginIn;
-                if (loginIn) {
-                    filterChain.doFilter(servletRequest, servletResponse);
-                    return;
-                }
-
-            }
-            resp.sendRedirect("/");
-
-        }
+//        HttpServletRequest req= (HttpServletRequest) servletRequest;
+//        HttpServletResponse resp= (HttpServletResponse) servletResponse;
+//        String servletPath = req.getServletPath();
+//        if("/".equals(servletPath)||"/login".equals(servletPath)||"/processLogin".equals(servletPath)||"login-component.jsp".equals(servletPath)){
+//            filterChain.doFilter(servletRequest,servletResponse);
+//            return;
+//        }else {
+//            Object isLoginIn = req.getSession().getAttribute("isLoggedIn");
+//            if (isLoginIn != null) {
+//                Boolean loginIn = (Boolean) isLoginIn;
+//                if (loginIn) {
+//                    filterChain.doFilter(servletRequest, servletResponse);
+//                    return;
+//                }
+//
+//            }
+//            resp.sendRedirect("/");
+//
+//        }
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
 }

@@ -77,7 +77,7 @@
                                 <h1 class="col-lg-6 text-center">Preparation Time: <button type="button" id="question_prepTime"   class="btn-rounded m-2 p-3 btn-outline-info">${d.question_prepTime}</button></div>
                                 </h1>
                             </div>
-                            <form action="/mock/save" method="POST" id="save_form" modelAttribute="answer">
+                            <form action="/admin/mock/save" method="POST" id="save_form" modelAttribute="answer">
 
                                 <div class="container">
                                     <div class="row"> <h5 class="col-lg-10 text-center">${d.question_title}</h5></div>
@@ -166,8 +166,8 @@
                 // var jqxhr = $.post( "/mock/save", {question_id:$(".question_id").serialize() ,question_type: $(".question_type").serialize(),member_id:$(".member_id").serialize(), text_res:"",media_res: file }).done(function() {
                 //         console.log( "second success" );}).fail(function() {
                 //         alert( "error" );});
-
-                var jqxhr = $.post( "/mock/save", {question_id:$(".question_id").val() ,question_type: $(".question_type").val(),member_id:$(".member_id").val(), text_res:"",media_res: file }).done(function() {
+                var token = $('[name=__RequestVerificationToken]').val();
+                var jqxhr = $.post( "/admin/mock/save", {question_id:$(".question_id").val() ,__RequestVerificationToken: token,question_type: $(".question_type").val(),member_id:$(".member_id").val(), text_res:"",media_res: file }).done(function() {
                     console.log( "second success" );}).fail(function() {alert( "error" );});
 
             }

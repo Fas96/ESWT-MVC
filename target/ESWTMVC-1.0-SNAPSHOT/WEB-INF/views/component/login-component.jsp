@@ -10,12 +10,22 @@
 
                     <div class="login-form">
                         <h4>Member Login </h4>
-                        <c:if test="${param.error}" >
-                            <div class="alert alert-danger" role="alert">
-                                The login ID/PW is wrong
+                        <c:if test="${param.registered !=null}">
+                            <div class="alert alert-success" role="alert">
+                               ${param.regUser} Successfully Registered!!Login
                             </div>
                         </c:if>
-                        <form action="/processLogin" class="login-form"  method="post"   commandName="member">
+                        <c:if test="${param.error !=null}">
+                            <div class="alert alert-danger" role="alert">
+                                User wrong password/username
+                            </div>
+                        </c:if>
+                        <c:if test="${param.logout !=null}">
+                            <div class="alert alert-success" role="alert">
+                                Success logout!
+                            </div>
+                        </c:if>
+                        <form action="${pageContext.request.contextPath}/authenticateTheUser" class="login-form"  method="post"   commandName="member">
                             <div class="form-group">
                                 <label>Member N&#8711;</label>
                                 <input type="text" path="member_id" class="form-control" name="member_id" placeholder="member_id" required >

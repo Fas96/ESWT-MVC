@@ -49,13 +49,66 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="compose-content">
-                            <h4>Score Edit Page</h4>
+                            <h4>Student List</h4>
 
                         </div>
                     </div>
                 </div>
             </div>
             <!-- row -->
+
+            <!-- row -->
+            <!-- /# row -->
+            <section id="main-content-top">
+                <div class="row">
+
+                    <div class="col-lg-12 ">
+                        <button type="button"
+                                onclick="window.location.href = 'list'; return false;"
+                                class="btn btn-outline-info float-right">List</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="bootstrap-data-table-panel">
+                                <div class="table-responsive">
+                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>NAME</th>
+                                            <th>ROLE</th>
+                                            <th>ACTION</th>
+                                        </tr>
+                                        </thead>
+
+                                        <c:forEach items="${getMembersWhoAnswered}" var="e">
+                                            <c:url var="gradeLink" value="/admin/data/edit">
+                                                <c:param name="gradeId" value="${e.member_id}" />
+                                            </c:url>
+                                            <tbody>
+                                            <tr>
+                                                <td>${e.member_id}</td>
+                                                <td>${e.member_name}</td>
+                                                <td>ROLE</td>
+                                                <td><a href="${gradeLink}" class="btn btn-outline-info">Grade</a>
+
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </c:forEach>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <!-- /# row -->
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
