@@ -71,9 +71,9 @@
                      <a href="${pageContext.request.contextPath}/admin"> Assist</a><br>
                      <a href="${pageContext.request.contextPath}/student"> Student</a><br>
                  </c:when>
-                 <c:otherwise>
-                     <a href="${pageContext.request.contextPath}/student"> Student</a><br>
-                 </c:otherwise>
+                 <c:when test="${isSTUDENT}">
+                     <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>
+                 </c:when>
              </c:choose>
 
 

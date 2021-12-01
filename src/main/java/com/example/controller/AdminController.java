@@ -41,4 +41,7 @@ public class AdminController {
             session.setAttribute("isLoggedIn",true);
 
             return "/admin/index";  }
+
+
+
 }

@@ -38,8 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/resources/**").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("PROFESSOR","DEV","ASSIST")
-//                .antMatchers("/admin/question/**").hasAnyRole("PROFESSOR","DEV")
+                .antMatchers("/exams/**").hasAnyRole("PROFESSOR","DEV","STUDENT")
 //                .antMatchers("/student/**").hasAnyRole("STUDENT","DEV","PROFESSOR")
 //                .antMatchers("/assist/**").hasAnyRole("ASSIST","DEV","PROFESSOR")
 //                .antMatchers("/prof/**","/dev/**").hasAnyRole("DEV","PROFESSOR")
@@ -71,16 +72,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-}
-
-class PasswordEnconderTest implements PasswordEncoder {
-    @Override
-    public String encode(CharSequence charSequence) {
-        return charSequence.toString();
-    }
-
-    @Override
-    public boolean matches(CharSequence charSequence, String s) {
-        return charSequence.toString().equals(s);
-    }
 }

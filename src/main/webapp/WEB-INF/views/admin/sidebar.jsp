@@ -37,7 +37,9 @@ body>
           <ul>
             <li><a href="${base}/admin/data/list">students Score list </a></li>
             <li><a href="${base}/admin/data/export">Students Data Export</a></li>
+                <c:if test="${isDEV or isPROFESSOR}">
             <li><a href="${base}/admin/data/edit">Grade Student</a></li>
+                </c:if>
           </ul>
         </li>
         <li><a class="sidebar-sub-toggle"><i class="ti-headphone-alt"></i> Audio <span
