@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,19 +17,18 @@
 
     <!-- Website Title -->
     <title>Tesol speaking writing exams</title>
-    <script
-            src="https://code.jquery.com/jquery-3.6.0.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" crossorigin="anonymous"></script>
     <!-- Styles -->
 
-    <link href="<c:url value="${base}/resources/exam/css/bootstrap.min.css"  /> ">
-    <link href="<c:url value="${base}/resources/exam/css/toastr.min.css"  /> ">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700"   >
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i"  />
-    <link href="<c:url value="${base}/resources/exam/css/bootstrap.css"  /> ">
-    <link href="<c:url value="${base}/resources/exam/css/fontawesome-all.css" /> ">
-    <link href="<c:url value="${base}/resources/exam/css/swiper.css"  /> ">
-    <link href="<c:url value="${base}/resources/exam/css/magnific-popup.css" /> ">
-    <link href="<c:url value="${base}/resources/exam/css/styles.css"  /> ">
+    <link rel="stylesheet" href="<c:url value="${base}/resources/exam/css/bootstrap.min.css"  /> ">
+    <link rel="stylesheet" href="<c:url value="${base}/resources/exam/css/toastr.min.css"  /> ">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700"   >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i"  />
+    <link rel="stylesheet" href="<c:url value="${base}/resources/exam/css/bootstrap.css"  /> ">
+    <link rel="stylesheet" href="<c:url value="${base}/resources/exam/css/fontawesome-all.css" /> ">
+    <link rel="stylesheet" href="<c:url value="${base}/resources/exam/css/swiper.css"  /> ">
+    <link rel="stylesheet"  href="<c:url value="${base}/resources/exam/css/magnific-popup.css" /> ">
+    <link rel="stylesheet" href="<c:url value="${base}/resources/exam/css/styles.css"  /> ">
 
     <!-- Favicon  -->
     <link rel="icon"  href="<c:url value="${base}/resources/exam/images/favicon.png"/> ">
@@ -52,7 +54,7 @@
     <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Leno</a> -->
 
     <!-- Image Logo -->
-    <a class="navbar-brand logo-image" href="index.php"><img src="${base}./exam/images/logo.JPG" alt="alternative" ></a>
+    <a class="navbar-brand logo-image" href="/exams/start"><img  src="<c:url value="${base}/resources/exam/images/logo.JPG"/> "></a>
 
     <!-- Mobile Menu Toggle Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,33 +68,20 @@
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>
             </li>
-            <?php if(!empty($_SESSION['studentID'])) { ?>
-            <li class="nav-item">
-                <form method="post" action="/logout">
-                <input type="submit" value="Logout" class="btn btn-outline">
-                </form>
-            </li>
+
 
             <li class="nav-item">
-                <a class="nav-link page-scroll" id="user_name" href="" > <?=$_SESSION['studentName'] ?></a>
+                <a class="nav-link page-scroll" id="user_name" href="" > <security:authentication property="principal.username"/><br> </a>
             </li>
-            <?php } ?>
+
+
 
         </ul>
         <span class="nav-item social-icons">
-                <span class="fa-stack">
-                    <a href="#your-link">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-facebook-f fa-stack-1x"></i>
-                    </a>
-                </span>
-                <span class="fa-stack">
-                    <a href="#your-link">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-twitter fa-stack-1x"></i>
-                    </a>
-                </span>
-            </span>
+                <form method="post" action="/logout">
+                    <input type="submit" value="Logout" class="btn-solid-reg">
+                </form>
+        </span>
     </div>
 </nav> <!-- end of navbar -->
 <!-- end of navbar -->
@@ -110,7 +99,7 @@
                         <p class="p-large"> [준비가 되었으면 시작 버튼를 클릭하십시오.]</p>
 
 
-                        <a class="btn-solid-lg page-scroll" href="testPage.php"><i class="fas fa-assistive-listening-systems"></i> Start <i class="fas fa-microphone-alt"></i></a>
+                        <a class="btn-solid-lg page-scroll" href="/exams/startExams"><i class="fas fa-assistive-listening-systems"></i> Start <i class="fas fa-microphone-alt"></i></a>
                     </div>
                 </div> <!-- end of col -->
 

@@ -49,6 +49,10 @@
         SELECT * FROM answer WHERE id = #{id}
     </select>
 
+    <select id="findAnswerByMemberID" parameterType="String" resultType="answer" resultMap="result">
+        SELECT * FROM answer WHERE member_id = #{id}
+    </select>
+
     <select id="getAllAnswerAudioFiles" resultMap="result" parameterType="java.util.ArrayList"   resultType="answer">
         SELECT a.* ,m.member_name FROM  answer a  join member m where a.member_id=m.member_id and question_type in(
         <foreach collection="array" item="item" index="index" separator=",">

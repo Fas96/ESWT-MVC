@@ -48,6 +48,14 @@ public class AnswerMapper {
     }
 
 
+    public List<Answer> findAnswerByMemberID(String MemberID){
+        SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+        @SuppressWarnings("unchecked")
+        List<Answer> answersList = session.selectList("findAnswerByMemberID",MemberID);
+        session.commit();
+        session.close();
+        return answersList;
+    }
     public Answer findAnswerById(int answerId){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
         Answer answer = (Answer) session.selectOne("findAnswerById", answerId);

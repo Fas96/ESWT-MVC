@@ -9,7 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StudentController {
 
     @GetMapping("/start")
-    public String admin( ){
+    public String showExam(){
         return "/component/exam-start";
+    }
+
+
+    @GetMapping("/startExams")
+    public String showStartExams( ){
+        return "/component/test-page";
     }
 }

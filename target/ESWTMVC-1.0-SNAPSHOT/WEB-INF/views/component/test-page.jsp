@@ -13,7 +13,16 @@
     <!-- SEO Meta Tags -->
     <meta name="author" content="fas">
 
+<style>
+    .examsContent{
 
+        padding:0px;
+        margin:0px;
+        height: 100%;
+        min-height: 100%;
+
+    }
+</style>
 
     <!-- Website Title -->
     <title>Tesol speaking writing exams</title>
@@ -54,7 +63,7 @@
     <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Leno</a> -->
 
     <!-- Image Logo -->
-    <a class="navbar-brand logo-image" href="/exams/start"><img  src="<c:url value="${base}/resources/exam/images/logo.JPG"/> "></a>
+    <a class="navbar-brand logo-image" href="${pageContext.request.contextPath}"><img  src="<c:url value="${base}/resources/exam/images/logo.JPG"/> "></a>
 
     <!-- Mobile Menu Toggle Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,31 +97,31 @@
 
 
 <!-- Header -->
-<header id="header" class="header main_header">
+<header id="header" class="header questiondplay">
     <div class="header-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="text-container toptxt">
-                        <h1>ENGLISH TEST <br>FOR <span id="js-rotating">LISTENING, WRITING, SPEAKING</span></h1>
-                        <p class="p-large">If you are ready to take your test click Start </p>
-                        <p class="p-large"> [준비가 되었으면 시작 버튼를 클릭하십시오.]</p>
-
-
-                        <a class="btn-solid-lg page-scroll" href="/exams/startExams"><i class="fas fa-assistive-listening-systems"></i> Start <i class="fas fa-microphone-alt"></i></a>
+        <div class="examsContent">
+            <div class="card" style="width: inherit" >
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center">Question Title</h5>
+                    <div style="width: inherit" class="row">
+                        <div class="col-md-5" style="text-align: center">
+                            q
+                        </div>
+                        <div class="col-md-5" style="text-align: center">
+                            as
+                        </div>
                     </div>
-                </div> <!-- end of col -->
-
-
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
+                </div>
+            </div>
+        </div>
     </div> <!-- end of header-content -->
 </header> <!-- end of header -->
 <!-- end of header -->
 
 
 
-<!-- audio recording -->
+
+
 
 
 <div class="copyright">
@@ -138,8 +147,3 @@
 <script src="<c:url value="${base}/resources/exam/js/scripts.js"/> "></script> <!-- Custom scripts -->
 </body>
 </html>
-
-
-
-
-
