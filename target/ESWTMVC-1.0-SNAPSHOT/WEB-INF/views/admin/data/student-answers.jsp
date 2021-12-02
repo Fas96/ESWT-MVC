@@ -128,13 +128,13 @@
                                                 </td>
                                                 <td>
                                                     <!-- Button trigger modal -->
-                                                    <c:if test="${e.question_type eq 'WRITING' or e.question_type eq'LISTENING'}">
+<%--                                                    <c:if test="${e.question_type eq 'WRITING' or e.question_type eq'LISTENING'}">--%>
                                                         <button type="button" class="btn btn-outline-info showModelbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                             Mark_${e.question_id}
                                                         </button>
-                                                    </c:if>
+<%--                                                    </c:if>--%>
 
-                                                    <a href="${questionLink}" class="btn btn-outline-info">See Detail</a>
+<%--                                                    <a href="${questionLink}" class="btn btn-outline-info">See Detail</a>--%>
 
                                                 </td>
                                             </tr>
@@ -142,17 +142,37 @@
                                         </c:forEach>
 <%--                                        <div class="input-group visually-hidden">--%>
 <%--                                        create a form to submit this data to the server--%>
-                                        <div class="input-group visually-hidden gradeInputs">
-                                            <span class="input-group-text questionIdGrade">Grade</span>
-                                            <span class="input-group-text">Task completion</span> <input type="text" name="taskCompletion"  class="form-control">
-                                            <span class="input-group-text">Fluency</span><input type="number" name="fluency"   class="form-control">
-                                            <span class="input-group-text">Coherence</span><input type="number" name="coherence"   class="form-control">
-                                            <span class="input-group-text">Pronunciation</span><input type="number" name="Pronunciation"  class="form-control">
-                                            <span class="input-group-text">Language Use</span><input type="number" name="languageUse"   class="form-control">
-                                            <span class="input-group-text">Grammar</span><input type="number" name="grammar"   class="form-control">
-                                            <span class="input-group-text">Holistic Score</span><input type="number" name="holisticScore"   class="form-control">
-                                             <input type="submit" value="submit">
+<%--                                        when inserting the grade update if exist--%>
+                                        <div class="visually-hidden gradeInputsSpeakingREADING">
+                                            <span class="input-group-text text-center">Mark a score out of 9, the full score</span><br>
+                                            <div class="input-group ">
+                                                <span class="input-group-text questionIdGrade">Grade</span>
+                                                <span class="input-group-text">Task completion</span> <input type="text" name="taskCompletion"  class="form-control">
+                                                <span class="input-group-text">Fluency</span><input type="number" name="fluency"   class="form-control">
+                                                <span class="input-group-text">Coherence</span><input type="number" name="coherence"   class="form-control">
+                                                <span class="input-group-text">Pronunciation</span><input type="number" name="Pronunciation"  class="form-control">
+                                                <span class="input-group-text">Language Use</span><input type="number" name="languageUse"   class="form-control">
+                                                <span class="input-group-text">Grammar</span><input type="number" name="grammar"   class="form-control">
+                                                <span class="input-group-text">Holistic Score</span><input type="number" name="holisticScore"   class="form-control">
+                                                <input type="submit" value="submit">
+                                            </div>
                                         </div>
+
+                                        <div class="visually-hidden gradeInputsWRITINGLISTENING">
+                                            <span class="input-group-text text-center">Mark a score out of 9, the full score</span><br>
+                                            <div class="input-group  ">
+                                                <span class="input-group-text questionIdGrade">Grade</span>
+                                                <span class="input-group-text">Task completion</span> <input type="text" name="taskCompletion"  class="form-control">
+                                                <span class="input-group-text">Grammar</span><input type="number" name="grammar"   class="form-control">
+                                                <span class="input-group-text">Logic</span><input type="number" name="logic"   class="form-control">
+                                                <span class="input-group-text">Language Use</span><input type="number" name="languageUse"   class="form-control">
+                                                <span class="input-group-text">Mechanics</span><input type="number" name="mechanics"   class="form-control">
+                                                <span class="input-group-text">Content</span><input type="number" name="content"   class="form-control">
+                                                <span class="input-group-text">Holistic Score</span><input type="number" name="holisticScore"   class="form-control">
+                                                <input type="submit" value="submit">
+                                            </div>
+                                        </div>
+
                                     </table>
 
                                 </div>
@@ -186,8 +206,20 @@
                         $('.showModelbtn').on('click',function () {
                              var getQuetionNum=(this.innerHTML).split("_")[1]
 
+                            if($(".question_type_"+getQuetionNum).text()=='SPEAKING' || $(".question_type_"+getQuetionNum).text()=='READING' ){
 
-                            $('.gradeInputs').removeClass('visually-hidden')
+
+                                $(".gradeInputsWRITINGLISTENING").addClass('visually-hidden');
+
+                                $('.gradeInputsSpeakingREADING').removeClass('visually-hidden')
+                            }else if($(".question_type_"+getQuetionNum).text()=='LISTENING' || $(".question_type_"+getQuetionNum).text()=='WRITING' ){
+
+                                $('.gradeInputsWRITINGLISTENING').removeClass('visually-hidden')
+
+                                  $(".gradeInputsSpeakingREADING").addClass('visually-hidden');
+                            }
+
+
 
                             $('.modalTitleContent').text("Question: "+getQuetionNum+" "+$(".question_type_"+getQuetionNum).text() );
                             $('.modalBodyContent').html("<p>"+$(".text_res_"+getQuetionNum).text()+"</p>");
