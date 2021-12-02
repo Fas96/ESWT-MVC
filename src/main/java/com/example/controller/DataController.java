@@ -2,11 +2,13 @@ package com.example.controller;
 
 import com.example.dao.AnswerMapper;
 import com.example.dao.MemberMapper;
+import com.example.entity.Grade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,6 +53,13 @@ public class DataController {
          mv.addObject("questionList",answerMapper.findAnswerByMemberID(gradeId.toString()));
         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         return mv;
+    }
+
+    //append the current page param to return to same page
+    @PostMapping("saveGrade")
+    public String saveGrade(Grade grade){
+
+        return "redirect:/admin/data----";
     }
 
     @GetMapping("/export")

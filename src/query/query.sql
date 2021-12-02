@@ -7,3 +7,11 @@ FROM product WHERE product.id = 1;
 
 --  selecting members who answered and their roles
 SELECT DISTINCT m.*,(select GROUP_CONCAT(CONCAT('["',mr.authority,"]")) from member_roles mr where mr.username=m.member_id group by (mr.username)  ) as ROLES FROM  member m inner join  answer a on m.member_id=a.member_id ;
+
+-- changing the grade table
+ALTER TABLE eswtmvc.grade
+    ADD (
+        Logic   tinyint,
+        Mechnics   tinyint,
+        Content tinyint
+        );

@@ -1,5 +1,12 @@
 package com.example.entity;
 
+import lombok.*;
+
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Grade {
     private Integer id;
     private Integer question_id;
@@ -16,26 +23,12 @@ public class Grade {
     private Integer isMarked ;
     private String answer_memo;
 
+    private Integer Logic ;
+    private Integer Mechnics  ;
+    private Integer Content ;
 
-    @Override
-    public String toString() {
-        return "Grade{" +
-                "id=" + id +
-                ", question_id=" + question_id +
-                ", member_id='" + member_id + '\'' +
-                ", question_type='" + question_type + '\'' +
-                ", session_id=" + session_id +
-                ", answer_taskCompletion=" + answer_taskCompletion +
-                ", answer_fluency=" + answer_fluency +
-                ", answer_coherence=" + answer_coherence +
-                ", answer_pronounciation=" + answer_pronounciation +
-                ", answer_languageUse=" + answer_languageUse +
-                ", answer_grammar=" + answer_grammar +
-                ", score=" + score +
-                ", isMarked=" + isMarked +
-                ", answer_memo='" + answer_memo + '\'' +
-                '}';
-    }
+
+
 
     public Integer getId() {
         return id;

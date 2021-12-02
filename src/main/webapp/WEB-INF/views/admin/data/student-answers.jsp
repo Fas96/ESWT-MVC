@@ -119,20 +119,26 @@
                                                 <td class="question_id">${e.question_id}</td>
                                                 <td class="question_type_${e.question_id}">${e.question_type}</td>
                                                 <td style="word-break: break-all" class="text_res_${e.question_id}">${e.text_res}</td>
+                                                <p class="visually-hidden media_res_${e.question_id}"> ${e.media_res}</p>
                                                 <td >
                                                     <c:if test="${e.media_res!=null}">
-                                                    <audio class="btn btn-outline media_res"   controls>
+                                                    <audio class="btn btn-outline"   controls>
                                                     <source src="${e.media_res }" type="audio/mpeg">
                                                      </audio>
                                                     </c:if>
                                                 </td>
                                                 <td>
                                                     <!-- Button trigger modal -->
-<%--                                                    <c:if test="${e.question_type eq 'WRITING' or e.question_type eq'LISTENING'}">--%>
+                                                    <c:if test="${e.question_type eq 'WRITING' or e.question_type eq'LISTENING'}">
                                                         <button type="button" class="btn btn-outline-info showModelbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                             Mark_${e.question_id}
                                                         </button>
-<%--                                                    </c:if>--%>
+                                                    </c:if>
+                                                    <c:if test="${e.question_type eq 'SPEAKING' or e.question_type eq'READING'}">
+                                                        <button class="btn btn-outline-info showModelbtn">
+                                                            Mark_${e.question_id}
+                                                        </button>
+                                                    </c:if>
 
 <%--                                                    <a href="${questionLink}" class="btn btn-outline-info">See Detail</a>--%>
 
@@ -143,6 +149,7 @@
 <%--                                        <div class="input-group visually-hidden">--%>
 <%--                                        create a form to submit this data to the server--%>
 <%--                                        when inserting the grade update if exist--%>
+                                        <form action="/admin/data/saveGrade" method="post">
                                         <div class="visually-hidden gradeInputsSpeakingREADING">
                                             <span class="input-group-text text-center">Mark a score out of 9, the full score</span><br>
                                             <div class="input-group ">
@@ -157,7 +164,9 @@
                                                 <input type="submit" value="submit">
                                             </div>
                                         </div>
+                                        </form>
 
+                                        <form action="/admin/data/saveGrade" method="post">
                                         <div class="visually-hidden gradeInputsWRITINGLISTENING">
                                             <span class="input-group-text text-center">Mark a score out of 9, the full score</span><br>
                                             <div class="input-group  ">
@@ -172,7 +181,7 @@
                                                 <input type="submit" value="submit">
                                             </div>
                                         </div>
-
+                                        </form>
                                     </table>
 
                                 </div>
@@ -208,6 +217,8 @@
 
                             if($(".question_type_"+getQuetionNum).text()=='SPEAKING' || $(".question_type_"+getQuetionNum).text()=='READING' ){
 
+                                // alert($('.media_res_'+getQuetionNum).text())
+                                // alert('<audio class="btn btn-outline"   controls> <source src="+$(".media_res_"+getQuetionNum).text()+" type="audio/mpeg"> </audio>')
 
                                 $(".gradeInputsWRITINGLISTENING").addClass('visually-hidden');
 
