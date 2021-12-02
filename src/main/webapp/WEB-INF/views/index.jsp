@@ -61,15 +61,15 @@
              <c:choose>
                  <c:when test="${isDEV}">
                      <a href="${pageContext.request.contextPath}/admin"> Dev</a><br>
-                     <a href="${pageContext.request.contextPath}/student"> Student</a><br>
+                     <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>
                  </c:when>
                  <c:when test="${isPROFESSOR}">
                      <a href="${pageContext.request.contextPath}/admin"> Prof</a><br>
-                     <a href="${pageContext.request.contextPath}/student"> Student</a><br>
+                     <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>
                  </c:when>
                  <c:when test="${isASSIST}">
                      <a href="${pageContext.request.contextPath}/admin"> Assist</a><br>
-                     <a href="${pageContext.request.contextPath}/student"> Student</a><br>
+                     <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>
                  </c:when>
                  <c:when test="${isSTUDENT}">
                      <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>

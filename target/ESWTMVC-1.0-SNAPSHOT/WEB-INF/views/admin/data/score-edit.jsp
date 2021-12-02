@@ -1,10 +1,11 @@
-<?php session_start(); header("Content-type:text/html;charset=utf-8"); ?>
-<?php if(empty($_SESSION)) { header("Location:/ESWT/login.php");die;} ?>
 <!DOCTYPE html>
 <html>
 <head>
 
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
 
     <title>Admin Page</title>
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
@@ -91,7 +92,7 @@
                                             <tr>
                                                 <td>${e.member_id}</td>
                                                 <td>${e.member_name}</td>
-                                                <td>ROLE</td>
+                                                <td>${e.roles.replaceAll("ROLE_","") }</td>
                                                 <td><a href="${gradeLink}" class="btn btn-outline-info">Grade</a>
 
                                                 </td>

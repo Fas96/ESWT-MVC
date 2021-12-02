@@ -38,6 +38,7 @@ public class DataController {
             return "redirect:/admin/data/result";
         }
         //get members who has answer
+        System.out.println(memberMapper.getMembersWhoAnswered());
         mv.addAttribute("getMembersWhoAnswered",memberMapper.getMembersWhoAnswered());
         return "/admin/data/score-edit";
     }

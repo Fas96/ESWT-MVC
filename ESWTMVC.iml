@@ -104,5 +104,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:3.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.7" level="project" />
+    <orderEntry type="library" name="@popperjs/core" level="application" />
   </component>
 </module>

@@ -1,5 +1,3 @@
-<?php session_start(); header("Content-type:text/html;charset=utf-8"); ?>
-<?php if(empty($_SESSION)) { header("Location:/ESWT/login.php");die;} ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +6,13 @@
 
     <title>Admin Page</title>
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+
+<%--    cdn for javascript not working delete later--%>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"  ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"  ></script>
+
+
 
 
 
@@ -57,14 +62,35 @@
             </div>
             <!-- row -->
 
+
+        <%--            the start of the marking modal--%>
+            <div class="modal" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title modalTitleContent">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body ">
+                            <p class="modalBodyContent"> Modal body text goes here.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- row -->
             <!-- /# row -->
             <section id="main-content-top">
+
                 <div class="row">
 
                     <div class="col-lg-12 ">
                         <button type="button"
-                                onclick="window.location.href = 'list'; return false;"
+                                onclick="window.location.href = 'edit'; return false;"
                                 class="btn btn-outline-info float-right">List</button>
                     </div>
                 </div>
@@ -85,25 +111,50 @@
                                         </thead>
 
                                         <c:forEach items="${questionList}" var="e">
-                                            <c:url var="questionLink" value="/admin/data/result">
+                                            <c:url var="questionLink" value="/admin/data/grade">
                                                 <c:param name="questionId" value="${e.question_id}" />
                                             </c:url>
                                             <tbody>
                                             <tr>
-                                                <td>${e.question_id}</td>
-                                                <td>${e.question_type}</td>
-                                                <td>${e.text_res}</td>
-                                                <td>
-                                                        ${a.media_res }
+                                                <td class="question_id">${e.question_id}</td>
+                                                <td class="question_type_${e.question_id}">${e.question_type}</td>
+                                                <td style="word-break: break-all" class="text_res_${e.question_id}">${e.text_res}</td>
+                                                <td >
+                                                    <c:if test="${e.media_res!=null}">
+                                                    <audio class="btn btn-outline media_res"   controls>
+                                                    <source src="${e.media_res }" type="audio/mpeg">
+                                                     </audio>
+                                                    </c:if>
                                                 </td>
-                                                <td><a href="${questionLink}" class="btn btn-outline-info">See Detail</a>
+                                                <td>
+                                                    <!-- Button trigger modal -->
+                                                    <c:if test="${e.question_type eq 'WRITING' or e.question_type eq'LISTENING'}">
+                                                        <button type="button" class="btn btn-outline-info showModelbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Mark_${e.question_id}
+                                                        </button>
+                                                    </c:if>
+
+                                                    <a href="${questionLink}" class="btn btn-outline-info">See Detail</a>
 
                                                 </td>
                                             </tr>
                                             </tbody>
                                         </c:forEach>
-
+<%--                                        <div class="input-group visually-hidden">--%>
+<%--                                        create a form to submit this data to the server--%>
+                                        <div class="input-group visually-hidden gradeInputs">
+                                            <span class="input-group-text questionIdGrade">Grade</span>
+                                            <span class="input-group-text">Task completion</span> <input type="text" name="taskCompletion"  class="form-control">
+                                            <span class="input-group-text">Fluency</span><input type="number" name="fluency"   class="form-control">
+                                            <span class="input-group-text">Coherence</span><input type="number" name="coherence"   class="form-control">
+                                            <span class="input-group-text">Pronunciation</span><input type="number" name="Pronunciation"  class="form-control">
+                                            <span class="input-group-text">Language Use</span><input type="number" name="languageUse"   class="form-control">
+                                            <span class="input-group-text">Grammar</span><input type="number" name="grammar"   class="form-control">
+                                            <span class="input-group-text">Holistic Score</span><input type="number" name="holisticScore"   class="form-control">
+                                             <input type="submit" value="submit">
+                                        </div>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -113,6 +164,7 @@
                 </div>
                 <!-- /# row -->
                 <!-- /# row -->
+
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
@@ -127,9 +179,29 @@
                     </div>
                 </div>
             </section>
-        </div>
-    </div>
-</div>
+
+                <script>
+                    $( document ).ready(function() {
+                        console.log( "ready!" );
+                        $('.showModelbtn').on('click',function () {
+                             var getQuetionNum=(this.innerHTML).split("_")[1]
+
+
+                            $('.gradeInputs').removeClass('visually-hidden')
+
+                            $('.modalTitleContent').text("Question: "+getQuetionNum+" "+$(".question_type_"+getQuetionNum).text() );
+                            $('.modalBodyContent').html("<p>"+$(".text_res_"+getQuetionNum).text()+"</p>");
+
+
+                            $('.questionIdGrade').text("Grade: "+getQuetionNum);
+
+
+                            // alert($('.modalBodyContent').html())
+                        })
+
+                    });
+
+                </script>
 
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
 

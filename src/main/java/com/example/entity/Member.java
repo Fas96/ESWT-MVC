@@ -1,5 +1,8 @@
 package com.example.entity;
 
+import lombok.*;
+
+@Setter@Getter@ToString@NoArgsConstructor@AllArgsConstructor
 public class Member {
     private Integer id;
     private String member_id;
@@ -7,18 +10,16 @@ public class Member {
     private String member_name  ;
     private Boolean member_isRestricted;
     private Boolean member_isAdmin ;
+    private String roles;
 
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "member_id='" + member_id + '\'' +
-                ", member_password='" + member_password + '\'' +
-                ", member_name='" + member_name + '\'' +
-                ", member_isRestricted=" + member_isRestricted +
-                ", member_isAdmin=" + member_isAdmin +
-                '}';
+    public String getRoles() {
+        return roles;
     }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
 
     public String getMember_id() {
         return member_id;
