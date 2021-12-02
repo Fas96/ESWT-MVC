@@ -24,7 +24,7 @@ public class Grade {
     private String answer_memo;
 
     private Integer Logic ;
-    private Integer Mechnics  ;
+    private Integer Mechanics  ;
     private Integer Content ;
 
 

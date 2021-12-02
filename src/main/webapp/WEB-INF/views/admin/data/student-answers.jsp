@@ -116,7 +116,7 @@
                                             </c:url>
                                             <tbody>
                                             <tr>
-                                                <td class="question_id">${e.question_id}</td>
+                                                <td  >${e.question_id}</td>
                                                 <td class="question_type_${e.question_id}">${e.question_type}</td>
                                                 <td style="word-break: break-all" class="text_res_${e.question_id}">${e.text_res}</td>
                                                 <p class="visually-hidden media_res_${e.question_id}"> ${e.media_res}</p>
@@ -149,35 +149,58 @@
 <%--                                        <div class="input-group visually-hidden">--%>
 <%--                                        create a form to submit this data to the server--%>
 <%--                                        when inserting the grade update if exist--%>
-                                        <form action="/admin/data/saveGrade" method="post">
+                                     <%--   question_id;
+                                        private String member_id;
+                                        private String question_type;
+                                        private Integer session_id ;
+                                        private Integer answer_taskCompletion;
+                                        private Integer answer_fluency ;
+                                        private Integer answer_coherence;
+                                        private Integer answer_pronounciation ;
+                                        private Integer answer_languageUse ;
+                                        private Integer answer_grammar ;
+                                        private Integer score;
+                                        private Integer isMarked ;
+                                        private String answer_memo;
+
+                                        private Integer Logic ;
+                                        private Integer Mechnics  ;
+                                        private Integer Content ;--%>
+                                        <form action="/admin/data/saveGrade" method="post" commandName="grade" class="FormgradeInputsSpeakingREADING">
                                         <div class="visually-hidden gradeInputsSpeakingREADING">
                                             <span class="input-group-text text-center">Mark a score out of 9, the full score</span><br>
                                             <div class="input-group ">
                                                 <span class="input-group-text questionIdGrade">Grade</span>
-                                                <span class="input-group-text">Task completion</span> <input type="text" name="taskCompletion"  class="form-control">
-                                                <span class="input-group-text">Fluency</span><input type="number" name="fluency"   class="form-control">
-                                                <span class="input-group-text">Coherence</span><input type="number" name="coherence"   class="form-control">
-                                                <span class="input-group-text">Pronunciation</span><input type="number" name="Pronunciation"  class="form-control">
-                                                <span class="input-group-text">Language Use</span><input type="number" name="languageUse"   class="form-control">
-                                                <span class="input-group-text">Grammar</span><input type="number" name="grammar"   class="form-control">
-                                                <span class="input-group-text">Holistic Score</span><input type="number" name="holisticScore"   class="form-control">
+                                                <input type="hidden" name="question_id" path="question_id" class="question_id" value="">
+                                                <input type="hidden" name="member_id" path="member_id"  value="" class="member_id">
+                                                <input type="hidden" name="question_type"  path="question_type" value="" class="question_type" >
+                                                <span class="input-group-text">Task completion</span> <input type="number" name="answer_taskCompletion" path="answer_taskCompletion" class="form-control">
+                                                <span class="input-group-text">Fluency</span><input type="number" name="answer_fluency" path="answer_fluency"  class="form-control">
+                                                <span class="input-group-text">Coherence</span><input type="number" name="answer_coherence" path="answer_coherence"  class="form-control">
+                                                <span class="input-group-text">Pronunciation</span><input type="number" name="answer_pronounciation" path="answer_pronounciation" class="form-control">
+                                                <span class="input-group-text">Language Use</span><input type="number" name="answer_languageUse" path="answer_languageUse"  class="form-control">
+                                                <span class="input-group-text">Grammar</span><input type="number" name="answer_grammar"  path="answer_grammar" class="form-control">
+                                                <span class="input-group-text">Holistic Score</span><input type="number" name="score"  path="score"  class="form-control">
                                                 <input type="submit" value="submit">
                                             </div>
                                         </div>
                                         </form>
 
-                                        <form action="/admin/data/saveGrade" method="post">
+                                        <form action="/admin/data/saveGrade" method="post" commandName="grade" class="FormgradeInputsWRITINGLISTENING">
                                         <div class="visually-hidden gradeInputsWRITINGLISTENING">
                                             <span class="input-group-text text-center">Mark a score out of 9, the full score</span><br>
                                             <div class="input-group  ">
                                                 <span class="input-group-text questionIdGrade">Grade</span>
-                                                <span class="input-group-text">Task completion</span> <input type="text" name="taskCompletion"  class="form-control">
-                                                <span class="input-group-text">Grammar</span><input type="number" name="grammar"   class="form-control">
-                                                <span class="input-group-text">Logic</span><input type="number" name="logic"   class="form-control">
-                                                <span class="input-group-text">Language Use</span><input type="number" name="languageUse"   class="form-control">
-                                                <span class="input-group-text">Mechanics</span><input type="number" name="mechanics"   class="form-control">
-                                                <span class="input-group-text">Content</span><input type="number" name="content"   class="form-control">
-                                                <span class="input-group-text">Holistic Score</span><input type="number" name="holisticScore"   class="form-control">
+                                                <input type="hidden" name="question_id" path="question_id" class="question_id" value="" >
+                                                <input type="hidden" name="member_id"  value="" class="member_id" >
+                                                <input type="hidden" name="question_type" value="" class="question_type">
+                                                <span class="input-group-text">Task completion</span> <input type="number" name="answer_taskCompletion"  path="answer_taskCompletion"  class="form-control">
+                                                <span class="input-group-text">Grammar</span><input type="number" name="answer_grammar" path="answer_grammar"   class="form-control">
+                                                <span class="input-group-text">Logic</span><input type="number" name="Logic" path="Logic"   class="form-control">
+                                                <span class="input-group-text">Language Use</span><input type="number" name="answer_languageUse"  path="answer_languageUse"  class="form-control">
+                                                <span class="input-group-text">Mechanics</span><input type="number" name="Mechanics" path="Mechanics"  class="form-control">
+                                                <span class="input-group-text">Content</span><input type="number" name="Content" path="Content"  class="form-control">
+                                                <span class="input-group-text">Holistic Score</span><input type="number" name="score" path="score"   class="form-control">
                                                 <input type="submit" value="submit">
                                             </div>
                                         </div>
@@ -223,11 +246,13 @@
                                 $(".gradeInputsWRITINGLISTENING").addClass('visually-hidden');
 
                                 $('.gradeInputsSpeakingREADING').removeClass('visually-hidden')
+
                             }else if($(".question_type_"+getQuetionNum).text()=='LISTENING' || $(".question_type_"+getQuetionNum).text()=='WRITING' ){
 
                                 $('.gradeInputsWRITINGLISTENING').removeClass('visually-hidden')
 
                                   $(".gradeInputsSpeakingREADING").addClass('visually-hidden');
+
                             }
 
 
@@ -238,8 +263,16 @@
 
                             $('.questionIdGrade').text("Grade: "+getQuetionNum);
 
+                            // setting the hidden fields values
+                            // alert(parseInt(getQuetionNum))
+                            //not the value does not work
+                            // $('.question_id').value=parseInt(getQuetionNum);
+                            $('.question_id').attr("value", parseInt(getQuetionNum));
+                            $('.member_id').attr("value", parseInt(window.location.href.split("=")[1]));
+                            $('.question_type').attr("value",$(".question_type_"+getQuetionNum).text());
 
-                            // alert($('.modalBodyContent').html())
+
+
                         })
 
                     });
