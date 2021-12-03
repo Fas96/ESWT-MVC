@@ -50,8 +50,13 @@
     </select>
 
     <select id="findAnswerByMemberID" parameterType="String" resultType="answer" resultMap="result">
-        SELECT * FROM answer WHERE member_id = #{id}
+
+        SELECT * FROM answer a  WHERE member_id=#{id} and a.question_id NOT IN (SELECT  question_id FROM grade g WHERE g.member_id =a.member_id )
     </select>
+<!--    &#45;&#45;         SELECT * FROM answer WHERE member_id = #{id}-->
+<!--    &#45;&#45;         SELECT * FROM answer   where    member_id= #{id} and question_id not  in (select question_id from grade where member_id=#{id})-->
+
+
 
     <select id="getAllAnswerAudioFiles" resultMap="result" parameterType="java.util.ArrayList"   resultType="answer">
         SELECT a.* ,m.member_name FROM  answer a  join member m where a.member_id=m.member_id and question_type in(

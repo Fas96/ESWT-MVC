@@ -25,12 +25,49 @@
     </select>
 
     <insert id="insertGrade" parameterType="grade" keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO grade(question_id,  member_id,question_type, session_id, answer_taskCompletion,
-                          answer_fluency,answer_coherence,answer_pronounciation,answer_grammar,
-                          score,isMarked, answer_memo)
-        VALUES(#{question_id}, #{member_id}, #{question_type}, #{session_id}, #{answer_taskCompletion},
-               #{answer_fluency},#{answer_coherence},#{answer_pronounciation},#{answer_grammar},
-               #{score},#{isMarked},#{answer_memo})
+        INSERT INTO grade (question_id,  member_id ,  question_type
+        <if test="session_id != null">, session_id</if>
+        <if test="answer_taskCompletion != null">,  answer_taskCompletion</if>
+        <if test="answer_fluency != null"> , answer_fluency</if>
+        <if test="answer_coherence != null">,answer_coherence</if>
+        <if test="answer_pronounciation != null">,  answer_pronounciation</if>
+        <if test="answer_languageUse != null">, answer_languageUse</if>
+        <if test="answer_grammar != null"> , answer_grammar</if>
+        <if test="isMarked != null"> ,isMarked </if>
+        <if test="answer_memo != null">, answer_memo</if>
+        <if test="Logic != null">,Logic</if>
+        <if test="Mechanics"> , Mechnics</if>
+        <if test="Content != null">, Content </if>
+        <if test="score != null"> ,score</if>) values ( #{question_id} , #{ member_id} ,  #{question_type}
+        <if test="session_id != null">, #{session_id}</if>
+        <if test="answer_taskCompletion != null">, #{answer_taskCompletion}</if>
+        <if test="answer_fluency != null"> , #{answer_fluency}</if>
+        <if test="answer_coherence != null">, #{answer_coherence}</if>
+        <if test="answer_pronounciation != null">, #{answer_pronounciation} </if>
+        <if test="answer_languageUse != null">,#{answer_languageUse}</if>
+        <if test="answer_grammar != null"> ,  #{answer_grammar}</if>
+        <if test="isMarked != null"> , #{isMarked}</if>
+        <if test="answer_memo != null">, #{answer_memo}</if>
+        <if test="Logic != null">, #{Logic}</if>
+        <if test="Mechanics"> ,  #{Mechanics}</if>
+        <if test="Content != null">, #{Content} </if>
+        <if test="score != null"> ,  #{score} </if> )
+         on    DUPLICATE KEY UPDATE
+             question_id = #{question_id},  member_id =#{ member_id},
+             question_type = #{question_type}
+        <if test="session_id != null">,session_id =#{session_id}</if>
+        <if test="answer_taskCompletion != null"> ,answer_taskCompletion =#{answer_taskCompletion}</if>
+        <if test="answer_fluency != null">, answer_fluency =#{answer_fluency}</if>
+        <if test="answer_coherence != null"> ,answer_coherence =#{answer_coherence}</if>
+        <if test="answer_pronounciation != null">,  answer_pronounciation = #{answer_pronounciation}</if>
+        <if test="answer_languageUse != null">,answer_languageUse = #{answer_languageUse}</if>
+        <if test="answer_grammar != null">  , answer_grammar =#{answer_grammar}</if>
+        <if test="isMarked != null">,isMarked =#{isMarked} </if>
+        <if test="answer_memo != null"> , answer_memo = #{answer_memo}</if>
+        <if test="Logic != null">, Logic =#{Logic}</if>
+        <if test="Mechanics">  ,Mechnics = #{Mechanics}</if>
+        <if test="Content != null"> , Content =#{Content}</if>
+        <if test="score != null"> ,score =#{score};</if>
     </insert>
 
 

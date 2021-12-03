@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -41,7 +42,6 @@ public class DataController {
             return "redirect:/admin/data/result";
         }
         //get members who has answer
-        System.out.println(memberMapper.getMembersWhoAnswered());
         mv.addAttribute("getMembersWhoAnswered",memberMapper.getMembersWhoAnswered());
         return "/admin/data/score-edit";
     }
@@ -51,7 +51,9 @@ public class DataController {
         mv.setViewName("/admin/data/student-answers");
 
         mv.addObject("gradeId",gradeId);
-        //get members who has answer
+
+
+
          mv.addObject("questionList",answerMapper.findAnswerByMemberID(gradeId.toString()));
 
         return mv;
@@ -60,13 +62,12 @@ public class DataController {
     //append the current page param to return to same page
     @PostMapping("/saveGrade")
     public String saveGrade(@ModelAttribute("grade") Grade grade ){
-        String authname = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println("::::::::::::::::::::::::::::::::::::::::::::::");
-        System.out.println(authname);
-        System.out.println(grade);
+        //error in the authname
+        //should rather user the url
+
         gradeMapper.saveGrade(grade);
         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::");
-        return "redirect:/admin/data/result?gradeId="+authname;
+        return "redirect:/admin/data/result?gradeId="+grade.getMember_id();
     }
 
     @GetMapping("/export")

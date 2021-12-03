@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,6 +100,10 @@
                         <div class="card">
                             <div class="bootstrap-data-table-panel">
                                 <div class="table-responsive">
+                                    <c:choose>
+                                        <c:when test="${fn:length(questionList) gt 0 }">
+
+
                                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                         <thead>
                                         <tr>
@@ -109,6 +114,7 @@
                                             <th>ACTION</th>
                                         </tr>
                                         </thead>
+
 
                                         <c:forEach items="${questionList}" var="e">
                                             <c:url var="questionLink" value="/admin/data/grade">
@@ -149,23 +155,7 @@
 <%--                                        <div class="input-group visually-hidden">--%>
 <%--                                        create a form to submit this data to the server--%>
 <%--                                        when inserting the grade update if exist--%>
-                                     <%--   question_id;
-                                        private String member_id;
-                                        private String question_type;
-                                        private Integer session_id ;
-                                        private Integer answer_taskCompletion;
-                                        private Integer answer_fluency ;
-                                        private Integer answer_coherence;
-                                        private Integer answer_pronounciation ;
-                                        private Integer answer_languageUse ;
-                                        private Integer answer_grammar ;
-                                        private Integer score;
-                                        private Integer isMarked ;
-                                        private String answer_memo;
 
-                                        private Integer Logic ;
-                                        private Integer Mechnics  ;
-                                        private Integer Content ;--%>
                                         <form action="/admin/data/saveGrade" method="post" commandName="grade" class="FormgradeInputsSpeakingREADING">
                                         <div class="visually-hidden gradeInputsSpeakingREADING">
                                             <span class="input-group-text text-center">Mark a score out of 9, the full score</span><br>
@@ -206,7 +196,13 @@
                                         </div>
                                         </form>
                                     </table>
+                                        </c:when>
 
+                                        <c:otherwise>
+                                            student score was entered already!!
+                                        </c:otherwise>
+
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>
