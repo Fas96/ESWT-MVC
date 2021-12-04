@@ -65,4 +65,5 @@
     <link rel="stylesheet" href=  "<c:url value="${base}/resources/css/lib/bootstrap.min.css"/> ">
     <link rel="stylesheet" href=  "<c:url value="${base}/resources/css/lib/helper.css"/> ">
     <link rel="stylesheet"   href=  "<c:url value="${base}/resources/css/style.css"/> ">
+    <link rel="stylesheet"   href=  "<c:url value="${base}/resources/css/waves.css"/> ">
 </head>

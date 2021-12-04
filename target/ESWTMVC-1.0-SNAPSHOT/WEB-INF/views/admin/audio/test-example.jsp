@@ -4,9 +4,10 @@
 <head>
 
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <title>Admin Page</title>
+
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
 
 
@@ -129,6 +130,17 @@
                 </c:if>
                 <c:if test="${d==null}">
                     <p>Thank you for taking the test</p>
+
+
+
+
+
+                    <div class="loaderbody">
+
+                        <div class="loader">Loading...</div>
+                    </div>
+
+
                 </c:if>
 
                 <!-- /# row -->

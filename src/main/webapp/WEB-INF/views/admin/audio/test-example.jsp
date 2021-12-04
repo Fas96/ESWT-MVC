@@ -4,9 +4,10 @@
 <head>
 
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <title>Admin Page</title>
+
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
 
 
@@ -102,6 +103,9 @@
                                                 <div class="audio" id="audio_div">
 <%--                                                    put audio content here --%>
                                                 </div>
+                                                <div class="loaderbody">
+                                                    <div class="loader">Loading...</div>
+                                                </div>
 <%--                                                    <div class="audio">--%>
 <%--                                                        <div class="waves record">--%>
 <%--                                                            <canvas id="visualizer" ></canvas>--%>
@@ -130,36 +134,9 @@
                 <c:if test="${d==null}">
                     <p>Thank you for taking the test</p>
 
-                    <svg viewBox="0 0 1320 500">
-                        <path fill-opacity="0.7" d="
-	M0,192
-	C220,100,440,100,660,192
-	C880,290,1100,290,1320,192
-	L1320 500
-	L0 500
-	" fill="#000"/>
-                        <path fill-opacity="0.7" d="
-	M0,192
-	C220,100,440,100,660,192
-	C880,290,1100,290,1320,192
-	L1320 500
-	L0 500
-	" fill="#fff"/>
-                        <path fill-opacity="0.7" d="
-	M0,192
-	C220,100,440,100,660,192
-	C880,290,1100,290,1320,192
-	L1320 500
-	L0 500
-	" fill="#ee5253"/>
-                        <path fill-opacity="0.7" d="
-	M0,192
-	C220,100,440,100,660,192
-	C880,290,1100,290,1320,192
-	L1320 500
-	L0 500
-	" fill="#00d2d3"/>
-                    </svg>
+
+
+
 
 
 
