@@ -62,7 +62,7 @@
 <!--    //sql running object but to be executed the sqlSessionFactory is needed-->
 <!--    NOTE THE REFERENCE TO THE sqlSessionFactory ABOVE-->
 
-    <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"  >
+    <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"  destroy-method="close">
         <beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </beans:bean>
 

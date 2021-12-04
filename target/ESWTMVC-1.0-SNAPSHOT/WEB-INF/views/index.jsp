@@ -41,7 +41,7 @@
      </form>
  </div>
  <div class="mainAdmin">
-     <a href="<c:url value="${base}/admin"/> ">Take home </a>
+<%--     <a href="<c:url value="${base}/admin"/> ">Take home </a>--%>
      <div class="alert alert-success" role="alert">
          Role(s):  <security:authentication property="principal.authorities"/>
      <div class="alert alert-success" role="alert">
@@ -60,7 +60,7 @@
          <div class="alert alert-success" role="alert">
              <c:choose>
                  <c:when test="${isDEV}">
-                     <a href="${pageContext.request.contextPath}/admin"> Dev</a><br>
+                     <a href="${pageContext.request.contextPath}/admin"> Admin Page</a>|
                      <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>
                  </c:when>
                  <c:when test="${isPROFESSOR}">
@@ -72,7 +72,8 @@
                      <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>
                  </c:when>
                  <c:when test="${isSTUDENT}">
-                     <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>
+<%--                     <a href="${pageContext.request.contextPath}/exams/start"> Student</a><br>--%>
+                     <c:redirect url="${pageContext.request.contextPath}/exams/start"/>
                  </c:when>
              </c:choose>
 

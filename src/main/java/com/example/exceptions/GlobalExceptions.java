@@ -1,10 +1,12 @@
 package com.example.exceptions;
 
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+@ControllerAdvice
 public class GlobalExceptions extends RuntimeException{
     //can only be found in request Mappings
     // error pages cannot access this
