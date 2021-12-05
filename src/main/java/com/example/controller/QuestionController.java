@@ -4,7 +4,6 @@ import com.example.dao.QuestionMapper;
 import com.example.entity.Question;
 import com.example.util.FileUploadUtil;
 import com.example.util.PropertiesLoad;
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
@@ -23,6 +24,9 @@ import java.util.logging.Logger;
 @Controller
 @RequestMapping("/admin/question")
 public class QuestionController {
+    @Autowired
+    ServletContext context;
+
     public final String imageUploadDir="C:\\Users\\User\\Desktop\\ESWTMVC\\src\\main\\webapp\\WEB-INF\\resources\\question-images\\";
     // TODO: 2021-10-25 SET AS ENV PROPERTY
     @Autowired
@@ -32,16 +36,36 @@ public class QuestionController {
     Logger logger=Logger.getLogger(String.valueOf(QuestionMapper.class));
 
 
-    @PostMapping(value = "/save" )
-    public String saveEmployee(Question question , @RequestParam("image1") MultipartFile question_media,@RequestParam("image2") MultipartFile question_second) throws IOException {
-        String question_media_name="";
-        String question_second_name="";
+    @PostMapping("/save" )
+    public String saveEmployee(Question question  ) throws IOException {
 
-        if(!question_media.isEmpty() || !question_second.isEmpty() ){
-            question_media_name= StringUtils.cleanPath(Objects.requireNonNull(question_media.getOriginalFilename()));
-            question_second_name= StringUtils.cleanPath(Objects.requireNonNull(question_second.getOriginalFilename()));
-            question.setQuestion_media(question_media_name);
-            question.setQuestion_second(question_second_name);
+        MultipartFile questionMultipartFile = question.getMedia1();
+        MultipartFile questionMultipartFileSecond = question.getMedia2();
+        if(questionMultipartFile!=null || !questionMultipartFile.isEmpty()){
+            String fileName=context.getRealPath("/")+"\\WEB-INF\\resources\\images\\"+questionMultipartFile.getOriginalFilename();
+            question.setQuestion_media(fileName);
+            //transfer into the server folder
+            //check if file exist
+            if((new File(fileName).exists())){
+                //delete file first
+                (new File(fileName)).delete();
+                System.out.println("we deleted::::::"+fileName);
+            }
+            System.out.println(fileName);
+            questionMultipartFile.transferTo(new File(fileName));
+        }
+        if(questionMultipartFileSecond!=null || !questionMultipartFileSecond.isEmpty()){
+            String fileName=context.getRealPath("/")+"\\WEB-INF\\resources\\images\\"+questionMultipartFileSecond.getOriginalFilename();
+            question.setQuestion_second(fileName);
+            //transfer into the server folder
+            //check if file exist
+            if((new File(fileName).exists())){
+                //delete file first
+                (new File(fileName)).delete();
+                System.out.println("we deleted::::::"+fileName);
+            }
+            System.out.println(fileName);
+            questionMultipartFileSecond.transferTo(new File(fileName));
         }
 
 
@@ -51,20 +75,8 @@ public class QuestionController {
             questionMapper.updateQuestion(question);
         }
 
-        if(!question_media.isEmpty() || !question_second.isEmpty() ){
 
-            Question savedQuestion = questionMapper.findQuestionByTitle(question.getQuestion_title());
-
-            String uploadDir= Objects.requireNonNull(PropertiesLoad.loadLocalStrings()).getProperty("imageUploadDir") +savedQuestion.getId();
-
-            if(savedQuestion.getQuestion_media().length()>1){
-                FileUploadUtil.saveFile(uploadDir,question_media_name,question_media);}
-            if(savedQuestion.getQuestion_second().length()>1){
-                FileUploadUtil.saveFile(uploadDir,question_second_name,question_second);
-            }
-        }
-
-        return "redirect:/question/list";
+        return "redirect:/admin/question/list";
     }
 
     @GetMapping("/list")
@@ -86,13 +98,13 @@ public class QuestionController {
     }
 
     @GetMapping("/create")
-    public ModelAndView createQuestion(){
-        return new ModelAndView( "/admin/question/question-create","question",new Question());
+    public String createQuestion(@ModelAttribute("question") Question question){
+        return "/admin/question/question-create" ;
     }
     @RequestMapping("/delete")
     public String deleteQuestion(@RequestParam("questionId") int questionId){
         questionMapper.deleteQuestion(questionId);
-        return "redirect:/question/list";
+        return "redirect:/admin/question/list";
     }
     @GetMapping("/export")
     public ModelAndView exportQuestion(){

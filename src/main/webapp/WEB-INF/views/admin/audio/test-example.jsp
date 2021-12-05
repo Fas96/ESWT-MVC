@@ -100,12 +100,17 @@
                                                     <img height="400px" width="100%" src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/><br/>
                                           </div>
                                             <div class="col-lg-6 text-center">
-                                                <div class="audio" id="audio_div">
-<%--                                                    put audio content here --%>
+                                                <div class="row">
+                                                    <div class="loaderbody">
+                                                        <div class="loader">Loading...</div>
+                                                    </div>
                                                 </div>
-                                                <div class="loaderbody">
-                                                    <div class="loader">Loading...</div>
+                                                <div class="row" style="padding: 10px;margin:10px">
+                                                    <div class="audio" id="audio_div">
+                                                            <%--put audio content here --%>
+                                                    </div>
                                                 </div>
+
 <%--                                                    <div class="audio">--%>
 <%--                                                        <div class="waves record">--%>
 <%--                                                            <canvas id="visualizer" ></canvas>--%>

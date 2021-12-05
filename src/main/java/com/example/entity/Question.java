@@ -1,5 +1,8 @@
 package com.example.entity;
 
+import lombok.ToString;
+import org.springframework.web.multipart.MultipartFile;
+@ToString
 public class Question {
     private Integer id;
     private String question_type;
@@ -13,25 +16,30 @@ public class Question {
     private Integer question_sessionId  ;
     private Integer quetion_orderNo ;
 
+    private MultipartFile media1;
+    private MultipartFile media2;
+
+
+    public MultipartFile getMedia1() {
+        return media1;
+    }
+
+    public void setMedia1(MultipartFile media1) {
+        this.media1 = media1;
+    }
+
+    public MultipartFile getMedia2() {
+        return media2;
+    }
+
+    public void setMedia2(MultipartFile media2) {
+        this.media2 = media2;
+    }
+
     public Question() {
     }
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "id=" + id +
-                ", question_type='" + question_type + '\'' +
-                ", question_title='" + question_title + '\'' +
-                ", question_content='" + question_content + '\'' +
-                ", question_media='" + question_media + '\'' +
-                ", question_second='" + question_second + '\'' +
-                ", question_prepTime=" + question_prepTime +
-                ", question_resTime=" + question_resTime +
-                ", question_memo='" + question_memo + '\'' +
-                ", question_sessionId=" + question_sessionId +
-                ", quetion_orderNo=" + quetion_orderNo +
-                '}';
-    }
+
 
     public Integer getId() {
         return id;

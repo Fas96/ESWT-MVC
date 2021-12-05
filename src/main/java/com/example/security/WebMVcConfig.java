@@ -39,15 +39,7 @@ public class WebMVcConfig implements ServletContextListener {
 
     private Logger logger=Logger.getLogger(getClass().getName());
 
-//    @Bean("mysqlDatasource")
-//    public DataSource getDataSource() {
-//        DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-//        dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
-//        dataSourceBuilder.url("jdbc:mysql://localhost:3306/eswtmvc?characterEncoding=UTF-8");
-//        dataSourceBuilder.username("root");
-//        dataSourceBuilder.password("fas96");
-//        return dataSourceBuilder.build();
-//    }
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new PasswordEnconderTest();

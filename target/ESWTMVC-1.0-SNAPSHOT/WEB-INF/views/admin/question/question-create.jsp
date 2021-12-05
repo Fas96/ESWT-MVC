@@ -67,74 +67,72 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="container">
-                        <s:form action="save" method="post"  modelAttribute="question" enctype="multipart/form-data"   onsubmit="return checkTitleUnique(this);"   >
-                            <s:hidden path="id" />
+                        <form action="/admin/question/save" method="POST"    onsubmit="return checkTitleUnique(this);"   modelAttribute="question"  enctype="multipart/form-data">
+
+                            <input type="hidden" path="id" name="id" id="id" class="form-control"
+                                     placeholder="Question Title  " />
                             <div class="form-group">
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
-                                        <s:radiobutton path="question_type" value="WRITING" class="form-check-input"/>WRITING
+                                        <input type="radio" path="question_type" name="question_type" value="WRITING" class="form-check-input"/>WRITING
                                     </label>
                                 </div>
 
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
-                                        <s:radiobutton path="question_type" value="READING" class="form-check-input"/>READING
+                                        <input type="radio" path="question_type" name="question_type" value="READING" class="form-check-input"/>READING
                                     </label>
                                 </div>
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
-                                        <s:radiobutton path="question_type" value="SPEAKING" class="form-check-input"/>SPEAKING
+                                        <input type="radio" path="question_type" name="question_type" value="SPEAKING" class="form-check-input"/>SPEAKING
                                     </label>
                                 </div>
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
-                                        <s:radiobutton path="question_type" value="LISTENING" class="form-check-input"/>LISTENING
+                                        <input type="radio" path="question_type" name="question_type" value="LISTENING" class="form-check-input"/>LISTENING
                                     </label>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <s:input path="question_title" id="question_title" class="form-control"
+                                <input name="question_title" path="question_title" id="question_title" class="form-control"
                                          placeholder="Question Title  " />
                             </div>
 
                             <div class="form-group">
-                                <s:textarea rows="5" cols="6" path="question_content" placeholder="Enter Question Content" class="form-control" />
+                                <textarea rows="5" cols="6" path="question_content" name="question_content" placeholder="Enter Question Content" class="form-control" ></textarea>
                             </div>
                             <div class="form-group">
-                                <input   name="image1" accept="image/png, image/jpeg" id="question_media" type="file" class="form-control"
-                                         placeholder="Question Media  " />
+                                <input  name="media1" path="media1" accept="image/png, image/jpeg" id="media1" type="file" class="form-control" placeholder="Question Media  " />
                             </div>
                             <div class="form-group">
-                                <input   name="image2" accept="image/png, image/jpeg" id="question_second" type="file" class="form-control"
+                                <input   name="media2" path="media2" accept="image/png, image/jpeg" id="media2" type="file" class="form-control"
                                          placeholder="Question Media  Second" />
                             </div>
                             <div class="form-group">
-                                <s:input path="question_prepTime" type="number" class="form-control"
+                                <input  name="question_prepTime" path="question_prepTime" type="number" class="form-control"
                                          placeholder="Question Preparation Time  " />
                             </div>
                             <div class="form-group">
-                                <s:input path="question_resTime" type="number" class="form-control"
+                                <input   name="question_resTime" path="question_resTime" type="number" class="form-control"
                                          placeholder="Enter Question Response Time  " />
                             </div>
                             <div class="form-group">
-                                <s:textarea rows="3" cols="6" path="question_memo" placeholder="Question Memo" class="form-control" />
+                                <textarea rows="3" cols="6" path="question_memo" name="question_memo" placeholder="Question Memo" class="form-control" ></textarea>
                             </div>
                             <div class="form-group">
-                                <s:input path="question_sessionId" type="number" class="form-control"
+                                <input  name="question_sessionId" path="question_sessionId" type="number" class="form-control"
                                          placeholder="Question Session Id    " />
                             </div>
-                            <div class="form-group">
-                                <s:input path="quetion_orderNo" type="number" class="form-control"
-                                         placeholder="Question Session Id    " />
-                            </div>
+
                             <div class="text-center">
 
                                 <input type="submit" value="Save" class="btn btn-outline-info" />&nbsp;
                                 <input type="reset" value="Reset" class="btn btn-outline-danger" />
                             </div>
 
-                        </s:form>
+                        </form>
                         <hr />
                         <a href="list">Back to List</a>
                     </div>

@@ -10,10 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class GlobalExceptions extends RuntimeException{
     //can only be found in request Mappings
     // error pages cannot access this
-    @ModelAttribute("appName")
-    public String appName(){
-        return "FasChannell";
-    }
+//    @ModelAttribute("appName")
+//    public String appName(){
+//        return "FasChannell";
+//    }
 
 //    @ExceptionHandler(UserNotFoundException.class)
 //    public  String handleUserNotFoundException(UserNotFoundException e, Model model){
