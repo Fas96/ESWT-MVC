@@ -60,17 +60,15 @@
             <section id="main-content">
                 <div class="row">
 
-                    <div class="col-lg-12 ">
-                        <button type="button"
-                                onclick="window.location.href = 'create'; return false;"
-                                class="btn btn-outline-info float-right">Add Question</button>
-                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="bootstrap-data-table-panel">
                                 <div class="table-responsive">
+                                    <c:choose>
+                                    <c:when test="${fn:length(answersWithAudio) gt 0 }">
                                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                         <thead>
                                         <tr>
@@ -116,6 +114,11 @@
                                     <div class="col-lg-12 ">
                                         <button type="button" onclick="downloadAllChecked()" class="btn btn-outline-info float-right">Download Audio&#9745;</button>
                                     </div>
+                                    </c:when>
+                                        <c:otherwise>
+                                            No Audio to Display! Students Did not present audio
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>

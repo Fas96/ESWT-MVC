@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,6 +67,8 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="bootstrap-data-table-panel">
+                                <c:choose>
+                                <c:when test="${fn:length(questionList) gt 0 }">
                                 <div class="table-responsive">
                                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                         <thead>
@@ -80,11 +83,11 @@
                                         </thead>
 
                                         <c:forEach items="${questionList}" var="e">
-                                        <c:url var="updateLink" value="/question/edit">
+                                        <c:url var="updateLink" value="/admin/question/edit">
                                             <c:param name="questionId" value="${e.id}" />
                                         </c:url>
 
-                                        <c:url var="deleteLink" value="/question/delete">
+                                        <c:url var="deleteLink" value="/admin/question/delete">
                                             <c:param name="questionId" value="${e.id}" />
                                         </c:url>
                                         <tbody>
@@ -104,6 +107,11 @@
 
                                     </table>
                                 </div>
+                                </c:when>
+                                    <c:otherwise>
+                                       No questions to Display! Create Some quesitons!!
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                         <!-- /# card -->

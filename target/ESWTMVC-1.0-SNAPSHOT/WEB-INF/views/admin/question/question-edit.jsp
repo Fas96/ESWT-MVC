@@ -1,5 +1,6 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +71,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="container">
-                                            <s:form  action="save" method="post"    id="questionForm"  modelAttribute="question"    enctype="multipart/form-data"  >
+                                            <s:form action="/admin/question/save" method="POST"     modelAttribute="question"  enctype="multipart/form-data" >
                                                 <s:hidden path="id" />
                                                 <div class="form-group">
                                                     <div class="form-check-inline">
@@ -105,15 +106,15 @@
                                                     <s:textarea rows="5" cols="6" path="question_content" placeholder="Enter Question Content" class="form-control" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <input disabled value="${question.question_second}"  name="image1" accept="image/png, image/jpeg" id="question_media" type="file" class="form-control"
+                                                    <s:input  path="media1"  name="image1" value=" ${pageContext.request.contextPath}/resources/images/${question.question_media}" accept="image/png, image/jpeg" id="question_media" type="file" class="form-control"
                                                              placeholder="Question Media  " />
                                                 </div>
                                                 <div class="form-group">
-                                                    <input disabled value="${question.question_media}" name="image2" accept="image/png, image/jpeg" id="question_second" type="file" class="form-control"
+                                                    <s:input   path="media2" name="image2" value="${pageContext.request.contextPath}/resources/images/${question.question_second}" accept="image/png, image/jpeg" id="question_second" type="file" class="form-control"
                                                              placeholder="Question Media  Second" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <s:input path="question_prepTime" type="number" class="form-control"
+                                                    <s:input path="question_prepTime" type="number"  class="form-control"
                                                              placeholder="Question Preparation Time  " />
                                                 </div>
                                                 <div class="form-group">
@@ -176,6 +177,52 @@
     var J=0;
     $('input[type="file"]').each(function(){  $(this).css("background-color",colorArr[J++])});
 
+    $(document).on('ready',function () {
+       var media1= $("#question_media").prop('files');
+        var media2= $("#question_second").prop('files');
+        // handleFileSelect("question_media")
+        console.log(media1)
+        console.log(media2 )
+        var fullPath = document.getElementById('question_media').value;
+        if (fullPath) {
+            alert(fullPath)
+            console("0---------------")
+            var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+            var filename = fullPath.substring(startIndex);
+            if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                filename = filename.substring(1);
+            }
+            alert(filename);
+        }
+    })
+
+    function handleFileSelect(fileId)
+    {
+        if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+            alert('The File APIs are not fully supported in this browser.');
+            return;
+        }
+
+        var input = document.getElementById(fileId);
+        if (!input) {
+            alert("Um, couldn't find the fileinput element.");
+        }
+        else if (!input.files) {
+            alert("This browser doesn't seem to support the `files` property of file inputs.");
+        }
+        else if (!input.files[0]) {
+            alert("Please select a file before clicking 'Load'");
+        }
+        else {
+            var file = input.files[0];
+            var fr = new FileReader();
+            fr.onload = receivedText;
+            //fr.readAsText(file);
+            //fr.readAsBinaryString(file); //as bit work with base64 for example upload to server
+            fr.readAsDataURL(file);
+            alert(file)
+        }
+    }
 
 
 

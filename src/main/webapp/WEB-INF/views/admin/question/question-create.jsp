@@ -70,7 +70,7 @@
                         <form action="/admin/question/save" method="POST"    onsubmit="return checkTitleUnique(this);"   modelAttribute="question"  enctype="multipart/form-data">
 
                             <input type="hidden" path="id" name="id" id="id" class="form-control"
-                                     placeholder="Question Title  " />
+                                      />
                             <div class="form-group">
                                 <div class="form-check-inline">
                                     <label class="form-check-label">

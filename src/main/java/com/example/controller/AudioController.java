@@ -28,7 +28,7 @@ public class AudioController {
         String[] fileTypeArr={"'SPEAKING'","'READING'"};
         mv.setViewName("/admin/audio/audio-list");
         System.out.println("--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-        System.out.println(answerMapper.getAllAnswerAudioFiles(fileTypeArr).get(0));
+//        System.out.println(answerMapper.getAllAnswerAudioFiles(fileTypeArr).get(0));
         System.out.println("--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 
         mv.addObject("answersWithAudio",answerMapper.getAllAnswerAudioFiles(fileTypeArr));

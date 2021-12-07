@@ -4,6 +4,7 @@ import com.example.dao.QuestionMapper;
 import com.example.entity.Question;
 import com.example.util.FileUploadUtil;
 import com.example.util.PropertiesLoad;
+import com.example.util.WebUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,8 @@ import java.util.logging.Logger;
 public class QuestionController {
     @Autowired
     ServletContext context;
+    @Autowired
+    WebUtils webUtils;
 
     public final String imageUploadDir="C:\\Users\\User\\Desktop\\ESWTMVC\\src\\main\\webapp\\WEB-INF\\resources\\question-images\\";
     // TODO: 2021-10-25 SET AS ENV PROPERTY
@@ -35,15 +38,19 @@ public class QuestionController {
 
     Logger logger=Logger.getLogger(String.valueOf(QuestionMapper.class));
 
-
+//    C:\WebProject\2021\ESWT\ESWTMVC\target\ESWTMVC-1.0-SNAPSHOT\WEB-INF\resources\images\speaking.jpg
     @PostMapping("/save" )
     public String saveEmployee(Question question  ) throws IOException {
 
         MultipartFile questionMultipartFile = question.getMedia1();
         MultipartFile questionMultipartFileSecond = question.getMedia2();
-        if(questionMultipartFile!=null || !questionMultipartFile.isEmpty()){
+
+
+
+        if((questionMultipartFile!=null || !questionMultipartFile.isEmpty())
+                && (questionMultipartFile.getOriginalFilename().toUpperCase().endsWith(".JPG")||questionMultipartFile.getOriginalFilename().toUpperCase().endsWith(".PNG"))){
             String fileName=context.getRealPath("/")+"\\WEB-INF\\resources\\images\\"+questionMultipartFile.getOriginalFilename();
-            question.setQuestion_media(fileName);
+            question.setQuestion_media(questionMultipartFile.getOriginalFilename());
             //transfer into the server folder
             //check if file exist
             if((new File(fileName).exists())){
@@ -51,12 +58,13 @@ public class QuestionController {
                 (new File(fileName)).delete();
                 System.out.println("we deleted::::::"+fileName);
             }
-            System.out.println(fileName);
+//            System.out.println(fileName);
             questionMultipartFile.transferTo(new File(fileName));
         }
-        if(questionMultipartFileSecond!=null || !questionMultipartFileSecond.isEmpty()){
+        if((questionMultipartFileSecond!=null || !questionMultipartFileSecond.isEmpty())
+                && (questionMultipartFileSecond.getOriginalFilename().toUpperCase().endsWith(".JPG")||questionMultipartFileSecond.getOriginalFilename().toUpperCase().endsWith(".PNG"))){
             String fileName=context.getRealPath("/")+"\\WEB-INF\\resources\\images\\"+questionMultipartFileSecond.getOriginalFilename();
-            question.setQuestion_second(fileName);
+            question.setQuestion_second(questionMultipartFileSecond.getOriginalFilename());
             //transfer into the server folder
             //check if file exist
             if((new File(fileName).exists())){
@@ -64,7 +72,7 @@ public class QuestionController {
                 (new File(fileName)).delete();
                 System.out.println("we deleted::::::"+fileName);
             }
-            System.out.println(fileName);
+//            System.out.println(fileName);
             questionMultipartFileSecond.transferTo(new File(fileName));
         }
 
@@ -81,13 +89,14 @@ public class QuestionController {
 
     @GetMapping("/list")
     public ModelAndView listQuestion(){
+        System.out.println(webUtils.getClientIp());
 
         return new ModelAndView( "/admin/question/question-list","questionList",questionMapper.getAllQuestions());
     }
 
     @GetMapping("/edit")
     public ModelAndView EditQuestion(@RequestParam("questionId") int questionId){
-        //clear directory on question deleted
+//        clear directory on question deleted
         String uploadDir=imageUploadDir+questionId;
         FileUploadUtil.clearDir(uploadDir);
 

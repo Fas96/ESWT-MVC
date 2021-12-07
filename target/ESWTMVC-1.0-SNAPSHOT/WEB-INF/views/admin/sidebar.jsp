@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
-body>
 
 
 <security:authorize access="hasAnyRole('ROLE_PROFESSOR')" var="isPROFESSOR" />

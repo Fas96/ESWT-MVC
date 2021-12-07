@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,6 +73,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
+                            <c:choose>
+                            <c:when test="${fn:length(getMembersWhoAnswered) gt 0 }">
                             <div class="bootstrap-data-table-panel">
                                 <div class="table-responsive">
                                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -101,8 +104,14 @@
                                         </c:forEach>
 
                                     </table>
+
                                 </div>
                             </div>
+                            </c:when>
+                                <c:otherwise>
+                                    Students Did not present audio
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                         <!-- /# card -->
                     </div>

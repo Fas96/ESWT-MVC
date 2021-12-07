@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,6 +57,68 @@
                 </div>
             </div>
             <!-- row -->
+            <section id="main-content-top">
+                <div class="row">
+
+                    <div class="col-lg-12 ">
+                        <button type="button"
+                                onclick="window.location.href = 'edit'; return false;"
+                                class="btn btn-outline-info float-right">Go Grade</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <c:choose>
+                                <c:when test="${fn:length(studentScoresList) gt 0 }">
+                                    <div class="bootstrap-data-table-panel">
+                                        <div class="table-responsive">
+                                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>NAME</th>
+                                                    <th>SPEAKING</th>
+                                                    <th>WRITING</th>
+                                                    <th>READING</th>
+                                                    <th>LISTENING</th>
+                                                    <th>TOTAL SCORE</th>
+                                                    <th>DATE</th>
+                                                </tr>
+                                                </thead>
+
+                                                <c:forEach items="${studentScoresList}" var="e">
+                                                    <c:url var="gradeLink" value="/admin/data/edit">
+                                                        <c:param name="gradeId" value="${e.member_id}" />
+                                                    </c:url>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>${e.id}</td>
+                                                        <td>${e.name}</td>
+                                                        <td>${e.type}</td>
+                                                        <td>${e.type}</td>
+                                                        <td>${e.qId}</td>
+                                                        <td>${e.TSCORE}</td>
+                                                        <td>${e.TSCORE}</td>
+                                                        <td>${e.date}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </c:forEach>
+
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    Students Scores not present
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+                </div>
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">

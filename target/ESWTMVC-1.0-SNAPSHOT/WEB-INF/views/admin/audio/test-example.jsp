@@ -1,4 +1,4 @@
-<%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,48 +81,41 @@
                             <form action="/admin/mock/save" method="POST" id="save_form" modelAttribute="answer">
 
                                 <div class="container">
-                                    <div class="row"> <h5 class="col-lg-10 text-center">${d.question_title}</h5></div>
+                                    <div class="row">
+                                        <div class="col-lg-2"> <h5 class="text-center">${d.question_type}</h5></div>
+                                        <div class="col-lg-8"> <h5 class="text-center">${d.question_title}</h5></div>
+                                    </div>
+                                    <div class="row"><h4 class="col-lg-10 text-center">${d.question_content}</h4> </div>
                                     <div class="row">
                                         <input type="hidden"  class="question_type" name="question_type" value="${d.question_type}" path="question_type">
                                         <input type="hidden" name="question_id" class="question_id" value="${d.id}" path="question_id">
                                         <input type="hidden" name="member_id" class="member_id" value="${member_id}" path="member_id">
 
-                                            <c:choose>
-
-                                                <c:when test="${d.question_type=='WRITING' or d.question_type=='LISTENING'}">
+                                                <c:if test="${d.question_type=='WRITING' or d.question_type=='LISTENING'  or d.question_type=='READING' or d.question_type=='SPEAKING'}">
+                                                   <c:if test="${d.question_type!=null}">
+                                                       <div class="col-lg-6 text-center">
+                                                           <img height="400px" width="100%" src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/><br/>
+                                                       </div>
+                                                   </c:if>
+                                                </c:if>
+                                                <c:if test="${d.question_type=='SPEAKING' or d.question_type=='READING'}">
                                                     <div class="col-lg-6 text-center">
-                                                    <br/><textarea path="text_res" style="height: 100%" placeholder="answer field " class="form-control text_res" name="text_res"></textarea>
+                                                        <div class="row">
+                                                            <div class="loaderbody">
+                                                                <div class="loader">Loading...</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="padding: 10px;margin:10px">
+                                                            <div class="audio" id="audio_div">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </c:when>
-
-                                                <c:when test="${(d.question_type=='SPEAKING' or d.question_type=='READING') and d.question_media!=null}">
-                                        <div class="col-lg-6 text-center">
-                                                    <img height="400px" width="100%" src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/><br/>
-                                          </div>
+                                                </c:if>
+                                            <c:if test="${d.question_type=='LISTENING' or d.question_type=='WRITING' }">
                                             <div class="col-lg-6 text-center">
-                                                <div class="row">
-                                                    <div class="loaderbody">
-                                                        <div class="loader">Loading...</div>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="padding: 10px;margin:10px">
-                                                    <div class="audio" id="audio_div">
-                                                            <%--put audio content here --%>
-                                                    </div>
-                                                </div>
-
-<%--                                                    <div class="audio">--%>
-<%--                                                        <div class="waves record">--%>
-<%--                                                            <canvas id="visualizer" ></canvas>--%>
-<%--                                                        </div>--%>
-<%--                                                    </div>--%>
+                                                <br/><textarea path="text_res" style="height: 100%" placeholder="answer field " class="form-control text_res" name="text_res"></textarea>
                                             </div>
-                                                </c:when>
-
-                                                <c:otherwise>others</c:otherwise>
-
-
-                                            </c:choose>
+                                            </c:if>
 
                                         <div class="col-lg-6 text-center">
                                             <button type="button" id="question_resTime"   class="btn-rounded m-2 p-3 btn-outline-info">${d.question_resTime}</button>
@@ -138,14 +131,6 @@
                 </c:if>
                 <c:if test="${d==null}">
                     <p>Thank you for taking the test</p>
-
-
-
-
-
-
-
-
                 </c:if>
 
                 <!-- /# row -->
@@ -169,6 +154,11 @@
     <script type="text/javascript">
 
 
+        // window.onhashchange = function() {
+        //     alert("user trynna switch")
+        // }
+
+
         function readBlobAndSendToServer(blob) {
             //redo
             var reader = new FileReader();
@@ -184,9 +174,9 @@
                 //         console.log( "second success" );}).fail(function() {
                 //         alert( "error" );});
                 var token = $('[name=__RequestVerificationToken]').val();
-                var jqxhr = $.post( "/admin/mock/save", {question_id:$(".question_id").val() ,__RequestVerificationToken: token,question_type: $(".question_type").val(),member_id:$(".member_id").val(), text_res:"",media_res: file }).done(function() {
-                    console.log( "second success" );}).fail(function() {alert( "error" );});
 
+                $.post( "/admin/mock/save", {question_id:$(".question_id").val() ,__RequestVerificationToken: token,question_type: $(".question_type").val(),member_id:$(".member_id").val(), text_res:"",media_res: file }).done(function() {
+                    console.log( "second success" );}).fail(function() {alert( "error" );});
             }
 
 

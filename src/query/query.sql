@@ -47,3 +47,17 @@ INSERT INTO eswtmvc.grade (`question_id`, `member_id`, `question_type`,`session_
 --         VALUES(#{question_id}, #{member_id}, #{question_type}, #{session_id}, #{answer_taskCompletion},
 --                #{answer_fluency},#{answer_coherence},#{answer_pronounciation},#{answer_grammar},
 --                #{score},#{isMarked},#{answer_memo})
+
+-- GIVES THE SUM OF ALL THE STUDENTS ANSWER COLUMN
+SELECT m.member_id,m.member_name,SUM(g.answer_taskCompletion) TC ,SUM(g.answer_fluency) FL ,SUM(g.answer_coherence) CH
+        ,SUM(g.answer_pronounciation) PR ,SUM(g.answer_languageUse) LU ,SUM(g.answer_grammar) GR,
+       SUM(g.Logic) LG,SUM(g.Mechnics) MC,SUM(g.Content) CT,
+       SUM(g.score) TSCORE  FROM eswtmvc.grade g inner join eswtmvc.member m on m.member_id= g.member_id;
+
+
+-- Getting sum of student score based on the question type
+select * from grade;
+SELECT m.member_id,m.member_name, g.question_type,g.question_id,
+       IFNULL(g.answer_taskCompletion,0)+IFNULL(g.answer_fluency,0)+IFNULL(g.answer_coherence,0)+IFNULL(g.answer_pronounciation,0)+IFNULL(g.answer_languageUse,0)+
+       IFNULL(g.answer_grammar,0)+IFNULL(g.Logic,0)+IFNULL(g.Mechnics,0)+IFNULL(g.Content,0) TSCORE
+FROM eswtmvc.grade g inner join eswtmvc.member m on m.member_id= g.member_id;

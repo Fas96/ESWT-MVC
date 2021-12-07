@@ -33,16 +33,15 @@ public class MockTest {
 
     @GetMapping("/testExample")
     public ModelAndView testExample(ModelAndView model, HttpServletRequest req){
-
+        System.out.println("---------checjking");
         model.addObject("answer",new Answer());
-        System.out.println("-----------------testExample----------------");
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String authname = SecurityContextHolder.getContext().getAuthentication().getName();
 
+        System.out.println(authname);
         List<Question> questions = questionMapper.findQuestionNonAnsweredQuestion(Integer.parseInt(authname));
         req.setAttribute("member_id",Integer.parseInt(authname));
-        System.out.println(questions);
-        System.out.println("------------questions above-----------");
+
 
         //setting the display questions based on size
         if(questions.size()>0) {model.addObject("displayQuestion",questions.get(0));}else {model.addObject("displayQuestion",null);}
@@ -52,10 +51,13 @@ public class MockTest {
             return model;
     }
 
-    @PostMapping(value = "/save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String saveAnswer(Answer save,@RequestBody(required = false) MultiValueMap<String, String> formData ){
-
-        answerMapper.saveAnswer(save);
+//    @PostMapping(value = "/save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = "/save")
+    public String saveAnswer(Answer answer,@RequestBody(required = false) MultiValueMap<String, String> formData ){
+        System.out.println("-----------------------");
+        System.out.println(answer.getQuestion_type());
+        System.out.println("----------------------");
+        answerMapper.saveAnswer(answer);
         return "redirect:/admin/mock/testExample";
     }
 

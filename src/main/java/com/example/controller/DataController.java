@@ -4,6 +4,7 @@ import com.example.dao.AnswerMapper;
 import com.example.dao.GradeMapper;
 import com.example.dao.MemberMapper;
 import com.example.entity.Grade;
+import com.example.entity.GradeTypeTotalDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,8 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/admin/data")
@@ -30,9 +30,12 @@ public class DataController {
     GradeMapper gradeMapper;
 
     @GetMapping("/list")
-    public ModelAndView listScore(){
-        return new ModelAndView( "/admin/data/score-list","user","user");
+    public ModelAndView listScore(ModelAndView mv){
+        mv.addObject("studentScoresList",gradeMapper.studentScoresListTypeTotal());
+        mv.setViewName("/admin/data/score-list");
+        return mv;
     }
+
 
     @GetMapping("/edit")
     public String EditScore(Model mv, @RequestParam(value = "gradeId",required = false) Integer gradeId,RedirectAttributes req){

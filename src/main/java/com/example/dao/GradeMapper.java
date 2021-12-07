@@ -1,10 +1,12 @@
 package com.example.dao;
 
 import com.example.entity.Grade;
+import com.example.entity.GradeTypeTotalDao;
 import com.example.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
+import java.util.Map;
 
 public class GradeMapper {
     public void saveGrade(Grade grade){
@@ -28,6 +30,14 @@ public class GradeMapper {
         session.close();
     }
 
+    public List<Map> studentScoresListTypeTotal(){
+        SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
+        @SuppressWarnings("unchecked")
+        List<Map> gradeScoreTypeList = session.selectList("studentScoresListTypeTotal");
+        session.commit();
+        session.close();
+        return gradeScoreTypeList;
+    }
     public List<Grade> getAllGrades(){
         SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
         @SuppressWarnings("unchecked")
