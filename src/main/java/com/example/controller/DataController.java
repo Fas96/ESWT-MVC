@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
+import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("/admin/data")
@@ -31,11 +32,32 @@ public class DataController {
 
     @GetMapping("/list")
     public ModelAndView listScore(ModelAndView mv){
+        Map<String, List<Long>> hm = new HashMap<String, List<Long>>();
+        Map<String, Long> bindSamePerson = new HashMap<String, Long>();
+        List<Long> values = new ArrayList<Long>();
+
+
+        for (Map map : gradeMapper.studentScoresListTypeTotal()) {
+            values.add((Long) map.get("TSCORE"));
+            if(!bindSamePerson.containsKey((String)map.get("name"))) {
+                values.forEach(System.out::println);
+                System.out.println("-----------------");
+            }
+            bindSamePerson.put((String) map.get("name"),(Long) map.get("TSCORE"));
+        }
+        System.out.println(values);
+
         mv.addObject("studentScoresList",gradeMapper.studentScoresListTypeTotal());
         mv.setViewName("/admin/data/score-list");
         return mv;
     }
 
+    public   int[][] splitArray(int[] inputArray, int chunkSize) {
+        return IntStream.iterate(0, i -> i + chunkSize)
+                .limit((int) Math.ceil((double) inputArray.length / chunkSize))
+                .mapToObj(j -> Arrays.copyOfRange(inputArray, j, Math.min(inputArray.length, j + chunkSize)))
+                .toArray(int[][]::new);
+    }
 
     @GetMapping("/edit")
     public String EditScore(Model mv, @RequestParam(value = "gradeId",required = false) Integer gradeId,RedirectAttributes req){

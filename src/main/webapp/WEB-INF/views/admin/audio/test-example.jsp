@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +72,6 @@
                 <c:if test="${d!=null}">
                 <div class="card">
 
-
                     <div class="card-body">
                         <div class="compose-content ">
                             <div class="container question_prepclass"><div class="row">
@@ -94,7 +94,7 @@
                                                 <c:if test="${d.question_type=='WRITING' or d.question_type=='LISTENING'  or d.question_type=='READING' or d.question_type=='SPEAKING'}">
                                                    <c:if test="${d.question_type!=null}">
                                                        <div class="col-lg-6 text-center">
-                                                           <img height="400px" width="100%" src="<c:url value='${base}/resources/question-images/${d.id}/${d.question_media}'/>"/><br/>
+                                                           <img height="400px" width="100%" src="<spring:url value='/resources/images/${d.question_media}'/>"/><br/>
                                                        </div>
                                                    </c:if>
                                                 </c:if>

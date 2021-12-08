@@ -53,6 +53,8 @@ public class QuestionController {
             question.setQuestion_media(questionMultipartFile.getOriginalFilename());
             //transfer into the server folder
             //check if file exist
+            System.out.println(fileName);
+            System.out.println(":::::::::::::::::::::::filename:::::::::::::::::");
             if((new File(fileName).exists())){
                 //delete file first
                 (new File(fileName)).delete();
@@ -63,10 +65,13 @@ public class QuestionController {
         }
         if((questionMultipartFileSecond!=null || !questionMultipartFileSecond.isEmpty())
                 && (questionMultipartFileSecond.getOriginalFilename().toUpperCase().endsWith(".JPG")||questionMultipartFileSecond.getOriginalFilename().toUpperCase().endsWith(".PNG"))){
-            String fileName=context.getRealPath("/")+"\\WEB-INF\\resources\\images\\"+questionMultipartFileSecond.getOriginalFilename();
+            String fileName=context.getRealPath("/")+"WEB-INF\\resources\\images\\"+questionMultipartFileSecond.getOriginalFilename();
             question.setQuestion_second(questionMultipartFileSecond.getOriginalFilename());
             //transfer into the server folder
             //check if file exist
+
+            System.out.println(fileName);
+            System.out.println(":::::::::::::::::::::::filename:::::::::::::::::");
             if((new File(fileName).exists())){
                 //delete file first
                 (new File(fileName)).delete();
