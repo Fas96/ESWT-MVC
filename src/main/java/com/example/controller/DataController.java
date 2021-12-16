@@ -32,22 +32,37 @@ public class DataController {
 
     @GetMapping("/list")
     public ModelAndView listScore(ModelAndView mv){
-        Map<String, List<Long>> hm = new HashMap<String, List<Long>>();
-        Map<String, Long> bindSamePerson = new HashMap<String, Long>();
-        List<Long> values = new ArrayList<Long>();
 
+        System.out.println("------------checking the received data-----------");
+
+        List<GradeTypeTotalDao> listGrade= new ArrayList<>();
 
         for (Map map : gradeMapper.studentScoresListTypeTotal()) {
-            values.add((Long) map.get("TSCORE"));
-            if(!bindSamePerson.containsKey((String)map.get("name"))) {
-                values.forEach(System.out::println);
-                System.out.println("-----------------");
+            GradeTypeTotalDao typeTotalDao= new GradeTypeTotalDao(Integer.parseInt((String) map.get("member_id")),(String) map.get("member_name"),0,0,0,0,0,new Date());
+            String[] scores = map.get("SCORES").toString().split(",");
+            for (String score : scores) {
+               String removingBrackets=score.replaceAll("\\[","").replaceAll("\\]","");
+               if(removingBrackets.split("=")[0].equals("WRITING")){
+                   typeTotalDao.setWriting(Integer.parseInt(removingBrackets.split("=")[1]));
+               }
+                if(removingBrackets.split("=")[0].equals("LISTENING")){
+                    typeTotalDao.setListening(Integer.parseInt(removingBrackets.split("=")[1]));
+                }
+                if(removingBrackets.split("=")[0].equals("READING")){
+                    typeTotalDao.setReading(Integer.parseInt(removingBrackets.split("=")[1]));
+                }
+                if(removingBrackets.split("=")[0].equals("SPEAKING")){
+                    typeTotalDao.setSpeaking(Integer.parseInt(removingBrackets.split("=")[1]));
+                }
             }
-            bindSamePerson.put((String) map.get("name"),(Long) map.get("TSCORE"));
-        }
-        System.out.println(values);
+            typeTotalDao.setTotalScore(typeTotalDao.getListening()+ typeTotalDao.getReading()+ typeTotalDao.getSpeaking()+ typeTotalDao.getWriting());
 
-        mv.addObject("studentScoresList",gradeMapper.studentScoresListTypeTotal());
+            listGrade.add(typeTotalDao);
+        }
+        System.out.println(listGrade);
+
+
+        mv.addObject("studentScoresList",listGrade);
         mv.setViewName("/admin/data/score-list");
         return mv;
     }

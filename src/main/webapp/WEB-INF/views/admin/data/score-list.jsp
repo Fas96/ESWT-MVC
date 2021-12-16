@@ -1,4 +1,5 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,11 @@
     <title>Admin Page</title>
     <%@ include file="/WEB-INF/views/component/admin-header.jsp" %>
 
-
+    <style>
+        td ,th{
+            text-align: center;
+        }
+    </style>
 
 
 </head>
@@ -86,21 +91,22 @@
                                                     <th>DATE</th>
                                                 </tr>
                                                 </thead>
-
                                                 <c:forEach items="${studentScoresList}" var="e">
-                                                    <c:url var="gradeLink" value="/admin/data/edit">
-                                                        <c:param name="gradeId" value="${e.member_id}" />
-                                                    </c:url>
+<%--                                                    <c:url var="gradeLink" value="/admin/data/edit">--%>
+<%--                                                        <c:param name="gradeId" value="${e.id}" />--%>
+<%--                                                    </c:url>--%>
                                                     <tbody>
                                                     <tr>
+
                                                         <td>${e.id}</td>
                                                         <td>${e.name}</td>
-                                                        <td>${e.type}</td>
-                                                        <td>${e.type}</td>
-                                                        <td>${e.qId}</td>
-                                                        <td>${e.TSCORE}</td>
-                                                        <td>${e.TSCORE}</td>
-                                                        <td>${e.date}</td>
+                                                        <td>${e.speaking}</td>
+                                                        <td>${e.writing}</td>
+                                                        <td>${e.reading}</td>
+                                                        <td>${e.listening}</td>
+                                                        <td>${e.totalScore}</td>
+                                                        <td><fmt:formatDate type="date" value="${e.date}"/></td>
+
                                                     </tr>
                                                     </tbody>
                                                 </c:forEach>

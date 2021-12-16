@@ -61,3 +61,13 @@ SELECT m.member_id,m.member_name, g.question_type,g.question_id,
        IFNULL(g.answer_taskCompletion,0)+IFNULL(g.answer_fluency,0)+IFNULL(g.answer_coherence,0)+IFNULL(g.answer_pronounciation,0)+IFNULL(g.answer_languageUse,0)+
        IFNULL(g.answer_grammar,0)+IFNULL(g.Logic,0)+IFNULL(g.Mechnics,0)+IFNULL(g.Content,0) TSCORE
 FROM eswtmvc.grade g inner join eswtmvc.member m on m.member_id= g.member_id;
+
+
+
+
+-- getting the total scores properly arrayed
+WITH NewScores AS (SELECT DISTINCT m.member_id,m.member_name,(select GROUP_CONCAT(CONCAT('[',g.question_type,'=',IFNULL(g.answer_taskCompletion,0)
+    +IFNULL(g.answer_fluency,0)+IFNULL(g.answer_coherence,0)+IFNULL(g.answer_pronounciation,0)+IFNULL(g.answer_languageUse,0)+
+                                                                                                                 IFNULL(g.answer_grammar,0)+IFNULL(g.Logic,0)+IFNULL(g.Mechnics,0)+IFNULL(g.Content,0),"]")) from grade g where (m.member_id = g.member_id)
+                                                              group by (g.member_id)  ) as SCORES FROM  member m inner join
+                                                                                                        member a on m.member_id=a.member_id) select * from NewScores where NewScores.SCORES is not null ;

@@ -16,5 +16,6 @@ public class GradeTypeTotalDao {
     private Integer Writing;
     private Integer Reading;
     private Integer  Listening;
+    private Integer  TotalScore;
     private Date date ;
 }

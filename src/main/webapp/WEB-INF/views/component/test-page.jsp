@@ -143,11 +143,15 @@
                         <form action="/student/main/test" method="POST" id="save_form" modelAttribute="answer" style="background: rgba(247, 247, 247, 0.8);border-radius: 4px; border: 1px solid lightslategray">
 
                             <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-2"> <h5 class="text-center">${d.question_type}</h5></div>
-                                    <div class="col-lg-8"> <h5 class="text-center">${d.question_title}</h5></div>
+                                <div style="background: #eaf7fe; border: 1px solid grey;border-radius: 6px;margin: 8px">
+                                    <div class="row">
+                                        <div class="col-lg-2"> <h5 class="text-center">${d.question_type}</h5></div><span style="color: #0b0b0b">|</span>
+
+                                        <div class="col-lg-8"> <h5 class="text-center">${d.question_title}</h5></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row" ><h4 class="col-lg-10 text-center">${d.question_content}</h4> </div>
                                 </div>
-                                <div class="row"><h4 class="col-lg-10 text-center">${d.question_content}</h4> </div>
                                 <div class="row">
                                     <input type="hidden"  class="question_type" name="question_type" value="${d.question_type}" path="question_type">
                                     <input type="hidden" name="question_id" class="question_id" value="${d.id}" path="question_id">
@@ -177,11 +181,11 @@
                                     </c:if>
                                     <c:if test="${d.question_type=='LISTENING' or d.question_type=='WRITING' }">
                                         <div class="col-lg-6 text-center" style="height: inherit">
-                                            <br/><textarea path="text_res" style="height: 100%" placeholder="answer field " class="form-control text_res" name="text_res"></textarea>
+                                            <br/><textarea path="text_res" style="height: 90%" placeholder="answer field " class="form-control text_res" name="text_res"></textarea>
                                         </div>
                                     </c:if>
 
-                                    <div class="col-lg-6 text-center">
+                                    <div class="col-lg-12 text-center">
                                         <button type="button" id="question_resTime"   class="btn-rounded m-2 p-3 btn-outline-info">${d.question_resTime}</button>
                                     </div>
 
