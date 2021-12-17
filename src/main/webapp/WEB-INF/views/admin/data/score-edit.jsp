@@ -40,7 +40,7 @@
                                 <li class="breadcrumb-item">
                                     <a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item active">UI-Blank</li>
+                                <li class="breadcrumb-item active">ESWT</li>
                             </ol>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="compose-content">
-                            <h4>Student List</h4>
+                            <h4>Student Grading</h4>
 
                         </div>
                     </div>
@@ -75,8 +75,8 @@
                         <div class="card">
                             <c:choose>
                             <c:when test="${fn:length(getMembersWhoAnswered) gt 0 }">
-                            <div class="bootstrap-data-table-panel">
-                                <div class="table-responsive">
+                            <div  class="bootstrap-data-table-panel">
+                                <div class="table-responsive" >
                                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                         <thead>
                                         <tr>
@@ -86,12 +86,12 @@
                                             <th>ACTION</th>
                                         </tr>
                                         </thead>
-
+                                        <tbody>
                                         <c:forEach items="${getMembersWhoAnswered}" var="e">
                                             <c:url var="gradeLink" value="/admin/data/edit">
                                                 <c:param name="gradeId" value="${e.member_id}" />
                                             </c:url>
-                                            <tbody>
+
                                             <tr>
                                                 <td>${e.member_id}</td>
                                                 <td>${e.member_name}</td>
@@ -100,9 +100,9 @@
 
                                                 </td>
                                             </tr>
-                                            </tbody>
-                                        </c:forEach>
 
+                                        </c:forEach>
+                                        </tbody>
                                     </table>
 
                                 </div>
@@ -126,16 +126,15 @@
                         <div id="extra-area-chart"></div>
                         <div id="morris-line-chart"></div>
                         <div class="footer">
-                            <p>2021 © Admin Board. -
+                            <p>2021 © ESWT. -
                                 <a href="http://fasgh.govt.kr/" target="_blank">fasgh.govt.kr</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
-    </div>
-</div>
+
+
 
 <%@ include file="/WEB-INF/views/component/admin-footer.jsp" %>
 

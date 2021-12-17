@@ -1,32 +1,22 @@
 package com.example.controller;
 
-import com.example.dao.EmployeeMapper;
-import com.example.dao.MemberMapper;
-import com.example.dao.QuestionMapper;
-import com.example.dao.daoInterfaceTest.ArticleMapper;
-import com.example.dao.daoInterfaceTest.ArticleMapperImpl;
-import com.example.entity.Employee;
+import com.example.dao.employee.EmployeeMapper;
+import com.example.dao.member.MemberMapper;
+import com.example.dao.question.QuestionMapper;
 import com.example.entity.Member;
-import com.example.entity.Question;
 
 import com.example.entity.Role;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.reactive.WebFluxProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-import javax.inject.Inject;
-import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 
 @Controller
@@ -34,18 +24,24 @@ import java.util.List;
 public class    MainController {
     //TODO
     //Use application context to set user id in question page
-    @Autowired
+
     private ApplicationContext appContext;
 
-    @Autowired
+
     EmployeeMapper employeeMapper;
 
-    @Autowired
+
     QuestionMapper questionMapper;
 
-    @Autowired
+
     MemberMapper memberMapper;
 
+    public MainController(ApplicationContext appContext, EmployeeMapper employeeMapper, QuestionMapper questionMapper, MemberMapper memberMapper) {
+        this.appContext = appContext;
+        this.employeeMapper = employeeMapper;
+        this.questionMapper = questionMapper;
+        this.memberMapper = memberMapper;
+    }
 
     @RequestMapping("/home")
     public String home(HttpServletRequest req) {

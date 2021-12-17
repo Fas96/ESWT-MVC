@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.member.MemberMapper">
+
+    <resultMap type="member" id="result">
+        <id property="id" column="id" />
+        <result property="member_id" column="member_id" />
+        <result property="member_password" column="member_password" />
+        <result property="member_name" column="member_name" />
+        <result property="roles" column="ROLES" />
+        <result property="member_isRestricted" column="member_isRestricted" />
+        <result property="member_isAdmin" column="member_isAdmin" />
+    </resultMap>
+
+    <select id="getAllMembers" resultType="member" resultMap="result">
+        SELECT * FROM member
+    </select>
+
+
+    <select id="getMembersWhoAnswered" resultType="member" resultMap="result">
+        SELECT DISTINCT m.*,(select GROUP_CONCAT(CONCAT('',mr.authority,"")) from member_roles mr where mr.username=m.member_id group by (mr.username)  ) as ROLES FROM  member m inner join  answer a on m.member_id=a.member_id
+
+--         SELECT DISTINCT m.* FROM  member m inner join  answer a on m.member_id=a.member_id
+    </select>
+    <insert id="insertMember" parameterType="member" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO member(
+                           member_id,member_password,member_name,member_isRestricted,member_isAdmin
+        )
+        VALUES(#{member_id}, #{member_password}, #{member_name}, #{member_isRestricted}, #{member_isAdmin})
+    </insert>
+
+<!--    Inserts default roles as STUDENT-->
+
+    <insert id="insertRole" parameterType="member" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO member_roles(username,authority)
+        VALUES(#{member_id}, "ROLE_STUDENT")
+    </insert>
+
+    <update id="updateMember" parameterType="member">
+        UPDATE member SET   member_password = #{member_password}, member_name = #{member_name},
+                            question_media = #{question_media}, question_second = #{question_second}, question_prepTime = #{question_prepTime},
+                          member_isRestricted = #{member_isRestricted},member_isAdmin = #{member_isAdmin}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteMember" parameterType="int">
+        DELETE FROM member WHERE id = #{id}
+    </delete>
+
+    <select id="findMemberById" parameterType="String" resultType="member" resultMap="result">
+        SELECT * FROM member WHERE member_id = #{member_id}
+    </select>
+</mapper>

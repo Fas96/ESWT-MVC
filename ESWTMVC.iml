@@ -113,5 +113,14 @@
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.13" level="project" />
+    <orderEntry type="library" name="tableexport.jquery.plugin" level="application" />
+    <orderEntry type="library" name="datatables" level="application" />
+    <orderEntry type="library" name="arrobefr-jquery-calendar-bs4" level="application" />
+    <orderEntry type="library" name="moment.js" level="application" />
+    <orderEntry type="library" name="bootswatch" level="application" />
+    <orderEntry type="library" name="moment-timezone" level="application" />
+    <orderEntry type="library" name="jquery.touchswipe" level="application" />
+    <orderEntry type="library" name="timepicker" level="application" />
+    <orderEntry type="library" name="fullcalendar" level="application" />
   </component>
 </module>

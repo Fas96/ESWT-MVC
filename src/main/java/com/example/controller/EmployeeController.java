@@ -1,8 +1,7 @@
 package com.example.controller;
 
-import com.example.dao.EmployeeMapper;
+import com.example.dao.employee.EmployeeMapper;
 import com.example.entity.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/admin/employee")
 public class EmployeeController {
 
-    @Autowired
     EmployeeMapper employeeMapper;
+
+    public EmployeeController(EmployeeMapper employeeMapper) {
+        this.employeeMapper = employeeMapper;
+    }
 
     private static final String EMPLOYEE = "Employee";
     private static final String EMPLOYEELIST = "ListEmployees";

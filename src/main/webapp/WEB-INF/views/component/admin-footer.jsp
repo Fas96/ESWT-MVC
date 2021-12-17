@@ -37,26 +37,30 @@
 <script src="<c:url value="${base}/resources/js/lib/circle-progress/circle-progress-init.js"/> "></script>
 
 
-<%--<!--  Vector Map -->--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.min.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/jquery.vmap.sampledata.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.world.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.algeria.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.argentina.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.brazil.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.france.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.germany.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.greece.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.iran.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.iraq.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.russia.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.tunisia.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.europe.js"/> "></script>--%>
-<%--<script src="<c:url value="${base}/resources/js/lib/vector-map/country/jquery.vmap.usa.js"/> "></script>--%>
 
+<!-- jquery vendor -->
+<script src="assets/js/lib/jquery.min.js"></script>
+<script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
+<!-- nano scroller -->
+<script src="assets/js/lib/menubar/sidebar.js"></script>
+<script src="assets/js/lib/preloader/pace.min.js"></script>
+<!-- sidebar -->
 
+<!-- bootstrap -->
 
+<script src="<c:url value="${base}/resources/js/lib/bootstrap.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/scripts.js"/> "></script>
+<!-- scripit init-->
+
+<script src="<c:url value="${base}/resources/js/lib/data-table/datatables.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/lib/data-table/dataTables.buttons.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/lib/data-table/buttons.flash.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/lib/data-table/jszip.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/lib/data-table/pdfmake.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/lib/data-table/vfs_fonts.js"/> "></script>
+ <script src="<c:url value="${base}/resources/js/lib/data-table/buttons.html5.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/lib/data-table/buttons.print.min.js"/> "></script>
+<script src="<c:url value="${base}/resources/js/lib/data-table/datatables-init.js"/> "></script>
 <!--  Owl Carousel -->
 <script src="<c:url value="${base}/resources/js/lib/owl-carousel/owl.carousel.min.js"/> "></script>
 <script src="<c:url value="${base}/resources/js/lib/owl-carousel/owl.carousel-init.js"/> "></script>

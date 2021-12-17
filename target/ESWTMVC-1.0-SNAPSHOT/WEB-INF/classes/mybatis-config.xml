@@ -40,12 +40,13 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="java/com/example/dao/EmployeeMapper.xml" />
-        <mapper resource="java/com/example/dao/QuestionMapper.xml" />
-        <mapper resource="java/com/example/dao/MemberMapper.xml" />
-        <mapper resource="java/com/example/dao/AnswerMapper.xml" />
-        <mapper resource="java/com/example/dao/GradeMapper.xml" />
-        <mapper resource="java/com/example/dao/SessionMapper.xml" />
+        <mapper resource="/mappers/EmployeeMapper.xml"/>
+<!--        <mapper resource="/com/example/dao/EmployeeMapper.xml" />-->
+        <mapper resource="/mappers/QuestionMapper.xml" />
+        <mapper resource="/mappers/MemberMapper.xml" />
+        <mapper resource="/mappers/AnswerMapper.xml" />
+        <mapper resource="/mappers/GradeMapper.xml" />
+        <mapper resource="/mappers/SessionMapper.xml" />
     </mappers>
 
 </configuration>

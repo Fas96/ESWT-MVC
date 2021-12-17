@@ -49,11 +49,11 @@
           </ul>
         </li>
 
-        <li><a class="sidebar-sub-toggle"><i class=" ti-bookmark-alt"></i> Contact <span
+        <li><a class="sidebar-sub-toggle"><i class=" ti-bookmark-alt"></i> Calendar <span
                 class="sidebar-collapse-icon ti-angle-down"></span></a>
           <ul>
-            <li><a href="app-event-calender.html"><i class="ti-calendar"></i> Calender </a></li>
-            <li><a href="app-email.html"><i class="ti-email"></i> Email</a></li>
+            <li><a href="/admin/calendar"><i class="ti-calendar"></i> Calender </a></li>
+
           </ul>
         </li>
 

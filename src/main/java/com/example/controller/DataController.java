@@ -1,13 +1,10 @@
 package com.example.controller;
 
-import com.example.dao.AnswerMapper;
-import com.example.dao.GradeMapper;
-import com.example.dao.MemberMapper;
+import com.example.dao.answer.AnswerMapper;
+import com.example.dao.grade.GradeMapper;
+import com.example.dao.member.MemberMapper;
 import com.example.entity.Grade;
 import com.example.entity.GradeTypeTotalDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,18 +19,21 @@ import java.util.stream.IntStream;
 @RequestMapping("/admin/data")
 public class DataController {
 
-    @Autowired
+
     MemberMapper memberMapper;
 
-    @Autowired
     AnswerMapper answerMapper;
-    @Autowired
     GradeMapper gradeMapper;
+
+    public DataController(MemberMapper memberMapper, AnswerMapper answerMapper, GradeMapper gradeMapper) {
+        this.memberMapper = memberMapper;
+        this.answerMapper = answerMapper;
+        this.gradeMapper = gradeMapper;
+    }
 
     @GetMapping("/list")
     public ModelAndView listScore(ModelAndView mv){
 
-        System.out.println("------------checking the received data-----------");
 
         List<GradeTypeTotalDao> listGrade= new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class DataController {
 
             listGrade.add(typeTotalDao);
         }
-        System.out.println(listGrade);
+
 
 
         mv.addObject("studentScoresList",listGrade);

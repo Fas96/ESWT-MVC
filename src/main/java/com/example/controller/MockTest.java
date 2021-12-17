@@ -1,13 +1,10 @@
 package com.example.controller;
 
-import com.example.dao.AnswerMapper;
-import com.example.dao.QuestionMapper;
+import com.example.dao.answer.AnswerMapper;
+import com.example.dao.question.QuestionMapper;
 import com.example.entity.Answer;
 import com.example.entity.Question;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
@@ -15,20 +12,22 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class MockTest {
-    @Autowired
+
     QuestionMapper questionMapper;
 
-    @Autowired
     ApplicationContext context;
 
-    @Autowired
     AnswerMapper answerMapper;
+
+    public MockTest(QuestionMapper questionMapper, ApplicationContext context, AnswerMapper answerMapper) {
+        this.questionMapper = questionMapper;
+        this.context = context;
+        this.answerMapper = answerMapper;
+    }
 
     @GetMapping(value = {"/admin/mock/testExample","/exams/startExams"})
     public ModelAndView testExample(ModelAndView model, HttpServletRequest req){

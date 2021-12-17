@@ -44,7 +44,7 @@
                                 <li class="breadcrumb-item">
                                     <a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item active">UI-Blank</li>
+                                <li class="breadcrumb-item active">ESWT</li>
                             </ol>
                         </div>
                     </div>
@@ -115,12 +115,12 @@
                                         </tr>
                                         </thead>
 
-
+                                        <tbody>
                                         <c:forEach items="${questionList}" var="e">
                                             <c:url var="questionLink" value="/admin/data/grade">
                                                 <c:param name="questionId" value="${e.question_id}" />
                                             </c:url>
-                                            <tbody>
+
                                             <tr>
                                                 <td  >${e.question_id}</td>
                                                 <td class="question_type_${e.question_id}">${e.question_type}</td>
@@ -150,8 +150,9 @@
 
                                                 </td>
                                             </tr>
-                                            </tbody>
+
                                         </c:forEach>
+                                        </tbody>
 <%--                                        <div class="input-group visually-hidden">--%>
 <%--                                        create a form to submit this data to the server--%>
 <%--                                        when inserting the grade update if exist--%>
@@ -220,7 +221,7 @@
                         <div id="extra-area-chart"></div>
                         <div id="morris-line-chart"></div>
                         <div class="footer">
-                            <p>2021 © Admin Board. -
+                            <p>2021 © ESWT. -
                                 <a href="http://fasgh.govt.kr/" target="_blank">fasgh.govt.kr</a>
                             </p>
                         </div>

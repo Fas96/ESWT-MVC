@@ -1,40 +1,41 @@
 package com.example.controller;
 
-import com.example.dao.QuestionMapper;
+import com.example.dao.question.QuestionMapper;
 import com.example.entity.Question;
 import com.example.util.FileUploadUtil;
-import com.example.util.PropertiesLoad;
 import com.example.util.WebUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
-import java.util.Properties;
 import java.util.logging.Logger;
 
 @Slf4j
 @Controller
 @RequestMapping("/admin/question")
 public class QuestionController {
-    @Autowired
+
     ServletContext context;
-    @Autowired
+
     WebUtils webUtils;
 
     public final String imageUploadDir="C:\\Users\\User\\Desktop\\ESWTMVC\\src\\main\\webapp\\WEB-INF\\resources\\question-images\\";
     // TODO: 2021-10-25 SET AS ENV PROPERTY
-    @Autowired
+
     QuestionMapper questionMapper;
 //    PropertiesLoad propertiesLoad=new PropertiesLoad();
+
+
+    public QuestionController(ServletContext context, WebUtils webUtils, QuestionMapper questionMapper) {
+        this.context = context;
+        this.webUtils = webUtils;
+        this.questionMapper = questionMapper;
+    }
 
     Logger logger=Logger.getLogger(String.valueOf(QuestionMapper.class));
 

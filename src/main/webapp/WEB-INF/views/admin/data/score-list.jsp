@@ -44,7 +44,7 @@
                                 <li class="breadcrumb-item">
                                     <a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item active">UI-Blank</li>
+                                <li class="breadcrumb-item active">ESWT</li>
                             </ol>
                         </div>
                     </div>
@@ -91,11 +91,12 @@
                                                     <th>DATE</th>
                                                 </tr>
                                                 </thead>
+                                                <tbody>
                                                 <c:forEach items="${studentScoresList}" var="e">
 <%--                                                    <c:url var="gradeLink" value="/admin/data/edit">--%>
 <%--                                                        <c:param name="gradeId" value="${e.id}" />--%>
 <%--                                                    </c:url>--%>
-                                                    <tbody>
+
                                                     <tr>
 
                                                         <td>${e.id}</td>
@@ -108,9 +109,9 @@
                                                         <td><fmt:formatDate type="date" value="${e.date}"/></td>
 
                                                     </tr>
-                                                    </tbody>
-                                                </c:forEach>
 
+                                                </c:forEach>
+                                                </tbody>
                                             </table>
 
                                         </div>
@@ -132,7 +133,7 @@
                         <div id="extra-area-chart"></div>
                         <div id="morris-line-chart"></div>
                         <div class="footer">
-                            <p>2021 © Admin Board. -
+                            <p>2021 © ESWT. -
                                 <a href="http://fasgh.govt.kr/" target="_blank">fasgh.govt.kr</a>
                             </p>
                         </div>

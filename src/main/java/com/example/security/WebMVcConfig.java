@@ -88,9 +88,9 @@ public class WebMVcConfig implements ServletContextListener {
     @Bean
     public ViewResolver viewResolver(){
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
+        logger.info(":::::::::::::::::viewResolver():::::::::::::::::::");
         return  viewResolver;
     }
 

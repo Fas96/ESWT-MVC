@@ -38,7 +38,7 @@
                                 <li class="breadcrumb-item">
                                     <a href="#">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item active">UI-Blank</li>
+                                <li class="breadcrumb-item active">ESWT</li>
                             </ol>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                                 <div class="table-responsive">
                                     <c:choose>
                                     <c:when test="${fn:length(answersWithAudio) gt 0 }">
-                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <table   class="table table-striped table-bordered">
                                         <thead>
                                         <tr>
                                             <th>USERID</th>
@@ -80,7 +80,7 @@
                                             <th>ACTION</th>
                                         </tr>
                                         </thead>
-
+                                        <tbody>
                                         <c:forEach items="${answersWithAudio}" var="a">
                                             <c:url var="updateLink" value="/audio/edit">
                                                 <c:param name="answerId" value="${a.id}" />
@@ -89,7 +89,7 @@
                                             <c:url var="deleteLink" value="/audio/delete">
                                                 <c:param name="answerId" value="${a.id}" />
                                             </c:url>
-                                            <tbody>
+
                                             <tr>
                                                 <td>${a.member_id}</td>
                                                 <td><a href ="${a.media_res }" download="member_${a.member_id}_question_${a.question_id}.mp3" >Download</a>
@@ -107,9 +107,9 @@
                                                         onclick="if(!(confirm('Are you sure want to delete this Question permanently?'))) return false">Delete</a>
                                                 </td>
                                             </tr>
-                                            </tbody>
-                                        </c:forEach>
 
+                                        </c:forEach>
+                                        </tbody>
                                     </table>
                                     <div class="col-lg-12 ">
                                         <button type="button" onclick="downloadAllChecked()" class="btn btn-outline-info float-right">Download Audio&#9745;</button>
@@ -134,7 +134,7 @@
                         <div id="extra-area-chart"></div>
                         <div id="morris-line-chart"></div>
                         <div class="footer">
-                            <p>2021 © Admin Board. -
+                            <p>2021 © ESWT. -
                                 <a href="http://fasgh.govt.kr/" target="_blank">fasgh.govt.kr</a>
                             </p>
                         </div>

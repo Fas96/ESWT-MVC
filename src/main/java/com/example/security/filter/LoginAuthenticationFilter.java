@@ -5,17 +5,19 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 @WebFilter("/*")
 public class LoginAuthenticationFilter implements Filter {
+    private Logger logger=Logger.getLogger(getClass().getName());
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("==============LoginAuthenticationFilter=======init()");
+        logger.info(":::::::::::::::Filter Initialized:::::::::::::::::::::::");
     }
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//        HttpServletRequest req= (HttpServletRequest) servletRequest;
-//        HttpServletResponse resp= (HttpServletResponse) servletResponse;
+        HttpServletRequest req= (HttpServletRequest) servletRequest;
+        HttpServletResponse resp= (HttpServletResponse) servletResponse;
 //        String servletPath = req.getServletPath();
 //        if("/".equals(servletPath)||"/login".equals(servletPath)||"/processLogin".equals(servletPath)||"login-component.jsp".equals(servletPath)){
 //            filterChain.doFilter(servletRequest,servletResponse);
@@ -33,6 +35,8 @@ public class LoginAuthenticationFilter implements Filter {
 //            resp.sendRedirect("/");
 //
 //        }
+
+        logger.info(":::::::::::doFilter(req,res)::::::::::"+req.getServletPath());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
