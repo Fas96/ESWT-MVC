@@ -71,3 +71,18 @@ WITH NewScores AS (SELECT DISTINCT m.member_id,m.member_name,(select GROUP_CONCA
                                                                                                                  IFNULL(g.answer_grammar,0)+IFNULL(g.Logic,0)+IFNULL(g.Mechnics,0)+IFNULL(g.Content,0),"]")) from grade g where (m.member_id = g.member_id)
                                                               group by (g.member_id)  ) as SCORES FROM  member m inner join
                                                                                                         member a on m.member_id=a.member_id) select * from NewScores where NewScores.SCORES is not null ;
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                            select nvl(decode(question_id,9,'First_question',11,'Third_question',12,'Last_question'),question_id),question_title,question_content from question;
+ 
+ 
+select   sum(username) ,MIN(USERNAME) from member_roles GROUP BY username;
+select
+case  
+    when question_id=10 then 'second_question'
+    when question_id=11 then 'Third_question'
+    when question_id=12 then 'Last_question'
+    else '0'
+end    
+question_title, question_content from question;                                
